@@ -15,12 +15,22 @@
                     </div><!-- .nk-block-between -->
                 </div><!-- .nk-block-head -->
                 <div class="card card-preview">
-                    <div class="card-inner text-center py-5">
-                        <div class="row py-5">
-                            <div class="col-md-12">
-                                <img src="{{ asset('images/CITECSA.jpeg') }}" width="70%" alt="logo CITECSA">
-                            </div>
+                    <div class="card-inner">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h3 class="text-uppercase">Bienvenido</h1>
+                                @role('Empresa')
+                                <h3>{{ Auth::user()->empresa }}</h3>
+                                <h4>Sr(a). {{ Auth::user()->name }}</h4>
+                                @endrole
+                                @role('Desarrollador|Administrador')
+                                <h4>Sr(a). {{ Auth::user()->name }}</h4>
+                                @endrole
 
+                            </div>
+                            <!-- <div class="col-md-12 text-center">
+                                <img src="{{ asset('images/CITECSA.png') }}" width="70%" alt="logo CITECSA">
+                            </div> -->
                         </div>
 
                     </div>

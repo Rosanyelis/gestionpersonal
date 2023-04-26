@@ -20,6 +20,28 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('tipo')->nullable();
+            $table->string('empresa')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('actividad')->nullable();
+            $table->string('telefono_empresa')->nullable();
+            $table->string('correo_empresa')->nullable();
+            $table->string('representante')->nullable();
+            $table->string('telefono_representante')->nullable();
+            $table->string('correo_representante')->nullable();
+            $table->string('provincia')->nullable();
+            $table->string('municipio')->nullable();
+            $table->string('sector')->nullable();
+            $table->string('calle')->nullable();
+            $table->string('numero')->nullable();
+            $table->string('referencia')->nullable();
+            $table->string('nombre')->nullable();
+            $table->string('apellido')->nullable();
+            $table->string('cedula')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('flota')->nullable();
+            $table->string('cargo')->nullable();
+            $table->string('correo_personal')->nullable();
             $table->timestamps();
         });
     }

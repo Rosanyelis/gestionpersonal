@@ -27,8 +27,8 @@
                     <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
                         <div class="brand-logo  text-center">
                             <a href="javascript:void();" class="logo-link">
-                                <img class="logo-light logo-img logo-img-lg" src="{{ asset('images/CITECSA.jpeg') }}"  alt="logo">
-                                <img class="logo-dark logo-img logo-img-lg" src="{{ asset('images/CITECSA.jpeg') }}"  alt="logo-dark">
+                                <img class="logo-light logo-img logo-img-lg" src="{{ asset('images/CITECSA.png') }}"  alt="logo">
+                                <img class="logo-dark logo-img logo-img-lg" src="{{ asset('images/CITECSA.png') }}"  alt="logo-dark">
                             </a>
                         </div>
                         <div class="card">
@@ -84,9 +84,9 @@
                                             class="btn btn-lg btn-primary btn-block">Ingresar</button>
                                     </div>
                                 </form>
-                                <div class="form-note-s2 text-center pt-4"> Nuevo en la Plataforma? <a
+                                <!-- <div class="form-note-s2 text-center pt-4"> Nuevo en la Plataforma? <a
                                         href="{{ route('register') }}">Registrarme</a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
