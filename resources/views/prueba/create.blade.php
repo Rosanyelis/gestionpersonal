@@ -30,7 +30,7 @@
                     <div class="card card-bordered">
                         <div class="card-inner">
                             <form id="form"
-                                action="{{ url('/personal/' . $id . '/guardar-certificaciones-y-depuraciones') }}"
+                                action="{{ url('/personal/' . $id . '/integridad-laboral/guardar-prueba') }}"
                                 method="POST">
                                 @csrf
                                 <div class="row g-gs">
@@ -481,7 +481,7 @@
                                                 <tr>
                                                     <td colspan="4">
                                                         <div class="form-control-wrap">
-                                                            <input type="text" name="resultado" class="form-control " value="{{ old('resultadoi12') }}" placeholder="Ejemplo: La prueba fué exitósa">
+                                                            <input type="text" name="resultado" class="form-control " value="{{ old('resultado') }}" placeholder="Ejemplo: La prueba fué exitósa">
                                                         </div>
                                                         @if ($errors->has('resultado'))
                                                             <span class="invalid text-danger">

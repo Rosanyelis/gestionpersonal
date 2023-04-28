@@ -6,7 +6,7 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Personal - Investigación de Integridad Laboral</h3>
+                            <h3 class="nk-block-title page-title">Personal Externo - Investigación de Integridad Laboral</h3>
                         </div><!-- .nk-block-head-content -->
                         <div class="nk-block-head-content">
                             <div class="toggle-wrap nk-block-tools-toggle">
@@ -15,7 +15,7 @@
                                 <div class="toggle-expand-content" data-content="pageMenu">
                                     <ul class="nk-block-tools g-3">
                                         <li class="nk-block-tools-opt">
-                                            <a href="{{ url('/personal') }}" class="btn btn-secondary">
+                                            <a href="{{ url('/candidatos-externos/'.$id.'/ver-perfil-de-candidato-externo') }}" class="btn btn-secondary">
                                                 <em class="icon ni ni-arrow-left"></em>
                                                 <span>Regresar</span>
                                             </a>
@@ -30,7 +30,7 @@
                     <div class="card card-bordered">
                         <div class="card-inner">
                             <form id="form"
-                                action="{{ url('/personal/' . $id . '/guardar-certificaciones-y-depuraciones') }}"
+                                action="{{ url('/candidatos-externos/' . $id . '/integridad-laboral/guardar-evaluacion') }}"
                                 method="POST">
                                 @csrf
                                 <div class="row g-gs">

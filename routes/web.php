@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActividadesProcesadasController;
 use App\Http\Controllers\AlergiaMedicamentosController;
+use App\Http\Controllers\CandidatoExternoController;
 use App\Http\Controllers\CarrerasUniversitariasController;
 use App\Http\Controllers\ContactosEmergenciaController;
 use App\Http\Controllers\CursosTecnicosController;
@@ -10,11 +11,14 @@ use App\Http\Controllers\DiplomadoController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EnfermedadesController;
 use App\Http\Controllers\HistorialLaboralController;
+use App\Http\Controllers\IntegridadLaboralController;
+use App\Http\Controllers\IntegridadLaboralExternoController;
 use App\Http\Controllers\MaestriaController;
 use App\Http\Controllers\ParticipacionController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\PhdController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReferenciasPersonalesFamiliaresController;
 use App\Http\Controllers\ResidenciaController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\TalleresController;
@@ -67,6 +71,23 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/personal/{id}/get-municipios', [PersonalController::class, 'getMunicipio'])->name('personal.getMunicipio');
 
+    # Modulo Candidato Externo
+    Route::get('/candidatos-externos', [CandidatoExternoController::class, 'index'])->name('candidato-externo.index');
+    Route::get('/candidatos-externos/nuevo-candidato-externo', [CandidatoExternoController::class, 'create'])->name('candidato-externo.create');
+    Route::post('/candidatos-externos/guardar-candidato-externo', [CandidatoExternoController::class, 'store'])->name('candidato-externo.store');
+    Route::get('/candidatos-externos/{id}/editar-candidato-externo', [CandidatoExternoController::class, 'edit'])->name('candidato-externo.edit');
+    Route::put('/candidatos-externos/{id}/actualizar-candidato-externo', [CandidatoExternoController::class, 'update'])->name('candidato-externo.update');
+    Route::get('/candidatos-externos/{id}/ver-perfil-de-candidato-externo', [CandidatoExternoController::class, 'show'])->name('candidato-externo.show');
+    Route::get('/candidatos-externos/{id}/investigacion-laboral', [CandidatoExternoController::class, 'investigacionlaboral'])->name('candidato-externo.investigacionlaboral');
+    Route::post('/candidatos-externos/{id}/guardar-certificaciones-y-depuraciones', [CandidatoExternoController::class, 'storecertificaciones'])->name('candidato-externo.storecertificaciones');
+
+     # Integridad Laboral Candidato Externo
+    Route::get('/candidatos-externos/{id}/integridad-laboral/nueva-evaluacion', [IntegridadLaboralExternoController::class, 'create'])->name('evaluacion-externa.create');
+    Route::post('/candidatos-externos/{id}/integridad-laboral/guardar-evaluacion', [IntegridadLaboralExternoController::class, 'store'])->name('evaluacion-externa.store');
+    Route::get('/candidatos-externos/{id}/integridad-laboral/{evaluacion_id}/ver-evaluacion', [IntegridadLaboralExternoController::class, 'show'])->name('evaluacion-externa.show');
+    Route::get('/candidatos-externos/{id}/integridad-laboral/{evaluacion_id}/editar-evaluacion', [IntegridadLaboralExternoController::class, 'edit'])->name('evaluacion-externa.edit');
+    Route::put('/candidatos-externos/{id}/integridad-laboral/{evaluacion_id}/actualizar-evaluacion', [IntegridadLaboralExternoController::class, 'update'])->name('evaluacion-externa.update');
+
     # Residencia - Edicion
     Route::get('/personal/{id}/residencia/{residencia_id}/editar-residencia', [ResidenciaController::class, 'edit'])->name('residencia.edit');
     Route::put('/personal/{id}/residencia/{residencia_id}/actualizar-residencia', [ResidenciaController::class, 'update'])->name('residencia.update');
@@ -91,6 +112,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/personal/{id}/contactos-de-emergencia/{contacto_id}/editar-contacto', [ContactosEmergenciaController::class, 'edit'])->name('contacto.edit');
     Route::put('/personal/{id}/contactos-de-emergencia/{contacto_id}/actualizar-contacto', [ContactosEmergenciaController::class, 'update'])->name('contacto.update');
     Route::delete('/personal/{id}/contactos-de-emergencia/{contacto_id}/eliminar-contacto', [ContactosEmergenciaController::class, 'destroy'])->name('contacto.destroy');
+
+    # Referencias Personales - Edicion
+    Route::get('/personal/{id}/referencias/nueva-referencia', [ReferenciasPersonalesFamiliaresController::class, 'create'])->name('referencia.create');
+    Route::post('/personal/{id}/referencias/guardar-referencia', [ReferenciasPersonalesFamiliaresController::class, 'store'])->name('referencia.store');
+    Route::get('/personal/{id}/referencias/{residencia_id}/editar-referencia', [ReferenciasPersonalesFamiliaresController::class, 'edit'])->name('referencia.edit');
+    Route::put('/personal/{id}/referencias/{residencia_id}/actualizar-referencia', [ReferenciasPersonalesFamiliaresController::class, 'update'])->name('referencia.update');
+    Route::delete('/personal/{id}/referencias/{residencia_id}/eliminar-referencia', [ReferenciasPersonalesFamiliaresController::class, 'destroy'])->name('referencia.destroy');
 
     # Modulo Carreras Universitaria
     Route::get('/personal/{id}/carreras-universitaria/nueva-carrera', [CarrerasUniversitariasController::class, 'create'])->name('carrera.create');
@@ -161,6 +189,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/personal/{id}/actividades-no-procesadas/{reporte_id}/ver-reporte', [ActividadesProcesadasController::class, 'show'])->name('reporte.show');
     Route::get('/personal/{id}/actividades-no-procesadas/{reporte_id}/editar-reporte', [ActividadesProcesadasController::class, 'edit'])->name('reporte.edit');
     Route::put('/personal/{id}/actividades-no-procesadas/{reporte_id}/actualizar-reporte', [ActividadesProcesadasController::class, 'update'])->name('reporte.update');
+
+    # Integridad Laboral Personal
+    Route::get('/personal/{id}/integridad-laboral/nueva-prueba', [IntegridadLaboralController::class, 'create'])->name('prueba.create');
+    Route::post('/personal/{id}/integridad-laboral/guardar-prueba', [IntegridadLaboralController::class, 'store'])->name('prueba.store');
+    Route::get('/personal/{id}/integridad-laboral/{prueba_id}/ver-prueba', [IntegridadLaboralController::class, 'show'])->name('prueba.show');
+    Route::get('/personal/{id}/integridad-laboral/{prueba_id}/editar-prueba', [IntegridadLaboralController::class, 'edit'])->name('prueba.edit');
+    Route::put('/personal/{id}/integridad-laboral/{prueba_id}/actualizar-prueba', [IntegridadLaboralController::class, 'update'])->name('prueba.update');
+
 
     # Modulo Empresa
     Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresa.index');

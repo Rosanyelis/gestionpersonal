@@ -31,7 +31,7 @@
                     <div class="card card-bordered">
                         <div class="card-inner">
                             <form action="{{ url('configuraciones/usuarios/guardar-usuario') }}" class="form-validate"
-                                method="POST">
+                                method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row g-gs">
                                     <div class="col-md-12">
@@ -39,12 +39,14 @@
                                             <label class="form-label  text-uppercase">tipo de usuario</label>
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" id="tipoE" name="tipo"
-                                                    class="custom-control-input" value="Empresa">
+                                                    class="custom-control-input" value="Empresa"
+                                                    @if (old('tipo') == 'Empresa') checked @endif>
                                                 <label class="custom-control-label" for="tipoE">Empresa Cliente</label>
                                             </div>
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" id="tipoEC" name="tipo"
-                                                    class="custom-control-input" value="Empleado">
+                                                    class="custom-control-input" value="Empleado"
+                                                    @if (old('tipo') == 'Empleado') checked @endif>
                                                 <label class="custom-control-label" for="tipoEC">Empleado Citecsa</label>
                                             </div>
                                         </div>
@@ -172,6 +174,23 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-label text-uppercase"
+                                                for="fw-vr-first-name">Logo Empresa</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-file">
+                                                    <input name="logo" type="file" class="custom-file-input" id="customFile">
+                                                    <label class="custom-file-label" for="customFile">Subir Logo</label>
+                                                    @if ($errors->has('logo'))
+                                                    <span class="invalid text-danger">
+                                                        {{ $errors->first('logo') }}
+                                                    </span>
+                                                @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase"
                                                 for="fw-vr-first-name">Empresa</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" id="fw-vr-first-name"
@@ -291,7 +310,7 @@
                                                     <select class="form-control" name="provincia" id="provincia">
                                                         <option>Seleccione</option>
                                                         @foreach ($provincias as $item)
-                                                            <option value="{{ $item->id }}">{{ $item->nombre }}
+                                                            <option value="{{ $item->id }}" @if (old('provincia') == $item->id) selected @endif>{{ $item->nombre }}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -311,7 +330,11 @@
                                             <div class="form-control-wrap ">
                                                 <div class="form-control-select">
                                                     <select class="form-control" name="municipio" id="municipio">
+                                                        @if (old('municipio'))
+                                                        <option value="{{ old('municipio')}}">{{ old('municipio') }}</option>
+                                                        @else
                                                         <option>Seleccione</option>
+                                                        @endif
                                                     </select>
                                                 </div>
                                                 @if ($errors->has('municipio'))
@@ -482,6 +505,7 @@
 
             @include('layouts.alerts')
 
+            @if (old('tipo') == 'Empresa') $('#empresa').show(); @endif
             $('#tipoE').click(function() {
                 if ($(this).is(':checked')) {
                     $('#empresa').show();

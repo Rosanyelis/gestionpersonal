@@ -28,9 +28,16 @@
                                 @endrole
 
                             </div>
-                            <!-- <div class="col-md-12 text-center">
-                                <img src="{{ asset('images/CITECSA.png') }}" width="70%" alt="logo CITECSA">
-                            </div> -->
+                            @role('Empresa')
+                            <div class="col-md-12 text-center">
+                                <img src="{{ asset(''.Auth::user()->logo.'') }}" width="70%" alt="logo CITECSA">
+                            </div>
+                            @endrole
+                            @role('Desarrollador|Administrador')
+                            <div class="col-md-12 text-center">
+                                <img src="{{ asset('images/CITECSA LOGO.jpg') }}" width="70%" alt="logo CITECSA">
+                            </div>
+                            @endrole
                         </div>
 
                     </div>

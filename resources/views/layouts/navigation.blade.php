@@ -48,6 +48,12 @@
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
+                        <a href="{{ url('candidatos-externos') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
+                            <span class="nk-menu-text">Personal Externo</span>
+                        </a>
+                    </li><!-- .nk-menu-item -->
+                    <li class="nk-menu-item">
                         <a href="{{ url('empresas') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-user-c"></em></span>
                             <span class="nk-menu-text">Empresas Clientes</span>
@@ -56,7 +62,7 @@
                     <!-- .nk-menu-item -->
                     <li class="nk-menu-item has-sub">
                         <a href="javascript:;" class="nk-menu-link nk-menu-toggle">
-                            <span class="nk-menu-icon"><em class="icon ni ni-cc-alt2-fill"></em></span>
+                            <span class="nk-menu-icon"><em class="icon ni ni-setting"></em></span>
                             <span class="nk-menu-text">Configuraciones</span>
                         </a>
                         <ul class="nk-menu-sub">

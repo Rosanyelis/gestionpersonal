@@ -78,7 +78,11 @@
                                     </div><!-- .profile-ud-list -->
                                     @endif
                                     @if ($data->tipo == 'Empresa')
-                                    <div class="profile-ud-list">
+
+                                    <div class=" col-md-2">
+                                        <img src="{{ asset(''.$data->logo.'') }}" class="card-img-top"  alt="{{ $data->empresa }}">
+                                    </div>
+                                    <div class="profile-ud-list mt-3">
                                         <div class="profile-ud-item">
                                             <div class="profile-ud wider">
                                                 <span class="profile-ud-label text-uppercase">Empresa</span>

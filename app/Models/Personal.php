@@ -150,32 +150,9 @@ class Personal extends Model
      */
     public function integridad_laboral()
     {
-        return $this->hasOne(CertificadoIntegridadLaboral::class, 'personal_id','id');
+        return $this->hasMany(IntegridadLaboral::class, 'personal_id','id');
     }
 
-    /**
-     * Obtiene los datos de analitica de psicometria.
-     */
-    public function analisis_psicometria()
-    {
-        return $this->hasOne(AnaliticaPsicometria::class, 'personal_id','id');
-    }
-
-    /**
-     * Obtiene los datos de levantamiento de campo.
-     */
-    public function levantamiento_campo()
-    {
-        return $this->hasOne(LevantamientoCampo::class, 'personal_id','id');
-    }
-
-    /**
-     * Obtiene los datos de investigacion de leyes.
-     */
-    public function depuracion_leyes()
-    {
-        return $this->hasOne(InvestigacionDepuracionLeyes::class, 'personal_id','id');
-    }
 
     /**
      * Obtiene los datos de referencias personales

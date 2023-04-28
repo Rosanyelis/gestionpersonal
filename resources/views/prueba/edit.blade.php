@@ -30,9 +30,10 @@
                     <div class="card card-bordered">
                         <div class="card-inner">
                             <form id="form"
-                                action="{{ url('/personal/' . $id . '/guardar-certificaciones-y-depuraciones') }}"
+                                action="{{ url('/personal/' . $id . '/integridad-laboral/'.$data->id.'/actualizar-prueba') }}"
                                 method="POST">
                                 @csrf
+                                @method('PUT')
                                 <div class="row g-gs">
                                     <div class="col-md-12 ">
                                         <table class="table table-bordered">
@@ -59,7 +60,7 @@
                                                     <td>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
-                                                                @if (old('certificado_procuraduria') == 'Si') checked @endif
+                                                                @if ($data->certificado_procuraduria == 'Si') checked @endif
                                                                 name="certificado_procuraduria" id="certificadoSi"
                                                                 value="Si">
                                                             <label class="custom-control-label" for="certificadoSi">Si</label>
@@ -68,7 +69,7 @@
                                                     <td>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
-                                                            @if (old('certificado_procuraduria') == 'No') checked @endif
+                                                            @if ($data->certificado_procuraduria == 'No') checked @endif
                                                             name="certificado_procuraduria" id="certificadoNo"
                                                             value="No">
                                                             <label class="custom-control-label" for="certificadoNo">No</label>
@@ -86,7 +87,7 @@
                                                     <td>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
-                                                                @if (old('certificado_institucion') == 'Si') checked @endif
+                                                                @if ($data->certificado_institucion == 'Si') checked @endif
                                                                 name="certificado_institucion" id="certificadoinstSi"
                                                                 value="Si">
                                                             <label class="custom-control-label" for="certificadoinstSi">Si</label>
@@ -95,7 +96,7 @@
                                                     <td>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
-                                                            @if (old('certificado_institucion') == 'No') checked @endif
+                                                            @if ($data->certificado_institucion == 'No') checked @endif
                                                             name="certificado_institucion" id="certificadoinstNo"
                                                             value="No">
                                                             <label class="custom-control-label" for="certificadoinstNo">No</label>
@@ -118,7 +119,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="actividad_antisocial" id="actividad_antisocialSi"
-                                                            @if (old('actividad_antisocial')== 'Si') checked @endif
+                                                            @if ($data->actividad_antisocial == 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="actividad_antisocialSi">Si</label>
                                                         </div>
@@ -127,7 +128,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="actividad_antisocial" id="actividad_antisocialNo"
-                                                            @if (old('actividad_antisocial')== 'No') checked @endif
+                                                            @if ($data->actividad_antisocial == 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="actividad_antisocialNo">No</label>
                                                         </div>
@@ -146,7 +147,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="reporte_actividad_noprocesada" id="reporte_actividad_noprocesadaSi"
-                                                            @if (old('reporte_actividad_noprocesada')== 'Si') checked @endif
+                                                            @if ($data->reporte_actividad_noprocesada == 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="reporte_actividad_noprocesadaSi">Si</label>
                                                         </div>
@@ -155,7 +156,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="reporte_actividad_noprocesada" id="reporte_actividad_noprocesadaNo"
-                                                            @if (old('reporte_actividad_noprocesada')== 'No') checked @endif
+                                                            @if ($data->reporte_actividad_noprocesada == 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="reporte_actividad_noprocesadaNo">No</label>
                                                         </div>
@@ -177,7 +178,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="prueba_poligrafica" id="prueba_poligraficaSi"
-                                                            @if (old('prueba_poligrafica')== 'Si') checked @endif
+                                                            @if ($data->prueba_poligrafica == 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="prueba_poligraficaSi">Si</label>
                                                         </div>
@@ -186,7 +187,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="prueba_poligrafica" id="prueba_poligraficaNo"
-                                                            @if (old('prueba_poligrafica')== 'No') checked @endif
+                                                            @if ($data->prueba_poligrafica == 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="prueba_poligraficaNo">No</label>
                                                         </div>
@@ -205,7 +206,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="prueba_psicometrica" id="prueba_psicometricaSi"
-                                                            @if (old('prueba_psicometrica')== 'Si') checked @endif
+                                                            @if ($data->prueba_psicometrica == 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="prueba_psicometricaSi">Si</label>
                                                         </div>
@@ -214,7 +215,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="prueba_psicometrica" id="prueba_psicometricaNo"
-                                                            @if (old('prueba_psicometrica')== 'No') checked @endif
+                                                            @if ($data->prueba_psicometrica == 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="prueba_psicometricaNo">No</label>
                                                         </div>
@@ -233,7 +234,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="enfermedades_contagiosas" id="enfermedades_contagiosasSi"
-                                                            @if (old('enfermedades_contagiosas')== 'Si') checked @endif
+                                                            @if ($data->enfermedades_contagiosas == 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="enfermedades_contagiosasSi">Si</label>
                                                         </div>
@@ -242,7 +243,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="enfermedades_contagiosas" id="enfermedades_contagiosasNo"
-                                                            @if (old('enfermedades_contagiosas')== 'No') checked @endif
+                                                            @if ($data->enfermedades_contagiosas == 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="enfermedades_contagiosasNo">No</label>
                                                         </div>
@@ -261,7 +262,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="consumo_alcohol" id="consumo_alcoholSi"
-                                                            @if (old('consumo_alcohol')== 'Si') checked @endif
+                                                            @if ($data->consumo_alcohol == 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="consumo_alcoholSi">Si</label>
                                                         </div>
@@ -270,7 +271,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="consumo_alcohol" id="consumo_alcoholNo"
-                                                            @if (old('consumo_alcohol')== 'No') checked @endif
+                                                            @if ($data->consumo_alcohol == 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="consumo_alcoholNo">No</label>
                                                         </div>
@@ -289,7 +290,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="sustancia_prohibida" id="sustancia_prohibidaSi"
-                                                            @if (old('sustancia_prohibida')== 'Si') checked @endif
+                                                            @if ($data->sustancia_prohibida == 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="sustancia_prohibidaSi">Si</label>
                                                         </div>
@@ -298,7 +299,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="sustancia_prohibida" id="sustancia_prohibidaNo"
-                                                            @if (old('sustancia_prohibida')== 'No') checked @endif
+                                                            @if ($data->sustancia_prohibida == 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="sustancia_prohibidaNo">No</label>
                                                         </div>
@@ -320,7 +321,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="visita_domiciliaria" id="visita_domiciliariaSi"
-                                                            @if (old('visita_domiciliaria')== 'Si') checked @endif
+                                                            @if ($data->visita_domiciliaria == 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="visita_domiciliariaSi">Si</label>
                                                         </div>
@@ -329,7 +330,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="visita_domiciliaria" id="visita_domiciliariaNo"
-                                                            @if (old('visita_domiciliaria')== 'No') checked @endif
+                                                            @if ($data->visita_domiciliaria == 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="visita_domiciliariaNo">No</label>
                                                         </div>
@@ -348,7 +349,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="levantamiento_coordinado" id="levantamiento_coordinadoSi"
-                                                            @if (old('levantamiento_coordinado')== 'Si') checked @endif
+                                                            @if ($data->levantamiento_coordinado == 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="levantamiento_coordinadoSi">Si</label>
                                                         </div>
@@ -357,7 +358,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="levantamiento_coordinado" id="levantamiento_coordinadoNo"
-                                                            @if (old('levantamiento_coordinado')== 'No') checked @endif
+                                                            @if ($data->levantamiento_coordinado == 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="levantamiento_coordinadoNo">No</label>
                                                         </div>
@@ -376,7 +377,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="investigacion_entorno" id="investigacion_entornoSi"
-                                                            @if (old('investigacion_entorno')== 'Si') checked @endif
+                                                            @if ($data->investigacion_entorno == 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="investigacion_entornoSi">Si</label>
                                                         </div>
@@ -385,7 +386,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="investigacion_entorno" id="investigacion_entornoNo"
-                                                            @if (old('investigacion_entorno')== 'No') checked @endif
+                                                            @if ($data->investigacion_entorno == 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="investigacion_entornoNo">No</label>
                                                         </div>
@@ -404,7 +405,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="levantamiento_dactilar" id="levantamiento_dactilarSi"
-                                                            @if (old('levantamiento_dactilar')== 'Si') checked @endif
+                                                            @if ($data->levantamiento_dactilar == 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="levantamiento_dactilarSi">Si</label>
                                                         </div>
@@ -413,7 +414,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="levantamiento_dactilar" id="levantamiento_dactilarNo"
-                                                            @if (old('levantamiento_dactilar')== 'No') checked @endif
+                                                            @if ($data->levantamiento_dactilar == 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="levantamiento_dactilarNo">No</label>
                                                         </div>
@@ -432,7 +433,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="levantamiento_fotografia" id="levantamiento_fotografiaSi"
-                                                            @if (old('levantamiento_fotografia')== 'Si') checked @endif
+                                                            @if ($data->levantamiento_fotografia == 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="levantamiento_fotografiaSi">Si</label>
                                                         </div>
@@ -441,7 +442,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="levantamiento_fotografia" id="levantamiento_fotografiaNo"
-                                                            @if (old('levantamiento_fotografia')== 'No') checked @endif
+                                                            @if ($data->levantamiento_fotografia == 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="levantamiento_fotografiaNo">No</label>
                                                         </div>
@@ -460,7 +461,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="integridad_familiar" id="integridad_familiarSi"
-                                                            @if (old('integridad_familiar')== 'Si') checked @endif
+                                                            @if ($data->integridad_familiar == 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="integridad_familiarSi">Si</label>
                                                         </div>
@@ -469,7 +470,7 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="integridad_familiar" id="integridad_familiarNo"
-                                                            @if (old('integridad_familiar')== 'No') checked @endif
+                                                            @if ($data->integridad_familiar == 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="integridad_familiarNo">No</label>
                                                         </div>
@@ -481,7 +482,7 @@
                                                 <tr>
                                                     <td colspan="4">
                                                         <div class="form-control-wrap">
-                                                            <input type="text" name="resultado" class="form-control " value="{{ old('resultadoi12') }}" placeholder="Ejemplo: La prueba fué exitósa">
+                                                            <input type="text" name="resultado" class="form-control " value="{{ $data->resultado }}" placeholder="Ejemplo: La prueba fué exitósa">
                                                         </div>
                                                         @if ($errors->has('resultado'))
                                                             <span class="invalid text-danger">
@@ -497,7 +498,7 @@
                                                     <td colspan="4">
                                                         <div class="form-control-wrap">
                                                             <textarea name="detalle" class="form-control form-control-sm" id="detalle"
-                                                             placeholder="Ejemplo: Lorem ipsum dolor sit amet, consectetur adipiscing eli">{{ old('detalle') }}</textarea>
+                                                             placeholder="Ejemplo: Lorem ipsum dolor sit amet, consectetur adipiscing eli">{{ $data->detalle }}</textarea>
                                                         </div>
                                                         @if ($errors->has('detalle'))
                                                             <span class="invalid text-danger">

@@ -50,18 +50,16 @@
                                             <span>Act. Laborales</span>
                                         </a>
                                     </li>
-                                    @role('Desarrollador|Administrador')
-                                        <li class="nav-item">
-                                            <a class="nav-link text-uppercase" data-toggle="tab" href="#tabItem5">
-                                                <span>Inv. Integridad laboral</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link text-uppercase" data-toggle="tab" href="#tabItem6">
-                                                <span>Act. no Procesadas</span>
-                                            </a>
-                                        </li>
-                                    @endrole
+                                    <li class="nav-item">
+                                        <a class="nav-link text-uppercase" data-toggle="tab" href="#tabItem5">
+                                            <span>Inv. Integridad laboral</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-uppercase" data-toggle="tab" href="#tabItem6">
+                                            <span>Act. no Procesadas</span>
+                                        </a>
+                                    </li>
                                 </ul><!-- .nav-tabs -->
 
                                 <div class="tab-content">
@@ -105,19 +103,19 @@
                                     </div>
                                     <div class="tab-pane" id="tabItem4">
                                         <div class="card-inner">
-                                        {{-- Bloque de Datos de Experiencia Laboral --}}
-                                        @include('includes.datos-laborales')
+                                            {{-- Bloque de Datos de Experiencia Laboral --}}
+                                            @include('includes.datos-laborales')
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tabItem5">
                                         <div class="card-inner">
-                                        {{-- Bloque de Datos de Experiencia Laboral --}}
-                                        @include('includes.datos-invlaborales')
+                                            {{-- Bloque de Datos de Experiencia Laboral --}}
+                                            @include('includes.datos-invlaborales')
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tabItem6">
                                         <div class="card-inner">
-                                        @include('includes.datos-reportes')
+                                            @include('includes.datos-reportes')
                                         </div>
                                     </div>
 
@@ -126,7 +124,7 @@
                             </div><!-- .card-content -->
 
                         </div><!-- .card-aside-wrap -->
-                    </div><!-- .card -->
+                    </div><!-- .c -->
                 </div>
             </div><!-- .nk-block -->
         </div>

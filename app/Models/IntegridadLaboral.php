@@ -5,36 +5,37 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LevantamientoCampo extends Model
+class IntegridadLaboral extends Model
 {
     use HasFactory;
 
-    /**
+     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'personal_id',
+        'candidato_id',
+        'certificado_procuraduria',
+        'certificado_institucion',
+        'actividad_antisocial',
+        'reporte_actividad_noprocesada',
+        'prueba_psicometrica',
+        'enfermedades_contagiosas',
+        'consumo_alcohol',
+        'sustancia_prohibida',
         'visita_domiciliaria',
-        'resultadov',
-        'detallev',
         'levantamiento_coordinado',
-        'resultadol',
-        'detallel',
         'investigacion_entorno',
-        'resultadoi',
-        'detallei',
         'levantamiento_dactilar',
-        'resultadod',
-        'detalled',
         'levantamiento_fotografia',
-        'resultadof',
-        'detallef',
         'integridad_familiar',
-        'resultadofa',
-        'detallefa',
+        'resultado',
+        'detalle',
     ];
+
 
     /**
      * Obtiene los datos del personal.
@@ -42,5 +43,13 @@ class LevantamientoCampo extends Model
     public function personal()
     {
         return $this->belongsTo(Personal::class, 'personal_id', 'id');
+    }
+
+    /**
+     * Obtiene los datos del personal.
+     */
+    public function candidato()
+    {
+        return $this->belongsTo(Candidato::class, 'candidato_id', 'id');
     }
 }

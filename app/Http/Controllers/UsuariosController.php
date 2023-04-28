@@ -7,6 +7,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rules\Password;
 
@@ -66,6 +67,7 @@ class UsuariosController extends Controller
         }
         if ($request->tipo == 'Empresa') {
             $request->validate([
+                'logo' => ['required'],
                 'empresa' => ['required'],
                 'actividad' => ['required'],
                 'telefono_empresa' => ['required'],
@@ -81,6 +83,7 @@ class UsuariosController extends Controller
                 'referencia' => ['required'],
             ],
             [
+                'logo.required' => 'El campo Logo de Empresa es obligatorio',
                 'empresa.required' => 'El campo Nombre de Empresa es obligatorio',
                 'actividad.required' => 'El campo Actividad es obligatorio',
                 'telefono_empresa.required' => 'El campo Teléfono de Empresa es obligatorio',
@@ -121,7 +124,17 @@ class UsuariosController extends Controller
             $dato = Provincia::where('id', $request->provincia)->first();
             $nameProvincia = $dato->nombre;
         }
-
+        $urlLogo = null;
+        if ($request->hasFile('logo')) {
+            $uploadPath = public_path('/storage/LogosEmpresa/');
+            $file = $request->file('logo');
+            $extension = $file->getClientOriginalExtension();
+            $uuid = Str::uuid(4);
+            $fileName = $uuid . '.' . $extension;
+            $file->move($uploadPath, $fileName);
+            $url = '/storage/LogosEmpresa/'.$fileName;
+            $urlLogo = $url;
+        }
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -135,6 +148,7 @@ class UsuariosController extends Controller
             'cargo' => $request->cargo,
             'correo_personal' => $request->correo_personal,
             'empresa' => $request->empresa,
+            'logo' => $urlLogo,
             'actividad' => $request->actividad,
             'telefono_empresa' => $request->telefono_empresa,
             'correo_empresa' => $request->correo_empresa,
@@ -233,10 +247,23 @@ class UsuariosController extends Controller
 
             $dato = User::where('id', $id)->first();
 
+            if($request->provincia == 'Seleccione'){
+                $nameProvincia = null;
+            }
+
+            if($request->provincia != 'Seleccione'){
+                $dato = Provincia::where('id', $request->provincia)->first();
+                $nameProvincia = $dato->nombre;
+            }
+
+            $urlLogo = $dato->logo;
+
             $registro = User::where('id', $id)->first();
             $registro->name = $request->name;
             $registro->email = $request->email;
-            $registro->password = Hash::make($request->password);
+            if ($request->password != null) {
+                $registro->password = Hash::make($request->password);
+            }
             $registro->cedula = $request->cedula;
             $registro->nombre = $request->nombre;
             $registro->apellido = $request->apellido;
@@ -245,6 +272,17 @@ class UsuariosController extends Controller
             $registro->cargo = $request->cargo;
             $registro->correo_personal = $request->correo_personal;
             $registro->empresa = $request->empresa;
+            if ($request->hasFile('logo')) {
+                $uploadPath = public_path('/storage/LogosEmpresa/');
+                $file = $request->file('logo');
+                $extension = $file->getClientOriginalExtension();
+                $uuid = Str::uuid(4);
+                $fileName = $uuid . '.' . $extension;
+                $file->move($uploadPath, $fileName);
+                $url = '/storage/LogosEmpresa/'.$fileName;
+                $urlLogo = $url;
+                $registro->logo = $urlLogo;
+            }
             $registro->actividad = $request->actividad;
             $registro->telefono_empresa = $request->telefono_empresa;
             $registro->correo_empresa = $request->correo_empresa;
@@ -259,9 +297,12 @@ class UsuariosController extends Controller
             $registro->referencia = $request->referencia;
             $registro->save();
 
-            $registro->removeRole($dato->roles[0]->name);
+            if ($registro->roles[0]->name != $request->rol){
+                $registro->removeRole($dato->roles[0]->name);
+                $registro->assignRole($request->rol);
+            }
 
-            $registro->assignRole($request->rol);
+
 
             return redirect('configuraciones/usuarios')->with('success', 'Se ha Actualizado con éxito');
 

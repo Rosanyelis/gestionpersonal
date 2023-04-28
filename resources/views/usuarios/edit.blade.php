@@ -31,7 +31,7 @@
                     <div class="card card-bordered">
                         <div class="card-inner">
                             <form action="{{ url('configuraciones/usuarios/' . $data->id . '/actualizar-usuario') }}"
-                                class="form-validate" method="POST">
+                                class="form-validate" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 @if ($data->tipo == 'Empleado')
@@ -150,6 +150,24 @@
                                 <div id="empresa" class="row g-gs">
                                     <div class="col-md-12 badge badge-dark p-1">
                                         <h6 class="title text-white text-uppercase">Datos de Empresa</h6>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase"
+                                                for="fw-vr-first-name">Logo Empresa</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-file">
+                                                    <input name="logo" type="file" class="custom-file-input" id="customFile">
+                                                    <label class="custom-file-label" for="customFile">Subir Logo</label>
+                                                    @if ($errors->has('logo'))
+                                                    <span class="invalid text-danger">
+                                                        {{ $errors->first('logo') }}
+                                                    </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{{ asset(''.$data->logo.'') }}" class="card-img-top" alt="{{ $data->empresa }}">
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">

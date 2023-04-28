@@ -40,37 +40,37 @@
                         <div class="card-inner">
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#tabItem5">
+                                    <a class="nav-link text-uppercase active" data-toggle="tab" href="#tabItem5">
                                         <span>Carreras Universitarias</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabItem6">
+                                    <a class="nav-link text-uppercase" data-toggle="tab" href="#tabItem6">
                                         <span>Maestrías</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabItem7">
+                                    <a class="nav-link text-uppercase" data-toggle="tab" href="#tabItem7">
                                         <span>PHD</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabItem8">
+                                    <a class="nav-link text-uppercase" data-toggle="tab" href="#tabItem8">
                                         <span>Diplomados</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabItem9">
+                                    <a class="nav-link text-uppercase" data-toggle="tab" href="#tabItem9">
                                         <span>Cursos Técnicos</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabItem10">
+                                    <a class="nav-link text-uppercase" data-toggle="tab" href="#tabItem10">
                                         <span>Talleres</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabItem11">
+                                    <a class="nav-link text-uppercase" data-toggle="tab" href="#tabItem11">
                                         <span>De Participación</span>
                                     </a>
                                 </li>

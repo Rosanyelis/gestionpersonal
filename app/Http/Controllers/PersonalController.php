@@ -12,6 +12,7 @@ use App\Models\DatosLaboral;
 use App\Models\Diplomado;
 use App\Models\Enfermedades;
 use App\Models\HistorialLaboral;
+use App\Models\IntegridadLaboral;
 use App\Models\InvestigacionDepuracionLeyes;
 use App\Models\LevantamientoCampo;
 use App\Models\Maestria;
@@ -331,68 +332,68 @@ class PersonalController extends Controller
         $count = Personal::where('id', $id)->count();
         if ($count>0) {
 
-            $reg = new CertificadoIntegridadLaboral();
+            $request->validate([
+                'certificado_procuraduria' => ['required'],
+                'certificado_institucion' => ['required'],
+                'actividad_antisocial' => ['required'],
+                'reporte_actividad_noprocesada' => ['required'],
+                'prueba_poligrafica' => ['required'],
+                'prueba_psicometrica' => ['required'],
+                'enfermedades_contagiosas' => ['required'],
+                'consumo_alcohol' => ['required'],
+                'sustancia_prohibida' => ['required'],
+                'visita_domiciliaria' => ['required'],
+                'levantamiento_coordinado' => ['required'],
+                'investigacion_entorno' => ['required'],
+                'levantamiento_dactilar' => ['required'],
+                'levantamiento_fotografia' => ['required'],
+                'integridad_familiar' => ['required'],
+                'resultado' => ['required'],
+            ],
+            [
+                'certificado_procuraduria.required' => 'La respuesta de Certificado de Procuraduría es obligatoria',
+                'certificado_institucion.required' => 'La respuesta de Certificado de Institución es obligatoria',
+                'actividad_antisocial.required' => 'La respuesta de Actividad Antisocial es obligatoria',
+                'reporte_actividad_noprocesada.required' => 'La respuesta de Reporte de Actividad No Procesada es obligatoria',
+                'prueba_poligrafica.required' => 'La respuesta de Prueba Poligráfica es obligatoria',
+                'prueba_psicometrica.required' => 'La respuesta de Prueba Psicométrica es obligatoria',
+                'enfermedades_contagiosas.required' => 'La respuesta de Enfermedades Contagiosas es obligatoria',
+                'consumo_alcohol.required' => 'La respuesta de Consumo de Alcohol es obligatoria',
+                'sustancia_prohibida.required' => 'La respuesta de Sustancia Prohibida es obligatoria',
+                'visita_domiciliaria.required' => 'La respuesta de Visita Domiciliaria es obligatoria',
+                'levantamiento_coordinado.required' => 'La respuesta de Levantamiento Coordinado es obligatoria',
+                'investigacion_entorno.required' => 'La respuesta de Investigación de Entorno es obligatoria',
+                'levantamiento_dactilar.required' => 'La respuesta de Levantamiento Dactilar es obligatoria',
+                'levantamiento_fotografia.required' => 'La respuesta de Levantamiento Fotográfico es obligatoria',
+                'integridad_familiar.required' => 'La respuesta de Integridad Familiar es obligatoria',
+                'resultado.required' => 'La respuesta de Resultado es obligatoria',
+            ]);
+
+            $reg = new IntegridadLaboral();
             $reg->personal_id = $id;
             $reg->certificado_procuraduria = $request->certificado_procuraduria;
-            $reg->resultadop = $request->resultadop;
-            $reg->detallep = $request->detallep;
             $reg->certificado_institucion = $request->certificado_institucion;
-            $reg->resultadoi = $request->resultadoi;
-            $reg->detallei = $request->detallei;
+            $reg->actividad_antisocial = $request->actividad_antisocial;
+            $reg->reporte_actividad_noprocesada = $request->reporte_actividad_noprocesada;
+            $reg->prueba_poligrafica = $request->prueba_poligrafica;
+            $reg->enfermedades_contagiosas = $request->enfermedades_contagiosas;
+            $reg->consumo_alcohol = $request->consumo_alcohol;
+            $reg->sustancia_prohibida = $request->sustancia_prohibida;
+            $reg->visita_domiciliaria = $request->visita_domiciliaria;
+            $reg->levantamiento_coordinado = $request->levantamiento_coordinado;
+            $reg->investigacion_entorno = $request->investigacion_entorno;
+            $reg->levantamiento_dactilar = $request->levantamiento_dactilar;
+            $reg->levantamiento_fotografia = $request->levantamiento_fotografia;
+            $reg->integridad_familiar = $request->integridad_familiar;
+            $reg->resultado = $request->resultado;
+            $reg->detalle = $request->detalle;
             $reg->save();
 
-            $dat = new InvestigacionDepuracionLeyes();
-            $dat->personal_id = $id;
-            $dat->actividad_antisocial = $request->actividad_antisocial;
-            $dat->resultadop = $request->resultadop1;
-            $dat->detallep = $request->detallep1;
-            $dat->reporte_actividad_noprocesada = $request->reporte_actividad_noprocesada;
-            $dat->resultadoi = $request->resultadoi2;
-            $dat->detallei = $request->detallei2;
-            $dat->save();
 
-            $pru = new AnaliticaPsicometria();
-            $pru->personal_id = $id;
-            $pru->prueba_psicometrica = $request->prueba_psicometrica;
-            $pru->resultadop = $request->resultadop3;
-            $pru->detallep = $request->detallep3;
-            $pru->enfermedades_contagiosas = $request->enfermedades_contagiosas;
-            $pru->resultadoi = $request->resultadoi4;
-            $pru->detallei = $request->detallei4;
-            $pru->consumo_alcohol = $request->consumo_alcohol;
-            $pru->resultadoa = $request->resultadoi5;
-            $pru->detallea = $request->detallei5;
-            $pru->sustancia_prohibida = $request->sustancia_prohibida;
-            $pru->resultados = $request->resultadoi6;
-            $pru->detalles = $request->detallei6;
-            $pru->save();
-
-            $lev = new LevantamientoCampo();
-            $lev->personal_id = $id;
-            $lev->visita_domiciliaria = $request->visita_domiciliaria;
-            $lev->resultadov = $request->resultadoi7;
-            $lev->detallev = $request->detallei7;
-            $lev->levantamiento_coordinado = $request->levantamiento_coordinado;
-            $lev->resultadol = $request->resultadoi8;
-            $lev->detallel = $request->detallei8;
-            $lev->investigacion_entorno = $request->investigacion_entorno;
-            $lev->resultadoi = $request->resultadoi9;
-            $lev->detallei = $request->detallei9;
-            $lev->levantamiento_dactilar = $request->levantamiento_dactilar;
-            $lev->resultadod = $request->resultadoi10;
-            $lev->detalled = $request->detallei10;
-            $lev->levantamiento_fotografia = $request->levantamiento_fotografia;
-            $lev->resultadof = $request->resultadoi11;
-            $lev->detallef = $request->detallei11;
-            $lev->integridad_familiar = $request->integridad_familiar;
-            $lev->resultadofa = $request->resultadoi12;
-            $lev->detallefa = $request->detallei12;
-            $lev->save();
-
-            return redirect('/personal/'.$id.'/investigacion-laboral')->with('success', 'Registro de Información Confidencial Guardado Exitósamente');
+            return redirect('/personal')->with('success', 'Registro de Información Confidencial Guardado Exitósamente');
 
         } else {
-            return redirect('/personal/'.$id.'/investigacion-laboral')->with('danger', 'Problemas para Mostrar el Registro.');
+            return redirect('/personal')->with('danger', 'Problemas para Mostrar el Registro.');
         }
     }
     /**

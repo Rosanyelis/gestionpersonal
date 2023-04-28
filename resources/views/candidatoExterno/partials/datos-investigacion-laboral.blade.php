@@ -1,7 +1,7 @@
 <div class="nk-block">
     <div class="nk-block-head nk-block-head-sm nk-block-between badge badge-dark p-1">
         <h5 class="title text-white text-uppercase">Resultados de Investigación  de Integridad Laboral</h6>
-            <a href="{{ url('/personal/' . $data->id . '/integridad-laboral/nueva-prueba') }}"
+            <a href="{{ url('/candidatos-externos/' . $data->id . '/integridad-laboral/nueva-evaluacion') }}"
                 class="btn btn-sm btn-primary">
                 <em class="icon ni ni-plus-sm"></em>
                 <span>Nuevo </span>
@@ -31,11 +31,11 @@
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <ul class="link-list-opt no-bdr">
                                             <li><a
-                                                    href="{{ url('/personal/' . $data->id . '/integridad-laboral/' . $item->id . '/ver-prueba') }}"><em
+                                                    href="{{ url('/candidatos-externos/' . $data->id . '/integridad-laboral/' . $item->id . '/ver-evaluacion') }}"><em
                                                         class="icon ni ni-eye"></em><span>Ver</span></a>
                                             </li>
                                             <li><a
-                                                    href="{{ url('/personal/' . $data->id . '/integridad-laboral/' . $item->id . '/editar-prueba') }}"><em
+                                                    href="{{ url('/candidatos-externos/' . $data->id . '/integridad-laboral/' . $item->id . '/editar-evaluacion') }}"><em
                                                         class="icon ni ni-edit"></em><span>Editar</span></a>
                                             </li>
                                         </ul>
