@@ -6,7 +6,7 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Personal - Ver Perfil de Personal  Externo</h3>
+                            <h3 class="nk-block-title page-title">Personal Externo - Ver Perfil de Personal  Externo</h3>
                         </div><!-- .nk-block-head-content -->
                         <div class="nk-block-head-content">
                             <div class="toggle-wrap nk-block-tools-toggle">
@@ -50,8 +50,10 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tabItem2">
+                                        <div class="card-inner">
                                         {{-- Bloque de Datos de Experiencia Laboral --}}
                                             @include('candidatoExterno.partials.datos-investigacion-laboral')
+                                        </div>
                                     </div>
                                 </div>
 

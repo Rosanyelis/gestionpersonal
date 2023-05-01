@@ -75,6 +75,7 @@ class IntegridadLaboralExternoController extends Controller
             $reg->actividad_antisocial = $request->actividad_antisocial;
             $reg->reporte_actividad_noprocesada = $request->reporte_actividad_noprocesada;
             $reg->prueba_poligrafica = $request->prueba_poligrafica;
+            $reg->prueba_psicometrica = $request->prueba_psicometrica;
             $reg->enfermedades_contagiosas = $request->enfermedades_contagiosas;
             $reg->consumo_alcohol = $request->consumo_alcohol;
             $reg->sustancia_prohibida = $request->sustancia_prohibida;
@@ -137,6 +138,7 @@ class IntegridadLaboralExternoController extends Controller
             $reg->actividad_antisocial = $request->actividad_antisocial;
             $reg->reporte_actividad_noprocesada = $request->reporte_actividad_noprocesada;
             $reg->prueba_poligrafica = $request->prueba_poligrafica;
+            $reg->prueba_psicometrica = $request->prueba_psicometrica;
             $reg->enfermedades_contagiosas = $request->enfermedades_contagiosas;
             $reg->consumo_alcohol = $request->consumo_alcohol;
             $reg->sustancia_prohibida = $request->sustancia_prohibida;

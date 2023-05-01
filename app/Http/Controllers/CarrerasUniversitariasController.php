@@ -40,9 +40,11 @@ class CarrerasUniversitariasController extends Controller
                 $dataM->save();
             }
 
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('success', 'Registro de Guardado Exitósamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')
+                    ->with('success', 'Registro de Carrera Guardado Exitósamente');
         }else{
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('error', 'No hay datos que guardar.');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')
+                    ->with('error', 'No hay datos que guardar.');
         }
     }
 
@@ -76,10 +78,12 @@ class CarrerasUniversitariasController extends Controller
             $carrera->ano = $request->ano;
             $carrera->save();
 
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('success', 'Registro de Actualizado Exitósamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')
+                        ->with('success', 'Registro de Carrera Actualizado Exitósamente');
 
         } else {
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('danger', 'Problemas para Mostrar el Registro.');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')
+                        ->with('error', 'Problemas para Mostrar el Registro.');
         }
     }
 
@@ -94,9 +98,11 @@ class CarrerasUniversitariasController extends Controller
         $count = CarrerasUniversitarias::where('id', $carrera_id)->count();
         if ($count>0) {
             $data = CarrerasUniversitarias::where('personal_id', $id)->where('id', $carrera_id)->delete();
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('success', 'Registro Eliminado Exitosamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')
+                        ->with('success', 'Registro de Carrera Eliminado Exitosamente');
         } else {
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('error', 'Problemas para Mostrar el Registro.');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')
+                    ->with('error', 'Problemas para Mostrar el Registro.');
         }
     }
 }

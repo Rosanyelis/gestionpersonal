@@ -20,7 +20,13 @@
             color: #212529;
             text-align: left;
         }
-        h1, h2, h3, h4, h5, h6 {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             margin-top: 0;
             margin-bottom: 0.5rem;
         }
@@ -72,19 +78,24 @@
         .table-borderless tbody+tbody {
             border: 0;
         }
-        .indigo{
-            background-color: #6f42c1;;
+
+        .indigo {
+            background-color: #6f42c1;
+            ;
             color: #ffffff;
         }
-        .gray{
+
+        .gray {
             background-color: #6c757d;
             color: #ffffff;
         }
-        .gray-dark{
+
+        .gray-dark {
             background-color: #343a40;
             color: #ffffff;
         }
-        .page-break{
+
+        .page-break {
             page-break-after: always;
         }
     </style>
@@ -108,7 +119,7 @@
             <tr class="indigo">
                 <th colspan="3">Datos Personales</th>
             </tr>
-            <tr >
+            <tr>
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>Apodo</th>
@@ -144,7 +155,7 @@
             <tr class="indigo">
                 <th colspan="3">Datos de Residencia</th>
             </tr>
-            <tr >
+            <tr>
                 <th>Provincia</th>
                 <th>Municipio</th>
                 <th>Sector</th>
@@ -154,7 +165,7 @@
                 <td>{{ $data->residencia->municipio }}</td>
                 <td>{{ $data->residencia->sector }}</td>
             </tr>
-            <tr >
+            <tr>
                 <th>Tipo de Residencia</th>
                 <th>Calle</th>
                 <th>Número</th>
@@ -164,7 +175,7 @@
                 <td>{{ $data->residencia->calle }}</td>
                 <td>{{ $data->residencia->numero }}</td>
             </tr>
-            <tr >
+            <tr>
                 <th colspan="3">Referencia de Llegada</th>
             </tr>
             <tr>
@@ -176,7 +187,7 @@
             <tr class="indigo">
                 <th colspan="5">Datos de Referencias Personales / Familiares</th>
             </tr>
-            <tr >
+            <tr>
                 <th>Nombres y Apellidos</th>
                 <th>Cédula</th>
                 <th>Lugar Nac.</th>
@@ -184,13 +195,13 @@
                 <th>Vínculo</th>
             </tr>
             @foreach ($data->referenciaspersonales as $item)
-            <tr>
-                <td>{{ $item->nombre }}</td>
-                <td>{{ $item->cedula }}</td>
-                <td>{{ $item->lugar_nacimiento }}</td>
-                <td>{{ $item->telefono }}</td>
-                <td>{{ $item->vinculo }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $item->nombre }}</td>
+                    <td>{{ $item->cedula }}</td>
+                    <td>{{ $item->lugar_nacimiento }}</td>
+                    <td>{{ $item->telefono }}</td>
+                    <td>{{ $item->vinculo }}</td>
+                </tr>
             @endforeach
         </table>
         {{-- Final seccion de datos personales --}}
@@ -230,15 +241,15 @@
             <tr class="gray">
                 <th colspan="2">Contactos de Emergencia</th>
             </tr>
-            <tr >
+            <tr>
                 <th>Nombre</th>
                 <th>Teléfono</th>
             </tr>
             @foreach ($data->contactos_emergencia as $item)
-            <tr>
-                <td>{{ $item->nombre }}</td>
-                <td>{{ $item->telefono }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $item->nombre }}</td>
+                    <td>{{ $item->telefono }}</td>
+                </tr>
             @endforeach
         </table>
         {{-- Final seccion de de seguridad personal en la vía --}}
@@ -253,107 +264,107 @@
             <tr class="gray">
                 <th colspan="3">Carreras Universitarias</th>
             </tr>
-            <tr >
+            <tr>
                 <th>Institución</th>
                 <th>Titulo</th>
                 <th>Año</th>
             </tr>
             @foreach ($data->carreras_universitarias as $item)
-            <tr>
-                <td>{{ $item->institucion }}</td>
-                <td>{{ $item->titulo }}</td>
-                <td>{{ $item->ano }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $item->institucion }}</td>
+                    <td>{{ $item->titulo }}</td>
+                    <td>{{ $item->ano }}</td>
+                </tr>
             @endforeach
             <tr class="gray">
                 <th colspan="3">Maestría</th>
             </tr>
-            <tr >
+            <tr>
                 <th>Institución</th>
                 <th>Titulo</th>
                 <th>Año</th>
             </tr>
             @foreach ($data->maestrias as $item)
-            <tr>
-                <td>{{ $item->institucion }}</td>
-                <td>{{ $item->titulo }}</td>
-                <td>{{ $item->ano }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $item->institucion }}</td>
+                    <td>{{ $item->titulo }}</td>
+                    <td>{{ $item->ano }}</td>
+                </tr>
             @endforeach
             <tr class="gray">
                 <th colspan="3">PHDs</th>
             </tr>
-            <tr >
+            <tr>
                 <th>Institución</th>
                 <th>Titulo</th>
                 <th>Año</th>
             </tr>
             @foreach ($data->phd as $item)
-            <tr>
-                <td>{{ $item->institucion }}</td>
-                <td>{{ $item->titulo }}</td>
-                <td>{{ $item->ano }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $item->institucion }}</td>
+                    <td>{{ $item->titulo }}</td>
+                    <td>{{ $item->ano }}</td>
+                </tr>
             @endforeach
             <tr class="gray">
                 <th colspan="3">Diplomados</th>
             </tr>
-            <tr >
+            <tr>
                 <th>Institución</th>
                 <th>Titulo</th>
                 <th>Año</th>
             </tr>
             @foreach ($data->diplomados as $item)
-            <tr>
-                <td>{{ $item->institucion }}</td>
-                <td>{{ $item->titulo }}</td>
-                <td>{{ $item->ano }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $item->institucion }}</td>
+                    <td>{{ $item->titulo }}</td>
+                    <td>{{ $item->ano }}</td>
+                </tr>
             @endforeach
             <tr class="gray">
                 <th colspan="3">Cursos Técnicos</th>
             </tr>
-            <tr >
+            <tr>
                 <th>Institución</th>
                 <th>Titulo</th>
                 <th>Año</th>
             </tr>
             @foreach ($data->cursos_tecnicos as $item)
-            <tr>
-                <td>{{ $item->institucion }}</td>
-                <td>{{ $item->titulo }}</td>
-                <td>{{ $item->ano }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $item->institucion }}</td>
+                    <td>{{ $item->titulo }}</td>
+                    <td>{{ $item->ano }}</td>
+                </tr>
             @endforeach
             <tr class="gray">
                 <th colspan="3">Talleres</th>
             </tr>
-            <tr >
+            <tr>
                 <th>Institución</th>
                 <th>Titulo</th>
                 <th>Año</th>
             </tr>
             @foreach ($data->talleres as $item)
-            <tr>
-                <td>{{ $item->institucion }}</td>
-                <td>{{ $item->titulo }}</td>
-                <td>{{ $item->ano }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $item->institucion }}</td>
+                    <td>{{ $item->titulo }}</td>
+                    <td>{{ $item->ano }}</td>
+                </tr>
             @endforeach
             <tr class="gray">
                 <th colspan="3">De Participación</th>
             </tr>
-            <tr >
+            <tr>
                 <th>Institución</th>
                 <th>Titulo</th>
                 <th>Año</th>
             </tr>
             @foreach ($data->participacion as $item)
-            <tr>
-                <td>{{ $item->institucion }}</td>
-                <td>{{ $item->titulo }}</td>
-                <td>{{ $item->ano }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $item->institucion }}</td>
+                    <td>{{ $item->titulo }}</td>
+                    <td>{{ $item->ano }}</td>
+                </tr>
             @endforeach
         </table>
         {{-- Final seccion de ddatos Capacidades Educativas --}}
@@ -403,6 +414,38 @@
                 <td colspan="4">
                     @if (isset($data->datos_laborales->nombre_labor))
                         {{ $data->datos_laborales->nombre_labor }}
+                    @endif
+                </td>
+            </tr>
+            <tr>
+                <th>Técnica</th>
+                <th colspan="2">Profesional</th>
+                <th>Tiempo de Experiencia</th>
+            </tr>
+            <tr>
+                <td>
+                    @if (isset($data->datos_laborales->tecnica))
+                        {{ $data->datos_laborales->tecnica }}
+                    @endif
+                </td>
+                <td>
+                    @if (isset($data->datos_laborales->profesional))
+                        {{ $data->datos_laborales->profesional }}
+                    @endif
+                </td>
+                <td>
+                    @if (isset($data->datos_laborales->tiempo_experiencia))
+                        {{ $data->datos_laborales->tiempo_experiencia }}
+                    @endif
+                </td>
+            </tr>
+            <tr>
+                <th colspan="4">Detalles</th>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    @if (isset($data->datos_laborales->detalle))
+                        {{ $data->datos_laborales->detalle }}
                     @endif
                 </td>
             </tr>
@@ -468,41 +511,29 @@
                     @endif
                 </td>
             </tr>
+        </table>
+        <table class="table table-sm table-bordered">
             <tr class="gray">
-                <th colspan="4">Experiencia Laboral</th>
+                <th colspan="6">Experiencia Laboral</th>
             </tr>
             <tr>
-                <th colspan="2">Técnica</th>
-                <th>Profesional</th>
-                <th>Tiempo de Experiencia</th>
+                <th>Empresa</th>
+                <th>Labor</th>
+                <th>Fecha Ent.</th>
+                <th>Fecha Sal.</th>
+                <th>Cant. Año</th>
+                <th>Cant. Meses</th>
             </tr>
+            @foreach ($data->historial_laboral as $item)
             <tr>
-                <td colspan="2">
-                    @if (isset($data->datos_laborales->tecnica))
-                        {{ $data->datos_laborales->tecnica }}
-                    @endif
-                </td>
-                <td>
-                    @if (isset($data->datos_laborales->profesional))
-                        {{ $data->datos_laborales->profesional }}
-                    @endif
-                </td>
-                <td>
-                    @if (isset($data->datos_laborales->tiempo_experiencia))
-                        {{ $data->datos_laborales->tiempo_experiencia }}
-                    @endif
-                </td>
+                <td>{{ $item->empresa }}</td>
+                <td>{{ $item->labor }}</td>
+                <td>{{ $item->ano_entrada }}</td>
+                <td>{{ $item->ano_salida }}</td>
+                <td>{{ $item->cantidad_ano }}</td>
+                <td>{{ $item->cantidad_meses }}</td>
             </tr>
-            <tr>
-                <th colspan="4">Detalles</th>
-            </tr>
-            <tr>
-                <td colspan="4">
-                    @if (isset($data->datos_laborales->detalle))
-                        {{ $data->datos_laborales->detalle }}
-                    @endif
-                </td>
-            </tr>
+            @endforeach
         </table>
         {{-- Final seccion de datos de sus actividades laborales   --}}
 
@@ -510,304 +541,339 @@
 
         {{-- Inicio seccion de datos Confidenciales --}}
         <table class="table table-sm table-bordered">
-            <tr class="indigo">
-                <th colspan="3">Datos Confidenciales</th>
-            </tr>
-            <tr class="gray">
-                <th colspan="3">Certificado de Integridad Laboral </th>
-            </tr>
-            <tr>
-                <td colspan="2">Certificado de la Procuraduría</td>
-                <td>
-                    @if (isset($data->integridad_laboral->certificado_procuraduria))
-                        {{ $data->integridad_laboral->certificado_procuraduria }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Resultado</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->integridad_laboral->resultadop))
-                        {{ $data->integridad_laboral->resultadop }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Detalles</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->integridad_laboral->detallep))
-                        {{ $data->integridad_laboral->detallep }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">Certificado Institución del Orden</td>
-                <td>
-                    @if (isset($data->integridad_laboral->certificado_institucion))
-                        {{ $data->integridad_laboral->certificado_institucion }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Resultado</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->integridad_laboral->resultadoi))
-                        {{ $data->integridad_laboral->resultadoi }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Detalles</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->integridad_laboral->detallei))
-                        {{ $data->integridad_laboral->detallei }}
-                    @endif
-                </td>
-            </tr>
-            <tr class="gray">
-                <th colspan="3">Investigación y Depuración de Actividades Contrarias a las Leyes </th>
-            </tr>
-            <tr>
-                <td colspan="2">Investigación profunda de vínculos con actividad antisocial</td>
-                <td>
-                    @if (isset($data->depuracion_leyes->actividad_antisocial))
-                        {{ $data->depuracion_leyes->actividad_antisocial }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Resultado</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->depuracion_leyes->resultadop))
-                        {{ $data->depuracion_leyes->resultadop }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Detalles</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->depuracion_leyes->detallep))
-                        {{ $data->depuracion_leyes->detallep }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">Reporte de actividades no procesada </td>
-                <td>
-                    @if (isset($data->depuracion_leyes->reporte_actividad_noprocesada))
-                        {{ $data->depuracion_leyes->reporte_actividad_noprocesada }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Resultado</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->depuracion_leyes->resultadoi))
-                        {{ $data->depuracion_leyes->resultadoi }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Detalles</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->depuracion_leyes->detallei))
-                        {{ $data->depuracion_leyes->detallei }}
-                    @endif
-                </td>
-            </tr>
-            <tr class="gray">
-                <th colspan="3">Analítica y Psicometría  </th>
-            </tr>
-            <tr>
-                <td colspan="2">Prueba psicométrica</td>
-                <td>
-                    @if (isset($data->analisis_psicometria->prueba_psicometrica))
-                        {{ $data->analisis_psicometria->prueba_psicometrica }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Resultado</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->analisis_psicometria->resultadop))
-                        {{ $data->analisis_psicometria->resultadop }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Detalles</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->analisis_psicometria->detallep))
-                        {{ $data->analisis_psicometria->detallep }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">Prueba Enfermedades contagiosas </td>
-                <td>
-                    @if (isset($data->analisis_psicometria->enfermedades_contagiosas))
-                        {{ $data->analisis_psicometria->enfermedades_contagiosas }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Resultado</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->analisis_psicometria->resultadoi))
-                        {{ $data->analisis_psicometria->resultadoi }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Detalles</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->analisis_psicometria->detallei))
-                        {{ $data->analisis_psicometria->detallei }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">Prueba abuso consumo alcohol </td>
-                <td>
-                    @if (isset($data->analisis_psicometria->consumo_alcohol))
-                        {{ $data->analisis_psicometria->consumo_alcohol }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Resultado</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->analisis_psicometria->resultadoa))
-                        {{ $data->analisis_psicometria->resultadoa }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Detalles</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->analisis_psicometria->detallea))
-                        {{ $data->analisis_psicometria->detallea }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">Consumo de sustancia prohibida  </td>
-                <td>
-                    @if (isset($data->analisis_psicometria->sustancia_prohibida))
-                        {{ $data->analisis_psicometria->sustancia_prohibida }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Resultado</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->analisis_psicometria->resultados))
-                        {{ $data->analisis_psicometria->resultados }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Detalles</th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->analisis_psicometria->detalles))
-                        {{ $data->analisis_psicometria->detalles }}
-                    @endif
-                </td>
-            </tr>
-            <tr class="gray">
-                <th colspan="3">Levantamiento de Campo </th>
-            </tr>
-            <tr>
-                <td colspan="2">Visita Domiciliaria</td>
-                <td>
-                    @if (isset($data->levantamiento_campo->visita_domiciliaria))
-                        {{ $data->levantamiento_campo->visita_domiciliaria }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">Levantamiento Coordenado   </td>
-                <td>
-                    @if (isset($data->levantamiento_campo->levantamiento_coordinado))
-                        {{ $data->levantamiento_campo->levantamiento_coordinado }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">Investigación de Entorno   </td>
-                <td>
-                    @if (isset($data->levantamiento_campo->investigacion_entorno))
-                        {{ $data->levantamiento_campo->investigacion_entorno }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">Levantamiento de Dactilares   </td>
-                <td>
-                    @if (isset($data->levantamiento_campo->levantamiento_dactilar))
-                        {{ $data->levantamiento_campo->levantamiento_dactilar }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">Levantamientos de Características Fotográfica </td>
-                <td>
-                    @if (isset($data->levantamiento_campo->levantamiento_fotografia))
-                        {{ $data->levantamiento_campo->levantamiento_fotografia }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">Levantamiento de Integridad Familiar </td>
-                <td>
-                    @if (isset($data->levantamiento_campo->integridad_familiar))
-                        {{ $data->levantamiento_campo->integridad_familiar }}
-                    @endif
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Detalle Levantamiento Campo </th>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    @if (isset($data->analisis_psicometria->detalles))
-                        {{ $data->analisis_psicometria->detalles }}
-                    @endif
-                </td>
-            </tr>
+            <thead>
+                <tr class="indigo">
+                    <th colspan="4">Pruebas de Integridad Laboral</th>
+                </tr>
+            </thead>
         </table>
+        @foreach ($data->integridad_laboral as $item)
+        <table class="table table-sm table-bordered">
+            <thead>
+                <tr class="text-uppercase">
+                    <th scope="col" colspan="2">Fecha y Hora de la Prueba: {!! \Carbon\Carbon::parse($item->created_at)->format('d-m-Y h:i:s A') !!}</th>
+                    <th scope="col" colspan="2">Respuesta</th>
+                </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Tipo de Prueba</th>
+                    <th>SI</th>
+                    <th>NO</th>
+                </tr>
+            </thead>
+            <tbody class="text-uppercase">
+                <tr>
+                    <th colspan="4" class="text-center">Certificado de integridad laboral y
+                        depuraciones</th>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Certificado de la Procuraduría <br></td>
+                    <td>
+                        @if ($item->certificado_procuraduria == 'Si')
+                                <label class="form-label text-uppercase">Si</label>
+                            @endif
+                    </td>
+                    <td>
+                        @if ($item->certificado_procuraduria == 'No')
+                                <label class="form-label text-uppercase">No</label>
+                            @endif
+
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Certificado Institución del Orden </td>
+                    <td>
+                        @if (isset($item->certificado_institucion))
+                            @if ($item->certificado_institucion == 'Si')
+                                <label class="form-label text-uppercase">Si</label>
+                            @endif
+                        @endif
+
+                    </td>
+                    <td>
+                        @if (isset($item->certificado_institucion))
+                            @if ($item->certificado_institucion == 'No')
+                                <label class="form-label text-uppercase">No</label>
+                            @endif
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="4" class="text-center">Investigación y depuración de
+                        actividades contrarias a las leyes</th>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Investigación profunda de vínculos con actividad antisocial</td>
+                    <td>
+                        @if (isset($item->actividad_antisocial))
+                            @if ($item->actividad_antisocial == 'Si')
+                                <label class="form-label text-uppercase">Si</label>
+                            @endif
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($item->actividad_antisocial))
+                            @if ($item->actividad_antisocial == 'No')
+                                <label class="form-label text-uppercase">No</label>
+                            @endif
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Reporte de actividades no procesada</td>
+                    <td>
+                        @if (isset($item->reporte_actividad_noprocesada))
+                            @if ($item->reporte_actividad_noprocesada == 'Si')
+                                <label class="form-label text-uppercase">Si</label>
+                            @endif
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($item->reporte_actividad_noprocesada))
+                            @if ($item->reporte_actividad_noprocesada == 'No')
+                                <label class="form-label text-uppercase">No</label>
+                            @endif
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="4" class="text-center">Analística y psicometría</th>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>Prueba Poligráfica</td>
+                    <td>
+                        @if (isset($item->prueba_poligrafica))
+                            @if ($item->prueba_poligrafica == 'Si')
+                                <label class="form-label text-uppercase">Si</label>
+                            @endif
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($item->prueba_poligrafica))
+                            @if ($item->prueba_poligrafica == 'No')
+                                <label class="form-label text-uppercase">No</label>
+                            @endif
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>Prueba Psicométrica</td>
+                    <td>
+                        @if (isset($item->prueba_psicometrica))
+                            @if ($item->prueba_psicometrica == 'Si')
+                                <label class="form-label text-uppercase">Si</label>
+                            @endif
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($item->prueba_psicometrica))
+                            @if ($item->prueba_psicometrica == 'No')
+                                <label class="form-label text-uppercase">No</label>
+                            @endif
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>Prueba Enfermedades contagiosas</td>
+                    <td>
+                        @if (isset($item->enfermedades_contagiosas))
+                            @if ($item->enfermedades_contagiosas == 'Si')
+                                <label class="form-label text-uppercase">Si</label>
+                            @endif
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($item->enfermedades_contagiosas))
+                            @if ($item->enfermedades_contagiosas == 'No')
+                                <label class="form-label text-uppercase">No</label>
+                            @endif
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">8</th>
+                    <td>Prueba abuso consumo alcohol</td>
+                    <td>
+                        @if (isset($item->consumo_alcohol))
+                            @if ($item->consumo_alcohol == 'Si')
+                                <label class="form-label text-uppercase">Si</label>
+                            @endif
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($item->consumo_alcohol))
+                            @if ($item->consumo_alcohol == 'No')
+                                <label class="form-label text-uppercase">No</label>
+                            @endif
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">9</th>
+                    <td>Consumo de sustancia prohibida</td>
+                    <td>
+                        @if (isset($item->sustancia_prohibida))
+                            @if ($item->sustancia_prohibida == 'Si')
+                                <label class="form-label text-uppercase">Si</label>
+                            @endif
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($item->sustancia_prohibida))
+                            @if ($item->sustancia_prohibida == 'No')
+                                <label class="form-label text-uppercase">No</label>
+                            @endif
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="4" class="text-center">Levantamiento de campo</th>
+                </tr>
+                <tr>
+                    <th scope="row">10</th>
+                    <td>Visita Domiciliaria</td>
+                    <td>
+                        @if (isset($item->visita_domiciliaria))
+                            @if ($item->visita_domiciliaria == 'Si')
+                                <label class="form-label text-uppercase">Si</label>
+                            @endif
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($item->visita_domiciliaria))
+                            @if ($item->visita_domiciliaria == 'No')
+                                <label class="form-label text-uppercase">No</label>
+                            @endif
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">11</th>
+                    <td>Levantamiento coordenado</td>
+                    <td>
+                        @if (isset($item->levantamiento_coordinado))
+                            @if ($item->levantamiento_coordinado == 'Si')
+                                <label class="form-label text-uppercase">Si</label>
+                            @endif
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($item->levantamiento_coordinado))
+                            @if ($item->levantamiento_coordinado == 'No')
+                                <label class="form-label text-uppercase">No</label>
+                            @endif
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">12</th>
+                    <td>Investigación de entorno</td>
+                    <td>
+                        @if (isset($item->investigacion_entorno))
+                            @if ($item->investigacion_entorno == 'Si')
+                                <label class="form-label text-uppercase">Si</label>
+                            @endif
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($item->investigacion_entorno))
+                            @if ($item->investigacion_entorno == 'No')
+                                <label class="form-label text-uppercase">No</label>
+                            @endif
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">13</th>
+                    <td>Levantamiento de Dactilares</td>
+                    <td>
+                        @if (isset($item->levantamiento_dactilar))
+                            @if ($item->levantamiento_dactilar == 'Si')
+                                <label class="form-label text-uppercase">Si</label>
+                            @endif
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($item->levantamiento_dactilar))
+                            @if ($item->levantamiento_dactilar == 'No')
+                                <label class="form-label text-uppercase">No</label>
+                            @endif
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">14</th>
+                    <td>Levantamientos de características fotográfica</td>
+                    <td>
+                        @if (isset($item->levantamiento_fotografia))
+                            @if ($item->levantamiento_fotografia == 'Si')
+                                <label class="form-label text-uppercase">Si</label>
+                            @endif
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($item->levantamiento_fotografia))
+                            @if ($item->levantamiento_fotografia == 'No')
+                                <label class="form-label text-uppercase">No</label>
+                            @endif
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">15</th>
+                    <td>Levantamiento de integridad familiar</td>
+                    <td>
+                        @if (isset($item->integridad_familiar))
+                            @if ($item->integridad_familiar == 'Si')
+                                <label class="form-label text-uppercase">Si</label>
+                            @endif
+                        @endif
+                    </td>
+                    <td>
+                        @if (isset($item->integridad_familiar))
+                            @if ($item->integridad_familiar == 'No')
+                                <label class="form-label text-uppercase">No</label>
+                            @endif
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="4" class="text-center">Resultado</th>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <p class="text-lowercase">
+                            @if (isset($item->resultado))
+                            {{ $item->resultado }}
+                            @endif
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="4" class="text-center">Detalles</th>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <p class="text-lowercase">
+                            @if (isset($item->detalle))
+                            {{ $item->detalle }}
+                            @endif
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        @if (!$loop->last)
+        <div class="page-break"></div>
+        @endif
+        @endforeach
         {{-- Final seccion de datos Confidenciales --}}
 
         <div class="page-break"></div>
@@ -817,36 +883,38 @@
             <tr class="indigo">
                 <th colspan="4">Reporte de Actividades No Procesadas</th>
             </tr>
+            @if (isset($data->actividad_noprocesada))
             @foreach ($data->actividad_noprocesada as $item)
-            <tr >
-                <th>Quien Reporta</th>
-                <th>Fecha / Hora</th>
-                <th>Provincia</th>
-                <th>Municipio</th>
-            </tr>
-            <tr>
-                <td></td>
-                <td>{{ $item->created_at }}</td>
-                <td>{{ $item->provincia }}</td>
-                <td>{{ $item->municipio }}</td>
-            </tr>
-            <tr>
-                <th>Sector</th>
-                <th>Tipo Reporte</th>
-                <th colspan="2">Empresa</th>
-            </tr>
-            <tr>
-                <td>{{ $item->sector }}</td>
-                <td>{{ $item->tipo_reporte }}</td>
-                <td colspan="2">{{ $item->empresa }}</td>
-            </tr>
-            <tr>
-                <th colspan="4">Detalles del Reporte</th>
-            </tr>
-            <tr>
-                <td colspan="4">{{ $item->detalles }}</td>
-            </tr>
+                <tr>
+                    <th>Quien Reporta</th>
+                    <th>Fecha / Hora</th>
+                    <th>Provincia</th>
+                    <th>Municipio</th>
+                </tr>
+                <tr>
+                    <td>{{ $item->user->name }}</td>
+                    <td>{!! \Carbon\Carbon::parse($data->created_at)->format('d-m-Y h:i:s A') !!}</td>
+                    <td>{{ $item->user->provincia }}</td>
+                    <td>{{ $item->user->municipio }}</td>
+                </tr>
+                <tr>
+                    <th>Sector</th>
+                    <th>Tipo Reporte</th>
+                    <th colspan="2">Empresa</th>
+                </tr>
+                <tr>
+                    <td>{{ $item->user->sector }}</td>
+                    <td>{{ $item->tipo_reporte }}</td>
+                    <td colspan="2">{{ $item->empresa }}</td>
+                </tr>
+                <tr>
+                    <th colspan="4">Detalles del Reporte</th>
+                </tr>
+                <tr>
+                    <td colspan="4">{{ $item->detalles }}</td>
+                </tr>
             @endforeach
+            @endif
         </table>
         {{-- Final seccion de datos Confidenciales --}}
     </main>

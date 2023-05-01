@@ -174,89 +174,23 @@
 
         <table class="table table-sm table-bordered">
             <tr class="indigo">
-                <th colspan="3">Datos de Vínculo Familiar y de Amistad</th>
+                <th colspan="5">Datos de Referencias Personales / Familiares</th>
             </tr>
-            <tr class="gray">
-                <th colspan="3">Datos del Padre</th>
-            </tr>
-            <tr >
+            <tr>
                 <th>Nombres y Apellidos</th>
-                <th>Lugar de Nacimiento</th>
+                <th>Cédula</th>
+                <th>Lugar Nac.</th>
                 <th>Teléfono</th>
+                <th>Vínculo</th>
             </tr>
-            <tr>
-                <td>{{ $data->datos_familiares->padre }}</td>
-                <td>{{ $data->datos_familiares->lugar_nacimiento_padre }}</td>
-                <td>{{ $data->datos_familiares->telefonop }}</td>
-            </tr>
-            <tr >
-                <th>Estatus</th>
-                <th colspan="2">Motivo</th>
-            </tr>
-            <tr>
-                <td>{{ $data->datos_familiares->estatusp }}</td>
-                <td colspan="2">{{ $data->datos_familiares->motivop }}</td>
-            </tr>
-            <tr class="gray">
-                <th colspan="3">Datos de la Madre</th>
-            </tr>
-            <tr >
-                <th>Nombres y Apellidos</th>
-                <th>Lugar de Nacimiento</th>
-                <th>Teléfono</th>
-            </tr>
-            <tr>
-                <td>{{ $data->datos_familiares->madre }}</td>
-                <td>{{ $data->datos_familiares->lugar_nacimiento_madre }}</td>
-                <td>{{ $data->datos_familiares->telefonom }}</td>
-            </tr>
-            <tr >
-                <th>Estatus</th>
-                <th colspan="2">Motivo</th>
-            </tr>
-            <tr>
-                <td>{{ $data->datos_familiares->estatusm }}</td>
-                <td colspan="2">{{ $data->datos_familiares->motivom }}</td>
-            </tr>
-            <tr class="gray">
-                <th colspan="3">Datos de Familiares</th>
-            </tr>
-            <tr >
-                <th>Nombres y Apellidos</th>
-                <th>Parentesco</th>
-                <th>Teléfono</th>
-            </tr>
-            @foreach ($data->vinculos_familiares as $item)
-            <tr>
-                <td>{{ $item->nombre }}</td>
-                <td>{{ $item->parentesco }}</td>
-                <td>{{ $item->telefono }}</td>
-            </tr>
-            @endforeach
-            <tr class="gray">
-                <th colspan="3">Datos de Referencias Personales</th>
-            </tr>
-
             @foreach ($data->referenciaspersonales as $item)
-            <tr class="gray-dark">
-                <th colspan="3">Referencia {{ $loop->iteration }}</th>
-            </tr>
-            <tr >
-                <th>Nombres y Apellidos</th>
-                <th>Teléfono</th>
-                <th>Tipo de Vínculo</th>
-            </tr>
-            <tr>
-                <td>{{ $item->nombre }}</td>
-                <td>{{ $item->telefono }}</td>
-                <td>{{ $item->tipo_vinculo }}</td>
-            </tr>
-            <tr>
-                <th>Tiempo de Vínculo</th>
-            </tr>
-            <tr>
-                <td>{{ $item->tiempo_vinculo }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $item->nombre }}</td>
+                    <td>{{ $item->cedula }}</td>
+                    <td>{{ $item->lugar_nacimiento }}</td>
+                    <td>{{ $item->telefono }}</td>
+                    <td>{{ $item->vinculo }}</td>
+                </tr>
             @endforeach
         </table>
         {{-- Final seccion de datos personales --}}
@@ -472,6 +406,38 @@
                     @endif
                 </td>
             </tr>
+            <tr>
+                <th>Técnica</th>
+                <th colspan="2">Profesional</th>
+                <th>Tiempo de Experiencia</th>
+            </tr>
+            <tr>
+                <td>
+                    @if (isset($data->datos_laborales->tecnica))
+                        {{ $data->datos_laborales->tecnica }}
+                    @endif
+                </td>
+                <td>
+                    @if (isset($data->datos_laborales->profesional))
+                        {{ $data->datos_laborales->profesional }}
+                    @endif
+                </td>
+                <td>
+                    @if (isset($data->datos_laborales->tiempo_experiencia))
+                        {{ $data->datos_laborales->tiempo_experiencia }}
+                    @endif
+                </td>
+            </tr>
+            <tr>
+                <th colspan="4">Detalles</th>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    @if (isset($data->datos_laborales->detalle))
+                        {{ $data->datos_laborales->detalle }}
+                    @endif
+                </td>
+            </tr>
             <tr class="gray">
                 <th colspan="4">Empresa Actual</th>
             </tr>
@@ -534,43 +500,32 @@
                     @endif
                 </td>
             </tr>
+        </table>
+        <table class="table table-sm table-bordered">
             <tr class="gray">
-                <th colspan="4">Experiencia Laboral</th>
+                <th colspan="6">Experiencia Laboral</th>
             </tr>
             <tr>
-                <th colspan="2">Técnica</th>
-                <th>Profesional</th>
-                <th>Tiempo de Experiencia</th>
+                <th>Empresa</th>
+                <th>Labor</th>
+                <th>Fecha Ent.</th>
+                <th>Fecha Sal.</th>
+                <th>Cant. Año</th>
+                <th>Cant. Meses</th>
             </tr>
+            @foreach ($data->historial_laboral as $item)
             <tr>
-                <td colspan="2">
-                    @if (isset($data->datos_laborales->tecnica))
-                        {{ $data->datos_laborales->tecnica }}
-                    @endif
-                </td>
-                <td>
-                    @if (isset($data->datos_laborales->profesional))
-                        {{ $data->datos_laborales->profesional }}
-                    @endif
-                </td>
-                <td>
-                    @if (isset($data->datos_laborales->tiempo_experiencia))
-                        {{ $data->datos_laborales->tiempo_experiencia }}
-                    @endif
-                </td>
+                <td>{{ $item->empresa }}</td>
+                <td>{{ $item->labor }}</td>
+                <td>{{ $item->ano_entrada }}</td>
+                <td>{{ $item->ano_salida }}</td>
+                <td>{{ $item->cantidad_ano }}</td>
+                <td>{{ $item->cantidad_meses }}</td>
             </tr>
-            <tr>
-                <th colspan="4">Detalles</th>
-            </tr>
-            <tr>
-                <td colspan="4">
-                    @if (isset($data->datos_laborales->detalle))
-                        {{ $data->datos_laborales->detalle }}
-                    @endif
-                </td>
-            </tr>
+            @endforeach
         </table>
         {{-- Final seccion de datos de sus actividades laborales   --}}
+
 
     </main>
 </body>

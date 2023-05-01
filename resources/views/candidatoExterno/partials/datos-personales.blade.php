@@ -43,17 +43,5 @@
                 <span class="profile-ud-value">{{ $data->sucursal }}</span>
             </div>
         </div>
-        <div class="profile-ud-item">
-            <div class="profile-ud wider">
-                <span class="profile-ud-label text-uppercase">Autorizado</span>
-                <span class="profile-ud-value">{{ $data->autorizado }}</span>
-            </div>
-        </div>
-        <div class="profile-ud-item">
-            <div class="profile-ud wider">
-                <span class="profile-ud-label text-uppercase">Detalle</span>
-                <span class="profile-ud-value">{{ $data->detalle }}</span>
-            </div>
-        </div>
     </div><!-- .profile-ud-list -->
 </div>

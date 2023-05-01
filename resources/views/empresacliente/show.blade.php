@@ -40,6 +40,14 @@
                                     <div class="profile-ud-list">
                                         <div class="profile-ud-item">
                                             <div class="profile-ud wider">
+                                                <img src="{{ asset('' . $data->logo . '') }}" class="card-img-top" style="width: 300px;"
+                                            alt="{{ $data->empresa }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="profile-ud-list">
+                                        <div class="profile-ud-item">
+                                            <div class="profile-ud wider">
                                                 <span class="profile-ud-label text-uppercase">Empresa</span>
                                                 <span class="profile-ud-value">{{ $data->empresa }}</span>
                                             </div>

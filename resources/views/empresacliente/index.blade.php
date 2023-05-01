@@ -14,7 +14,10 @@
                             <div class="toggle-expand-content" data-content="pageMenu">
                                 <ul class="nk-block-tools g-3">
                                     <li class="nk-block-tools-opt">
-
+                                        <a href="{{ url('empresas/nueva-empresa') }}" class="btn btn-primary">
+                                            <em class="icon ni ni-plus-medi-fill"></em>
+                                            <span>Crear Empresa Cliente</span>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>

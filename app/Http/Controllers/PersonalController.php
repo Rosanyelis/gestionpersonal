@@ -72,7 +72,7 @@ class PersonalController extends Controller
     {
         $role = Auth::user()->getRoleNames()->first();
         $request->validate([
-            'cedula' => ['required', 'min:10'],
+            'cedula' => ['required', 'min:10', 'unique:personals'],
             'nombres' => ['required'],
             'apellidos' => ['required'],
             'fecha_nacimiento' => ['required'],
@@ -89,6 +89,7 @@ class PersonalController extends Controller
         [
             'cedula.required' => 'El campo Cédula es obligatorio',
             'cedula.min' => 'La Cédula debe tener mínimo 10 números',
+            'cedula.unique' => 'La Cédula ya existe en nuestros registros',
             'nombres.required' => 'El campo Nombres es obligatorio',
             'apellidos.required' => 'El campo Apellidos es obligatorio',
             'fecha_nacimiento.required' => 'El campo Fecha de Nacimiento es obligatorio',
@@ -376,6 +377,7 @@ class PersonalController extends Controller
             $reg->actividad_antisocial = $request->actividad_antisocial;
             $reg->reporte_actividad_noprocesada = $request->reporte_actividad_noprocesada;
             $reg->prueba_poligrafica = $request->prueba_poligrafica;
+            $reg->prueba_psicometrica = $request->prueba_psicometrica;
             $reg->enfermedades_contagiosas = $request->enfermedades_contagiosas;
             $reg->consumo_alcohol = $request->consumo_alcohol;
             $reg->sustancia_prohibida = $request->sustancia_prohibida;
@@ -483,8 +485,23 @@ class PersonalController extends Controller
      */
     public function informepersonal($id)
     {
-        $data = Personal::where('id', $id)->first();
-
+        $data = Personal::with('residencia')
+                            ->with('referenciaspersonales')
+                            ->with('datos_laborales')
+                            ->with('enfermedades')
+                            ->with('contactos_emergencia')
+                            ->with('alergia_medicamentos')
+                            ->with('cursos_tecnicos')
+                            ->with('carreras_universitarias')
+                            ->with('phd')
+                            ->with('maestrias')
+                            ->with('talleres')
+                            ->with('diplomados')
+                            ->with('participacion')
+                            ->with('historial_laboral')
+                            ->where('id', $id)
+                            ->first();
+        // return $data;
         $pdf = \PDF::loadView('personal.pdf.informepersonal', compact('data'));
         return $pdf->stream('Informe-Personal-'.$data->nombres.'-'.$data->apellidos.'.pdf');
     }
@@ -497,7 +514,24 @@ class PersonalController extends Controller
     public function perfilcurricular($id)
     {
         $data = Personal::where('id', $id)->first();
-
+        $data = Personal::with('residencia')
+                            ->with('referenciaspersonales')
+                            ->with('datos_laborales')
+                            ->with('enfermedades')
+                            ->with('contactos_emergencia')
+                            ->with('alergia_medicamentos')
+                            ->with('cursos_tecnicos')
+                            ->with('carreras_universitarias')
+                            ->with('phd')
+                            ->with('maestrias')
+                            ->with('talleres')
+                            ->with('diplomados')
+                            ->with('participacion')
+                            ->with('historial_laboral')
+                            ->with('actividad_noprocesada')
+                            ->with('integridad_laboral')
+                            ->where('id', $id)
+                            ->first();
         $pdf = \PDF::loadView('personal.pdf.perfilcurricular', compact('data'));
         return $pdf->stream('Perfil-Curricular-'.$data->nombres.'-'.$data->apellidos.'.pdf');
     }
@@ -509,7 +543,10 @@ class PersonalController extends Controller
      */
     public function informeconfidencial($id)
     {
-        $data = Personal::where('id', $id)->first();
+        $data = Personal::with('actividad_noprocesada')
+                            ->with('integridad_laboral')
+                            ->where('id', $id)
+                            ->first();
 
         $pdf = \PDF::loadView('personal.pdf.informeconfidencial', compact('data'));
         return $pdf->stream('Informe-Confidencial-'.$data->nombres.'-'.$data->apellidos.'.pdf');

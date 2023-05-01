@@ -49,20 +49,59 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label class="form-label text-uppercase" for="default-01">Tipo de Reporte:</label>
-                                                    <div class="form-control-wrap">
-                                                        {{ $data->tipo_reporte }}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
                                                     <label class="form-label text-uppercase" for="default-01">Fecha de Creación:</label>
                                                     <div class="form-control-wrap">
                                                         {!! \Carbon\Carbon::parse($data->created_at)->format('d-m-Y h:i:s A') !!}
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="form-label text-uppercase" for="default-01">Empresa:</label>
+                                                    <div class="form-control-wrap">
+                                                        {{ $data->user->empresa }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="form-label text-uppercase" for="default-01">Provincia:</label>
+                                                    <div class="form-control-wrap">
+                                                        {{ $data->user->provincia }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="form-label text-uppercase" for="default-01">Municipio:</label>
+                                                    <div class="form-control-wrap">
+                                                        {{ $data->user->municipio }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="form-label text-uppercase" for="default-01">Sector:</label>
+                                                    <div class="form-control-wrap">
+                                                        {{ $data->user->sector }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="form-label text-uppercase" for="default-01">Tipo de Reporte:</label>
+                                                    <div class="form-control-wrap">
+                                                        {{ $data->tipo_reporte }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
                                             <div class="col-md-12 mt-2">
                                                 <div class="form-group">
                                                     <label class="form-label text-uppercase" for="default-01">Detalles:</label>

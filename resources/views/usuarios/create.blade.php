@@ -30,34 +30,10 @@
                 <div class="nk-block nk-block-lg">
                     <div class="card card-bordered">
                         <div class="card-inner">
-                            <form action="{{ url('configuraciones/usuarios/guardar-usuario') }}" class="form-validate"
+                            <form id="form" action="{{ url('configuraciones/usuarios/guardar-usuario') }}" class="form-validate"
                                 method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row g-gs">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="form-label  text-uppercase">tipo de usuario</label>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="tipoE" name="tipo"
-                                                    class="custom-control-input" value="Empresa"
-                                                    @if (old('tipo') == 'Empresa') checked @endif>
-                                                <label class="custom-control-label" for="tipoE">Empresa Cliente</label>
-                                            </div>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="tipoEC" name="tipo"
-                                                    class="custom-control-input" value="Empleado"
-                                                    @if (old('tipo') == 'Empleado') checked @endif>
-                                                <label class="custom-control-label" for="tipoEC">Empleado Citecsa</label>
-                                            </div>
-                                        </div>
-                                        @if ($errors->has('tipo'))
-                                            <span class="invalid text-danger">
-                                                {{ $errors->first('tipo') }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div id="empleado" class="row g-gs">
                                     <div class="col-md-12 badge badge-dark p-1">
                                         <h6 class="title text-white text-uppercase">Datos de Empleado</h6>
                                     </div>
@@ -167,244 +143,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="empresa" class="row g-gs">
-                                    <div class="col-md-12 badge badge-dark p-1">
-                                        <h6 class="title text-white text-uppercase">Datos de Empresa</h6>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase"
-                                                for="fw-vr-first-name">Logo Empresa</label>
-                                            <div class="form-control-wrap">
-                                                <div class="custom-file">
-                                                    <input name="logo" type="file" class="custom-file-input" id="customFile">
-                                                    <label class="custom-file-label" for="customFile">Subir Logo</label>
-                                                    @if ($errors->has('logo'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('logo') }}
-                                                    </span>
-                                                @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase"
-                                                for="fw-vr-first-name">Empresa</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-first-name"
-                                                    name="empresa" value="{{ old('empresa') }}"
-                                                    placeholder="Ejm: Comercial Rika C.A">
-                                                @if ($errors->has('empresa'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('empresa') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase"
-                                                for="fw-vr-last-name">Actividad</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="actividad" value="{{ old('actividad') }}"
-                                                    placeholder="Ejm: Compra de viveres">
-                                                @if ($errors->has('actividad'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('actividad') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-last-name">Teléfono de
-                                                Empresa</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="telefono_empresa" value="{{ old('telefono_empresa') }}"
-                                                    placeholder="Ejm: Doe Colin">
-                                                @if ($errors->has('telefono_empresa'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('telefono_empresa') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-last-name">Correo
-                                                Corporativo</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="correo_empresa" value="{{ old('correo_empresa') }}"
-                                                    placeholder="Ejm: comercialrika@example.com">
-                                                @if ($errors->has('correo_empresa'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('correo_empresa') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase"
-                                                for="fw-vr-last-name">Representante</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="representante" value="{{ old('representante') }}"
-                                                    placeholder="Ejm: Doe Colin">
-                                                @if ($errors->has('representante'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('representante') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-last-name">Teléfono
-                                                Representante</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="telefono_representante"
-                                                    value="{{ old('telefono_representante') }}"
-                                                    placeholder="Ejm: Doe Colin">
-                                                @if ($errors->has('telefono_representante'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('telefono_representante') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-last-name">Correo de
-                                                Representante</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="correo_representante" value="{{ old('correo_representante') }}"
-                                                    placeholder="Ejm: Doe Colin">
-                                                @if ($errors->has('correo_representante'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('correo_representante') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase"
-                                                for="fw-vr-first-name">Provincia</label>
-                                            <div class="form-control-wrap ">
-                                                <div class="form-control-select">
-                                                    <select class="form-control" name="provincia" id="provincia">
-                                                        <option>Seleccione</option>
-                                                        @foreach ($provincias as $item)
-                                                            <option value="{{ $item->id }}" @if (old('provincia') == $item->id) selected @endif>{{ $item->nombre }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                @if ($errors->has('provincia'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('provincia') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase"
-                                                for="fw-vr-first-name">Municipio</label>
-                                            <div class="form-control-wrap ">
-                                                <div class="form-control-select">
-                                                    <select class="form-control" name="municipio" id="municipio">
-                                                        @if (old('municipio'))
-                                                        <option value="{{ old('municipio')}}">{{ old('municipio') }}</option>
-                                                        @else
-                                                        <option>Seleccione</option>
-                                                        @endif
-                                                    </select>
-                                                </div>
-                                                @if ($errors->has('municipio'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('municipio') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-last-name">Sector</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="sector" value="{{ old('sector') }}"
-                                                    placeholder="Ejm: Doe Colin">
-                                                @if ($errors->has('sector'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('sector') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-apodo">Calle</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="calle" value="{{ old('calle') }}"
-                                                    placeholder="Ejm: Doe Colin">
-                                                @if ($errors->has('calle'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('calle') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-apodo">Número</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="numero" value="{{ old('numero') }}"
-                                                    placeholder="Ejm: Doe Colin">
-                                                @if ($errors->has('numero'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('numero') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-apodo">Referencia de
-                                                Llegada</label>
-                                            <div class="form-control-wrap">
-                                                <textarea type="text" class="form-control" name="referencia" id="" cols="10">{{ old('referencia') }}</textarea>
-                                                @if ($errors->has('referencia'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('referencia') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="row g-gs ">
                                     <div class="col-md-12 badge badge-dark mt-3">
                                         <h6 class="title text-white text-uppercase">Datos de Usuario</h6>
@@ -483,7 +221,7 @@
 
                                     <div class="col-md-12 ">
                                         <div class="form-group float-right">
-                                            <button type="submit" class="btn btn-lg btn-primary">Guardar</button>
+                                            <button type="button" id="guardar" class="btn btn-lg btn-primary">Guardar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -500,80 +238,15 @@
         (function(NioApp, $) {
             'use strict';
 
-            $('#empresa').hide();
-            $('#empleado').hide();
-
             @include('layouts.alerts')
 
-            @if (old('tipo') == 'Empresa') $('#empresa').show(); @endif
-            $('#tipoE').click(function() {
-                if ($(this).is(':checked')) {
-                    $('#empresa').show();
-                    $('#empleado').hide();
-                }
+            $('#guardar').click(function() {
+                $('#form').submit();
+                $('#guardar').attr('disabled', true);
+                $('#guardar').html(
+                    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span> Por favor, espere... </span>'
+                );
             });
-            $('#tipoEC').click(function() {
-                if ($(this).is(':checked')) {
-                    $('#empleado').show();
-                    $('#empresa').hide();
-                }
-            });
-
-            $('#provincia').on('change', function() {
-                let id = $(this).val();
-                let url = '{{ url('') }}' + '/personal/' + id + '/get-municipios';
-                $.ajax({
-                    url: url,
-                    type: "GET",
-                    data: {
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(data) {
-                        data.forEach(element => {
-                            $('#municipio').append('<option value="' + element.nombre +
-                                '">' + element.nombre + '</option>');
-                        });
-                    }
-                });
-            });
-
-            $('input[type=password]').keyup(function() {
-                // set password variable
-                var pswd = $(this).val();
-                //validate the length
-                if (pswd.length < 8) {
-                    $('#length').removeClass('valid').addClass('invalid');
-                } else {
-                    $('#length').removeClass('invalid').addClass('valid');
-                }
-
-                //validate letter
-                if (pswd.match(/[A-z]/)) {
-                    $('#letter').removeClass('invalid').addClass('valid');
-                } else {
-                    $('#letter').removeClass('valid').addClass('invalid');
-                }
-
-                //validate capital letter
-                if (pswd.match(/[A-Z]/)) {
-                    $('#capital').removeClass('invalid').addClass('valid');
-                } else {
-                    $('#capital').removeClass('valid').addClass('invalid');
-                }
-
-                //validate number
-                if (pswd.match(/\d/)) {
-                    $('#number').removeClass('invalid').addClass('valid');
-                } else {
-                    $('#number').removeClass('valid').addClass('invalid');
-                }
-
-            }).focus(function() {
-                $('#pswd_info').show();
-            }).blur(function() {
-                $('#pswd_info').hide();
-            });
-
         })(NioApp, jQuery);
     </script>
 @endsection

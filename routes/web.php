@@ -200,6 +200,7 @@ Route::middleware('auth')->group(function () {
 
     # Modulo Empresa
     Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresa.index');
+    Route::get('/empresas/nueva-empresa', [EmpresaController::class, 'create'])->name('empresa.create');
     Route::post('/empresas/guardar-empresa', [EmpresaController::class, 'store'])->name('empresa.store');
     Route::get('/empresas/{id}/ver-empresa', [EmpresaController::class, 'show'])->name('empresa.show');
     Route::get('/empresas/{id}/editar-empresa', [EmpresaController::class, 'edit'])->name('empresa.edit');

@@ -31,7 +31,7 @@
                 <div class="nk-block nk-block-lg">
                     <div class="card card-bordered">
                         <div class="card-inner">
-                            <form action="{{ url('/personal/' . $id . '/alergia-medicamentos/' . $data->id . '/actualizar-residencia') }}"
+                            <form action="{{ url('/personal/' . $id . '/alergia-medicamentos/' . $data->id . '/actualizar-medicamento') }}"
                                 class="form-validate" method="POST">
                                 @csrf
                                 @method('PUT')

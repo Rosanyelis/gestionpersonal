@@ -82,7 +82,7 @@ class HistorialLaboralController extends Controller
             $historial->labor =  $request->labor;
             $historial->ano_entrada = $request->ano_entrada;
             $historial->ano_salida = $request->ano_salida;
-            $historial->cantidad_ano = $request->cantidad_anos;
+            $historial->cantidad_ano = $request->cantidad_ano;
             $historial->cantidad_meses = $request->cantidad_meses;
             $historial->save();
 

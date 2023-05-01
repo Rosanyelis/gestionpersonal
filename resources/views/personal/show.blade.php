@@ -32,31 +32,36 @@
                             <div class="card-content">
                                 <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card ">
                                     <li class="nav-item">
-                                        <a class="nav-link text-uppercase active" data-toggle="tab"
-                                            href="#tabItem1"><span>Personal</span></a>
+                                        <a class="nav-link text-uppercase active"
+                                            data-toggle="tab" href="#tabItem1"><span>Personal</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-uppercase" data-toggle="tab" href="#tabItem2">
+                                        <a class="nav-link text-uppercase "
+                                            data-toggle="tab" href="#tabItem2">
                                             <span>Ref. Personales/Fam.</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-uppercase" data-toggle="tab" href="#tabItem3">
+                                    <li class="nav-item ">
+                                        <a id="Carreras" class="nav-link text-uppercase "
+                                            data-toggle="tab" href="#tabItem3">
                                             <span>Act. Educativa</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-uppercase" data-toggle="tab" href="#tabItem4">
+                                        <a class="nav-link text-uppercase "
+                                            data-toggle="tab" href="#tabItem4">
                                             <span>Act. Laborales</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-uppercase" data-toggle="tab" href="#tabItem5">
+                                        <a class="nav-link text-uppercase "
+                                            data-toggle="tab" href="#tabItem5">
                                             <span>Inv. Integridad laboral</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-uppercase" data-toggle="tab" href="#tabItem6">
+                                        <a class="nav-link text-uppercase "
+                                            data-toggle="tab" href="#tabItem6">
                                             <span>Act. no Procesadas</span>
                                         </a>
                                     </li>
@@ -137,22 +142,6 @@
 
             @include('layouts.alerts')
 
-
-            $('.datatable-init tbody').on('click', '.delete-record', function() {
-                let dataid = $(this).data('id');
-                let formDelete = $('#formDelete-' + dataid);
-                Swal.fire({
-                    title: '¿Está Seguro de Eliminar el Registro?',
-                    text: "Si tiene datos dependientes, no podrá eliminarlo!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Si, estoy seguro!'
-                }).then((result) => {
-                    if (result.value) {
-                        $(formDelete).submit();
-                    }
-                });
-            });
             $('.table tbody').on('click', '.delete-record', function() {
                 let dataid = $(this).data('id');
                 let formDelete = $('#formDelete-' + dataid);

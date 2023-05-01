@@ -1,6 +1,6 @@
 <div class="nk-block-head nk-block-head-sm nk-block-between">
     <h5 class="title text-uppercase">Talleres</h5>
-    <a href="{{ url('/personal/' . $data->id . '/talleres/nueva-carrera') }}"
+    <a href="{{ url('/personal/' . $data->id . '/talleres/nuevo-taller') }}"
         class="btn btn-sm btn-primary">
         <em class="icon ni ni-plus-sm"></em>
         <span>Nuevo</span>
@@ -33,7 +33,7 @@
                                     <ul class="link-list-opt no-bdr">
                                         <li>
                                             <a
-                                                href="{{ url('/personal/' . $data->id . '/talleres/' . $item->id . '/editar-carrera') }}">
+                                                href="{{ url('/personal/' . $data->id . '/talleres/' . $item->id . '/editar-taller') }}">
                                                 <em class="icon ni ni-edit"></em>
                                                 <span>Editar</span>
                                             </a>
@@ -45,7 +45,7 @@
                                                     Carrera</span>
                                             </button>
                                             <form id="formDelete-{{ $item->id }}"
-                                                action="{{ url('/personal/' . $data->id . '/talleres/' . $item->id . '/eliminar-carrera') }}"method="POST">
+                                                action="{{ url('/personal/' . $data->id . '/talleres/' . $item->id . '/eliminar-taller') }}"method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>

@@ -30,7 +30,7 @@
                 <div class="nk-block nk-block-lg">
                     <div class="card card-bordered">
                         <div class="card-inner">
-                            <form action="{{ url('configuraciones/usuarios/' . $data->id . '/actualizar-usuario') }}"
+                            <form id="form" action="{{ url('configuraciones/usuarios/' . $data->id . '/actualizar-usuario') }}"
                                 class="form-validate" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -146,243 +146,6 @@
                                     </div>
                                 </div>
                                 @endif
-                                @if ($data->tipo == 'Empresa')
-                                <div id="empresa" class="row g-gs">
-                                    <div class="col-md-12 badge badge-dark p-1">
-                                        <h6 class="title text-white text-uppercase">Datos de Empresa</h6>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase"
-                                                for="fw-vr-first-name">Logo Empresa</label>
-                                            <div class="form-control-wrap">
-                                                <div class="custom-file">
-                                                    <input name="logo" type="file" class="custom-file-input" id="customFile">
-                                                    <label class="custom-file-label" for="customFile">Subir Logo</label>
-                                                    @if ($errors->has('logo'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('logo') }}
-                                                    </span>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img src="{{ asset(''.$data->logo.'') }}" class="card-img-top" alt="{{ $data->empresa }}">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase"
-                                                for="fw-vr-first-name">Empresa</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-first-name"
-                                                    name="empresa" value="{{ $data->empresa }}"
-                                                    placeholder="Ejm: Comercial Rika C.A">
-                                                @if ($errors->has('empresa'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('empresa') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase"
-                                                for="fw-vr-last-name">Actividad</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="actividad" value="{{ $data->actividad }}"
-                                                    placeholder="Ejm: Compra de viveres">
-                                                @if ($errors->has('actividad'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('actividad') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-last-name">Teléfono de
-                                                Empresa</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="telefono_empresa" value="{{ $data->telefono_empresa }}"
-                                                    placeholder="Ejm: Doe Colin">
-                                                @if ($errors->has('telefono_empresa'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('telefono_empresa') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-last-name">Correo
-                                                Corporativo</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="correo_empresa" value="{{ $data->correo_empresa }}"
-                                                    placeholder="Ejm: comercialrika@example.com">
-                                                @if ($errors->has('correo_empresa'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('correo_empresa') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase"
-                                                for="fw-vr-last-name">Representante</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="representante" value="{{ $data->representante }}"
-                                                    placeholder="Ejm: Doe Colin">
-                                                @if ($errors->has('representante'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('representante') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-last-name">Teléfono
-                                                Representante</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="telefono_representante"
-                                                    value="{{ $data->telefono_representante }}"
-                                                    placeholder="Ejm: Doe Colin">
-                                                @if ($errors->has('telefono_representante'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('telefono_representante') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-last-name">Correo de
-                                                Representante</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="correo_representante" value="{{ $data->correo_representante }}"
-                                                    placeholder="Ejm: Doe Colin">
-                                                @if ($errors->has('correo_representante'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('correo_representante') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase"
-                                                for="fw-vr-first-name">Provincia</label>
-                                            <div class="form-control-wrap ">
-                                                <div class="form-control-select">
-                                                    <select class="form-control" name="provincia" id="provincia">
-                                                        <option>Seleccione</option>
-                                                        @foreach ($provincias as $item)
-                                                            <option value="{{ $item->id }}"  @if ($item->nombre == $data->provincia) selected @endif>{{ $item->nombre }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                @if ($errors->has('provincia'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('provincia') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase"
-                                                for="fw-vr-first-name">Municipio</label>
-                                            <div class="form-control-wrap ">
-                                                <div class="form-control-select">
-                                                    <select class="form-control" name="municipio" id="municipio">
-                                                        <option>{{ $data->municipio }}</option>
-                                                    </select>
-                                                </div>
-                                                @if ($errors->has('municipio'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('municipio') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-last-name">Sector</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="sector" value="{{ $data->sector }}"
-                                                    placeholder="Ejm: Doe Colin">
-                                                @if ($errors->has('sector'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('sector') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-apodo">Calle</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="calle" value="{{ $data->calle }}"
-                                                    placeholder="Ejm: Doe Colin">
-                                                @if ($errors->has('calle'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('calle') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-apodo">Número</label>
-                                            <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
-                                                    name="numero" value="{{ $data->numero }}"
-                                                    placeholder="Ejm: Doe Colin">
-                                                @if ($errors->has('numero'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('numero') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="form-label text-uppercase" for="fw-vr-apodo">Referencia de
-                                                Llegada</label>
-                                            <div class="form-control-wrap">
-                                                <textarea type="text" class="form-control" name="referencia" id="" cols="10">{{ $data->referencia }}</textarea>
-                                                @if ($errors->has('referencia'))
-                                                    <span class="invalid text-danger">
-                                                        {{ $errors->first('referencia') }}
-                                                    </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
                                 <div class="row g-gs">
                                     <div class="col-md-12 badge badge-dark mt-3">
                                         <h6 class="title text-white text-uppercase">Datos de Usuario</h6>
@@ -441,6 +204,9 @@
                                                 <select class="form-control form-select @error('rol') error @enderror"
                                                     name="rol" data-placeholder="Seleccione una opción">
                                                     <option label="empty" value=""></option>
+                                                    @if ($data->getRoleNames()[0] == 'Empresa')
+                                                        <option value="Empresa" selected>Empresa</option>
+                                                    @else
                                                     @foreach ($roles as $item)
                                                         @foreach ($data->roles as $rol)
                                                             <option value="{{ $item->name }}"
@@ -448,6 +214,7 @@
                                                                 {{ $item->name }}</option>
                                                         @endforeach
                                                     @endforeach
+                                                    @endif
                                                 </select>
                                                 @if ($errors->has('rol'))
                                                     <span id="fv-full-name-error" class="invalid">
@@ -460,8 +227,7 @@
 
                                     <div class="col-md-12 ">
                                         <div class="form-group float-right">
-                                            <input type="hidden" name="tipo" value="{{ $data->tipo }}">
-                                            <button type="submit" class="btn btn-lg btn-primary">Guardar</button>
+                                            <button type="button" id="guardar" class="btn btn-lg btn-primary">Guardar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -497,7 +263,13 @@
                     }
                 });
             });
-
+            $('#guardar').click(function() {
+                $('#form').submit();
+                $('#guardar').attr('disabled', true);
+                $('#guardar').html(
+                    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span> Por favor, espere... </span>'
+                );
+            });
 
         })(NioApp, jQuery);
     </script>

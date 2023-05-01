@@ -9,10 +9,32 @@
     </div><!-- .nk-block-head -->
     <table class="table mt-4">
         <thead>
+            <tr class="text-uppercase">
+                <th><span>Nombre y Apellido</span></th>
+                <th><span>Cédula</span></th>
+                <th><span>Empresa </span></th>
+                <th><span>Sucursal </span></th>
+                <th><span>Autorizado</span></th>
+            </tr>
+        </thead><!-- .nk-tb-item -->
+        <tbody>
             <tr>
+                <td>{{ $data->nombres }} {{ $data->apellidos }}</td>
+                <td>{{ $data->cedula }}</td>
+                <td>{{ $data->empresa }}</td>
+                <td>{{ $data->sucursal }}</td>
+                <td>{{ $data->autorizado }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table mt-4">
+        <thead>
+            <tr class="text-uppercase">
                 <th width="50px"><span>#</span></th>
                 <th><span>FECHA</span></th>
                 <th><span>Nro. PRUEBA </span></th>
+                <th><span>Resultado </span></th>
+                <th><span>Detalles </span></th>
                 <th width="50px"></th>
             </tr>
         </thead><!-- .nk-tb-item -->
@@ -22,6 +44,8 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{!! \Carbon\Carbon::parse($item->created_at)->format('d-m-Y h:i:s A') !!}</td>
                     <td>Prueba Nro. {{ $item->id }}</td>
+                    <td>{{ $item->resultado }}</td>
+                    <td>{{ $item->detalle }}</td>
                     <td>
                         <ul class="nk-tb-actions gx-1 my-n1">
                             <li class="mr-n1">
