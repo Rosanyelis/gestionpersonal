@@ -38,7 +38,7 @@
                                 <div class="row gy-3">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="form-label" for="fw-vr-first-name">Institución</label>
+                                            <label class="form-label text-uppercase" for="fw-vr-first-name">Institución</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control " id="institucion"
                                                     name="institucion" placeholder="Ejm: Universidad San Bernardo">
@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="form-label" for="fw-vr-first-name">titulo</label>
+                                            <label class="form-label text-uppercase" for="fw-vr-first-name">titulo</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control " id="titulo" name="titulo"
                                                     placeholder="Ejm: licenciada en Contaduría">
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label class="form-label" for="fw-vr-last-name">Año</label>
+                                            <label class="form-label text-uppercase" for="fw-vr-last-name">Año</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" id="year" name="apellidos"
                                                     placeholder="Ejm: 2012">
@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <table id="Carrera" class="table">
-                                            <thead class="thead-light">
+                                            <thead class="thead-light text-uppercase">
                                                 <tr>
                                                     <th scope="col">Institución</th>
                                                     <th scope="col">Titulo</th>

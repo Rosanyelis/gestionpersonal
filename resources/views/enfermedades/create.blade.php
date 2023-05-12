@@ -34,7 +34,7 @@
                             <div class="row g-gs">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="form-label" for="fw-vr-first-name">Enfermedad</label>
+                                        <label class="form-label text-uppercase" for="fw-vr-first-name">Enfermedad</label>
                                         <div class="form-control-wrap">
                                             <input type="text" class="form-control " id="enfermedad" placeholder="Ejm: Diabetes">
                                         </div>
@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <table id="Enfermedades" class="table">
-                                        <thead class="thead-light">
+                                        <thead class="thead-light text-uppercase">
                                             <tr>
                                                 <th scope="col">Enfermedades</th>
                                             </tr>
@@ -94,6 +94,10 @@
             $('#guardar').click(function() {
                 $('#datosEnfermedades').val(JSON.stringify(datosEnfermedades));
                 $('#form').submit();
+                $('#guardar').attr('disabled', true);
+                $('#guardar').html(
+                    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span> Por favor, espere... </span>'
+                    );
             });
 
         })(NioApp, jQuery);

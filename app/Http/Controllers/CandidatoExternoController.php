@@ -58,7 +58,6 @@ class CandidatoExternoController extends Controller
         ]);
 
         $count = CandidatoExterno::where('cedula', $request->cedula)
-                                    ->where('empresa', $request->empresa)
                                     ->count();
         if($count > 0){
             return redirect('candidatos-externos')->with('error', 'Ya existe un registro con la misma Cédula y Empresa');
@@ -69,10 +68,7 @@ class CandidatoExternoController extends Controller
         $candidatoExterno->nombres = $request->nombres;
         $candidatoExterno->apellidos = $request->apellidos;
         $candidatoExterno->fecha_nacimiento = $request->fecha_nacimiento;
-        $candidatoExterno->empresa = $request->empresa;
-        $candidatoExterno->sucursal = $request->sucursal;
-        $candidatoExterno->autorizado = $request->autorizado;
-        $candidatoExterno->detalle = $request->detalle;
+
         $candidatoExterno->save();
 
         return redirect('candidatos-externos')->with('success', 'Registro Guardado Exitósamente');
@@ -134,10 +130,6 @@ class CandidatoExternoController extends Controller
             $candidatoExterno->nombres = $request->nombres;
             $candidatoExterno->apellidos = $request->apellidos;
             $candidatoExterno->fecha_nacimiento = $request->fecha_nacimiento;
-            $candidatoExterno->empresa = $request->empresa;
-            $candidatoExterno->sucursal = $request->sucursal;
-            $candidatoExterno->autorizado = $request->autorizado;
-            $candidatoExterno->detalle = $request->detalle;
             $candidatoExterno->save();
 
             return redirect('candidatos-externos')->with('success', 'Registro Actualizado Exitósamente');
@@ -167,6 +159,10 @@ class CandidatoExternoController extends Controller
         if ($count>0) {
 
             $request->validate([
+                'fecha' => ['required'],
+                'empresa' => ['required'],
+                'sucursal' => ['required'],
+                'autorizado' => ['required'],
                 'certificado_procuraduria' => ['required'],
                 'certificado_institucion' => ['required'],
                 'actividad_antisocial' => ['required'],
@@ -185,6 +181,10 @@ class CandidatoExternoController extends Controller
                 'resultado' => ['required'],
             ],
             [
+                'fecha.required' => 'El campo Fecha es obligatorio',
+                'empresa.required' => 'El campo Empresa es obligatorio',
+                'sucursal.required' => 'El campo Sucursal es obligatorio',
+                'autorizado.required' => 'El campo Autorizado es obligatorio',
                 'certificado_procuraduria.required' => 'La respuesta de Certificado de Procuraduría es obligatoria',
                 'certificado_institucion.required' => 'La respuesta de Certificado de Institución es obligatoria',
                 'actividad_antisocial.required' => 'La respuesta de Actividad Antisocial es obligatoria',
@@ -205,6 +205,10 @@ class CandidatoExternoController extends Controller
 
             $reg = new IntegridadLaboral();
             $reg->candidato_id = $id;
+            $reg->fecha = $request->fecha;
+            $reg->empresa = $request->empresa;
+            $reg->sucursal = $request->sucursal;
+            $reg->autorizado = $request->autorizado;
             $reg->certificado_procuraduria = $request->certificado_procuraduria;
             $reg->certificado_institucion = $request->certificado_institucion;
             $reg->actividad_antisocial = $request->actividad_antisocial;

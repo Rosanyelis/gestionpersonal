@@ -41,7 +41,7 @@ class ContactosEmergenciaController extends Controller
                 $dataM->save();
             }
 
-            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de Guardado Exitósamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de Contactos de Emergencia Guardado Exitósamente');
         }else{
             return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('error', 'No hay datos que guardar.');
         }
@@ -76,7 +76,7 @@ class ContactosEmergenciaController extends Controller
             $dataM->telefono = $request->telefono;
             $dataM->save();
 
-            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de Actualizado Exitósamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de Contactos de Emergencia Actualizado Exitósamente');
         }else{
             return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('error', 'No hay datos que guardar.');
         }
@@ -94,7 +94,7 @@ class ContactosEmergenciaController extends Controller
         $count = ContactosEmergencia::where('id', $contacto_id)->count();
         if ($count>0) {
             $data = ContactosEmergencia::where('personal_id', $id)->where('id', $contacto_id)->delete();
-            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro Eliminado Exitosamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro Contactos de Emergencia Eliminado Exitosamente');
         } else {
             return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('error', 'Problemas para Mostrar el Registro.');
         }

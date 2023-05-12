@@ -9,7 +9,7 @@
                 </div>
                 <div class="custom-control custom-radio">
                     <input type="radio" id="enfermedadNo" name="enfermedad" class="custom-control-input"
-                        value="No">
+                        value="No" checked>
                     <label class="custom-control-label" for="enfermedadNo">No</label>
                 </div>
                 @if ($errors->has('enfermedad'))
@@ -47,7 +47,7 @@
                 </div>
                 <div class="custom-control custom-radio">
                     <input type="radio" id="medicamentoNo" name="medicamento" class="custom-control-input"
-                        value="No">
+                        value="No" checked>
                     <label class="custom-control-label" for="medicamentoNo">No</label>
                 </div>
             </div>
@@ -82,8 +82,8 @@
                     <label class="custom-control-label" for="contactoSi">Si</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input type="radio" id="contactoNo" name="contacto" class="custom-control-input" value="No">
-                    <label class="custom-control-label" for="contactoNo">No</label>
+                    <input type="radio" id="contactoNo" name="contacto" class="custom-control-input" value="No" checked>
+                    <label class="custom-control-label" for="contactoNo" >No</label>
                 </div>
             </div>
             @if ($errors->has('contacto'))

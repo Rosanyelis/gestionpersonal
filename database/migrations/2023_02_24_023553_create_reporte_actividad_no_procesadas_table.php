@@ -17,7 +17,15 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('personal_id')->nullable()->constrained('personals')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('tipo_reporte');
+            $table->string('quien_reporta')->nullable();
+            $table->string('fecha')->nullable();
+            $table->string('hora')->nullable();
+            $table->string('empresa')->nullable();
+            $table->string('provincia')->nullable();
+            $table->string('municipio')->nullable();
+            $table->string('sector')->nullable();
+            $table->string('tipo_reporte')->nullable();
+            $table->string('tipo_involucrado')->nullable();
             $table->text('detalles')->nullable();
             $table->timestamps();
         });

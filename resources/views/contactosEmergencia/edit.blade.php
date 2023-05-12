@@ -31,7 +31,7 @@
                 <div class="nk-block nk-block-lg">
                     <div class="card card-bordered">
                         <div class="card-inner">
-                            <form action="{{ url('/personal/' . $id . '/contactos-de-emergencia/' . $data->id . '/actualizar-contacto') }}"
+                            <form id="form" action="{{ url('/personal/' . $id . '/contactos-de-emergencia/' . $data->id . '/actualizar-contacto') }}"
                                 class="form-validate" method="POST">
                                 @csrf
                                 @method('PUT')
@@ -67,7 +67,7 @@
 
                                     <div class="col-md-12 ">
                                         <div class="form-group float-right">
-                                            <button type="submit" class="btn btn-lg btn-primary">Guardar</button>
+                                            <button type="submit" id="guardar" class="btn btn-lg btn-primary">Guardar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -79,4 +79,19 @@
         </div>
     </div>
 @endsection
+@section('scripts')
+    <script>
+        (function(NioApp, $) {
+            'use strict';
 
+            $('#guardar').click(function() {
+                $('#form').submit();
+                $('#guardar').attr('disabled', true);
+                $('#guardar').html(
+                    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span> Por favor, espere... </span>'
+                    );
+            });
+
+        })(NioApp, jQuery);
+    </script>
+@endsection

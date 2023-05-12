@@ -32,6 +32,7 @@ class IntegridadLaboralController extends Controller
         if ($count>0) {
 
             $request->validate([
+                'fecha' => ['required', 'date'],
                 'certificado_procuraduria' => ['required'],
                 'certificado_institucion' => ['required'],
                 'actividad_antisocial' => ['required'],
@@ -50,6 +51,7 @@ class IntegridadLaboralController extends Controller
                 'resultado' => ['required'],
             ],
             [
+                'fecha.required' => 'La fecha es obligatoria',
                 'certificado_procuraduria.required' => 'La respuesta de Certificado de Procuraduría es obligatoria',
                 'certificado_institucion.required' => 'La respuesta de Certificado de Institución es obligatoria',
                 'actividad_antisocial.required' => 'La respuesta de Actividad Antisocial es obligatoria',
@@ -70,11 +72,13 @@ class IntegridadLaboralController extends Controller
 
             $reg = new IntegridadLaboral();
             $reg->personal_id = $id;
+            $reg->fecha = $request->fecha;
             $reg->certificado_procuraduria = $request->certificado_procuraduria;
             $reg->certificado_institucion = $request->certificado_institucion;
             $reg->actividad_antisocial = $request->actividad_antisocial;
             $reg->reporte_actividad_noprocesada = $request->reporte_actividad_noprocesada;
             $reg->prueba_poligrafica = $request->prueba_poligrafica;
+            $reg->prueba_psicometrica = $request->prueba_psicometrica;
             $reg->enfermedades_contagiosas = $request->enfermedades_contagiosas;
             $reg->consumo_alcohol = $request->consumo_alcohol;
             $reg->sustancia_prohibida = $request->sustancia_prohibida;
@@ -132,11 +136,13 @@ class IntegridadLaboralController extends Controller
         $count = Personal::where('id', $id)->count();
         if ($count>0) {
             $reg = IntegridadLaboral::where('personal_id', $id)->where('id', $prueba_id)->first();
+            $reg->fecha = $request->fecha;
             $reg->certificado_procuraduria = $request->certificado_procuraduria;
             $reg->certificado_institucion = $request->certificado_institucion;
             $reg->actividad_antisocial = $request->actividad_antisocial;
             $reg->reporte_actividad_noprocesada = $request->reporte_actividad_noprocesada;
             $reg->prueba_poligrafica = $request->prueba_poligrafica;
+            $reg->prueba_psicometrica = $request->prueba_psicometrica;
             $reg->enfermedades_contagiosas = $request->enfermedades_contagiosas;
             $reg->consumo_alcohol = $request->consumo_alcohol;
             $reg->sustancia_prohibida = $request->sustancia_prohibida;

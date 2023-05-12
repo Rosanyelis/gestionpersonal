@@ -28,10 +28,13 @@
 
             <table class="datatable-init nowrap nk-tb-list is-separate" data-auto-responsive="false">
                 <thead>
-                    <tr class="nk-tb-item nk-tb-head">
+                    <tr class="nk-tb-item nk-tb-head text-uppercase">
                         <th width="50px" class="nk-tb-col"><span>#</span></th>
-                        <th class="nk-tb-col tb-col-sm"><span>USUARIO</span></th>
-                        <th class="nk-tb-col tb-col-sm"><span>FECHA DE CREACIÓN</span></th>
+                        <th class="nk-tb-col tb-col-sm"><span>Quien Reporta</span></th>
+                        <th class="nk-tb-col tb-col-sm"><span>FECHA</span></th>
+                        <th class="nk-tb-col tb-col-sm"><span>HORA</span></th>
+                        <th class="nk-tb-col tb-col-sm"><span>INVOLUCRADO</span></th>
+                        <th class="nk-tb-col tb-col-sm"><span>EMPRESA</span></th>
                         <th class="nk-tb-col tb-col-sm"><span>TIPO REPORTE</span></th>
                         <th width="50px" class="nk-tb-col"></th>
                     </tr><!-- .nk-tb-item -->
@@ -42,15 +45,28 @@
                         <td class="nk-tb-col">{{ $loop->iteration  }}</td>
                         <td class="nk-tb-col tb-col-sm">
                             <span class="title">
-                                {{ $item->user->name }}
+                                {{ $item->quien_reporta }}
                             </span>
                         </td>
                         <td class="nk-tb-col tb-col-sm">
                             <span class="tb-product">
                                 <span class="title">
-                                    {!! \Carbon\Carbon::parse($item->created_at)->format('d-m-Y h:i:s A') !!}
+                                    {!! \Carbon\Carbon::parse($item->fecha)->format('d-m-Y') !!}
                                 </span>
                             </span>
+                        </td>
+                        <td class="nk-tb-col tb-col-sm">
+                            <span class="tb-product">
+                                <span class="title">
+                                {!! \Carbon\Carbon::parse($item->hora)->format('h:m A') !!}
+                                </span>
+                            </span>
+                        </td>
+                        <td class="nk-tb-col tb-col-sm">
+                            <span class="title">{{ $item->tipo_involucrado }}</span>
+                        </td>
+                        <td class="nk-tb-col tb-col-sm">
+                            <span class="title">{{ $item->empresa }}</span>
                         </td>
                         <td class="nk-tb-col tb-col-sm">
                             <span class="title">{{ $item->tipo_reporte }}</span>

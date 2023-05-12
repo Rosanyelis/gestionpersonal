@@ -71,6 +71,20 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
+                <label class="form-label text-uppercase" for="fw-vr-last-name">Sector</label>
+                <div class="form-control-wrap">
+                    <input type="text" class="form-control" id="fw-vr-last-name" name="sector"
+                        value="{{ old('sector') }}" placeholder="Ejm: Doe Colin">
+                    @if ($errors->has('sector'))
+                        <span class="invalid text-danger">
+                            {{ $errors->first('sector') }}
+                        </span>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
                 <label class="form-label text-uppercase" for="fw-vr-last-name">Barrio</label>
                 <div class="form-control-wrap">
                     <input type="text" class="form-control" id="fw-vr-last-name" name="barrio"

@@ -31,9 +31,8 @@
                         <th width="50px" class="nk-tb-col"><span>#</span></th>
                         <th class="nk-tb-col tb-col-sm"><span>Nombre y Apellido</span></th>
                         <th class="nk-tb-col tb-col-sm"><span>Cedula</span></th>
-                        <th class="nk-tb-col tb-col-sm"><span>Empresa</span></th>
-                        <th class="nk-tb-col tb-col-sm"><span>Sucursal</span></th>
-                        <th class="nk-tb-col tb-col-sm"><span>Autorizado</span></th>
+                        <th class="nk-tb-col tb-col-sm"><span>Fecha de Nacimiento</span></th>
+                        <th class="nk-tb-col tb-col-sm"><span>Edad</span></th>
                         <th width="50px" class="nk-tb-col"></th>
                     </tr><!-- .nk-tb-item -->
                 </thead>
@@ -47,9 +46,8 @@
                             </span>
                         </td>
                         <td class="nk-tb-col tb-col-sm">{{ $item->cedula }}</td>
-                        <td class="nk-tb-col tb-col-sm">{{ $item->empresa }}</td>
-                        <td class="nk-tb-col tb-col-sm">{{ $item->sucursal }}</td>
-                        <td class="nk-tb-col tb-col-sm">{{ $item->autorizado }}</td>
+                        <td class="nk-tb-col tb-col-sm">{{ $item->fecha_nacimiento }}</td>
+                        <td class="nk-tb-col tb-col-sm">{{ \Carbon\Carbon::createFromDate($item->fecha_nacimiento)->age }}</td>
                         <td class="nk-tb-col nk-tb-col-tools">
                             <ul class="nk-tb-actions gx-1 my-n1">
                                 <li class="mr-n1">

@@ -72,7 +72,7 @@ class PersonalController extends Controller
     {
         $role = Auth::user()->getRoleNames()->first();
         $request->validate([
-            'cedula' => ['required', 'min:10', 'unique:personals'],
+            'cedula' => ['required', 'min:10'],
             'nombres' => ['required'],
             'apellidos' => ['required'],
             'fecha_nacimiento' => ['required'],
@@ -83,13 +83,13 @@ class PersonalController extends Controller
             'provincia' => ['required'],
             'municipio' => ['required'],
             'distrito_municipal' => ['required'],
+            'sector' => ['required'],
             'seccion' => ['required'],
             'barrio' => ['required'],
         ],
         [
             'cedula.required' => 'El campo Cédula es obligatorio',
             'cedula.min' => 'La Cédula debe tener mínimo 10 números',
-            'cedula.unique' => 'La Cédula ya existe en nuestros registros',
             'nombres.required' => 'El campo Nombres es obligatorio',
             'apellidos.required' => 'El campo Apellidos es obligatorio',
             'fecha_nacimiento.required' => 'El campo Fecha de Nacimiento es obligatorio',
@@ -103,9 +103,33 @@ class PersonalController extends Controller
             'municipio.required' => 'El campo Municipio es obligatorio',
             'distrito_municipal.required' => 'El campo Distrito Municipal es obligatorio',
             'seccion.required' => 'El campo Sección es obligatorio',
+            'sector.required' => 'El campo Sector es obligatorio',
             'barrio.required' => 'El campo Barrio es obligatorio',
 
         ]);
+
+        $fotoFrontal = null;
+        $fotoLateral = null;
+        if ($request->hasFile('foto_frontal')) {
+            $uploadPath = public_path('/storage/FotosCandidatos/');
+            $file = $request->file('foto_frontal');
+            $extension = $file->getClientOriginalExtension();
+            $uuid = Str::uuid(4);
+            $fileName = $uuid . '.' . $extension;
+            $file->move($uploadPath, $fileName);
+            $url = '/storage/FotosCandidatos/'.$fileName;
+            $fotoFrontal = $url;
+        }
+        if ($request->hasFile('foto_lateral')) {
+            $uploadPath = public_path('/storage/FotosCandidatos/');
+            $file = $request->file('foto_lateral');
+            $extension = $file->getClientOriginalExtension();
+            $uuid = Str::uuid(4);
+            $fileName = $uuid . '.' . $extension;
+            $file->move($uploadPath, $fileName);
+            $url = '/storage/FotosCandidatos/'.$fileName;
+            $fotoLateral = $url;
+        }
 
         if($role == 'Empresa'){
             $idEmpresa = Auth::user()->id;
@@ -129,6 +153,8 @@ class PersonalController extends Controller
         $registro->estado_civil = $request->estado_civil;
         $registro->nacionalidad = $request->nacionalidad;
         $registro->tipo_sangre = $request->tipo_sangre;
+        $registro->foto_frontal = $fotoFrontal;
+        $registro->foto_lateral = $fotoLateral;
         $registro->save();
 
         $personalId = $registro->id;
@@ -141,6 +167,7 @@ class PersonalController extends Controller
         }
         $residencia->municipio = $request->municipio;
         $residencia->distrito_municipal = $request->distrito_municipal;
+        $residencia->sector = $request->sector;
         $residencia->seccion = $request->seccion;
         $residencia->barrio = $request->barrio;
         $residencia->tipo_residencia = $request->tipo_residencia;
@@ -206,7 +233,7 @@ class PersonalController extends Controller
     public function actividadeducativa($id)
     {
         $data = Personal::where('id', $id)->first();
-        return view('personal.capacidadeducativa', compact('data'));
+        return view('personal.capacidadeducativa', compact('data', 'id'));
     }
     /**
      * Store a newly created resource in storage.
@@ -334,6 +361,7 @@ class PersonalController extends Controller
         if ($count>0) {
 
             $request->validate([
+                'fecha' => ['required'],
                 'certificado_procuraduria' => ['required'],
                 'certificado_institucion' => ['required'],
                 'actividad_antisocial' => ['required'],
@@ -352,6 +380,7 @@ class PersonalController extends Controller
                 'resultado' => ['required'],
             ],
             [
+                'fecha.required' => 'La fecha es obligatoria',
                 'certificado_procuraduria.required' => 'La respuesta de Certificado de Procuraduría es obligatoria',
                 'certificado_institucion.required' => 'La respuesta de Certificado de Institución es obligatoria',
                 'actividad_antisocial.required' => 'La respuesta de Actividad Antisocial es obligatoria',
@@ -372,6 +401,7 @@ class PersonalController extends Controller
 
             $reg = new IntegridadLaboral();
             $reg->personal_id = $id;
+            $reg->fecha = $request->fecha;
             $reg->certificado_procuraduria = $request->certificado_procuraduria;
             $reg->certificado_institucion = $request->certificado_institucion;
             $reg->actividad_antisocial = $request->actividad_antisocial;
@@ -449,7 +479,31 @@ class PersonalController extends Controller
                 'lugar_nacimiento.required' => 'El campo Lugar de Nacimiento es obligatorio',
             ]);
 
+            $fotoFrontal = null;
+            $fotoLateral = null;
+
+
             $registro = Personal::where('id', $id)->first();
+            if ($request->hasFile('foto_frontal')) {
+                $uploadPath = public_path('/storage/FotosCandidatos/');
+                $file = $request->file('foto_frontal');
+                $extension = $file->getClientOriginalExtension();
+                $uuid = Str::uuid(4);
+                $fileName = $uuid . '.' . $extension;
+                $file->move($uploadPath, $fileName);
+                $url = '/storage/FotosCandidatos/'.$fileName;
+                $registro->foto_frontal = $url;
+            }
+            if ($request->hasFile('foto_lateral')) {
+                $uploadPath = public_path('/storage/FotosCandidatos/');
+                $file = $request->file('foto_lateral');
+                $extension = $file->getClientOriginalExtension();
+                $uuid = Str::uuid(4);
+                $fileName = $uuid . '.' . $extension;
+                $file->move($uploadPath, $fileName);
+                $url = '/storage/FotosCandidatos/'.$fileName;
+                $registro->foto_lateral = $url;
+            }
             $registro->cedula = $request->cedula;
             $registro->nombres = $request->nombres;
             $registro->apellidos = $request->apellidos;

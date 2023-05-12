@@ -35,6 +35,64 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="row g-gs">
+                                <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase" for="fw-vr-lugar">Fecha</label>
+                                            <div class="form-control-wrap">
+                                                <input type="date" class="form-control" id="fw-vr-lugar" name="fecha"
+                                                    value="{{ $data->fecha }}">
+                                                @if ($errors->has('fecha'))
+                                                    <span class="invalid text-danger">
+                                                        {{ $errors->first('fecha') }}
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase" for="fw-vr-lugar">Empresa</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" id="fw-vr-lugar" name="empresa"
+                                                    value="{{ $data->empresa }}" placeholder="Ejm: El Caribe C.A">
+                                                @if ($errors->has('empresa'))
+                                                    <span class="invalid text-danger">
+                                                        {{ $errors->first('empresa') }}
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase" for="fw-vr-lugar">Sucursal</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" id="fw-vr-lugar" name="sucursal"
+                                                    value="{{ $data->sucursal }}" placeholder="Ejm: El Caribe 2 C.A">
+                                                @if ($errors->has('sucursal'))
+                                                    <span class="invalid text-danger">
+                                                        {{ $errors->first('sucursal') }}
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase" for="fw-vr-lugar">Autorizado</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control" id="fw-vr-lugar"
+                                                    name="autorizado" value="{{ $data->autorizado }}"
+                                                    placeholder="Ejm: Carlos Pérez">
+                                                @if ($errors->has('autorizado'))
+                                                    <span class="invalid text-danger">
+                                                        {{ $errors->first('autorizado') }}
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-md-12 ">
                                         <table class="table table-bordered">
                                             <thead>

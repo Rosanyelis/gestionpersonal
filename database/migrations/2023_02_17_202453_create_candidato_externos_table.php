@@ -19,10 +19,6 @@ return new class extends Migration
             $table->string('nombres')->nullable();
             $table->string('apellidos')->nullable();
             $table->date('fecha_nacimiento')->nullable();
-            $table->string('empresa')->nullable();
-            $table->string('sucursal')->nullable();
-            $table->string('autorizado')->nullable();
-            $table->text('detalle')->nullable();
             $table->timestamps();
         });
     }

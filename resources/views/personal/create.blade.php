@@ -38,7 +38,7 @@
                 @endif
                     <div class="card card-bordered">
                         <div class="card-inner">
-                            <form id="form" action="{{ url('/personal/guardar-personal') }}" method="POST">
+                            <form id="form" action="{{ url('/personal/guardar-personal') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <ul class="nav nav-tabs">
                                     <li class="nav-item">

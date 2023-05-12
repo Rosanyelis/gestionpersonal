@@ -34,6 +34,20 @@
                                 method="POST">
                                 @csrf
                                 <div class="row g-gs">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase" for="fw-vr-lugar">Fecha</label>
+                                            <div class="form-control-wrap">
+                                                <input type="date" class="form-control" id="fw-vr-lugar" name="fecha"
+                                                    value="{{ old('fecha') }}">
+                                                @if ($errors->has('fecha'))
+                                                    <span class="invalid text-danger">
+                                                        {{ $errors->first('fecha') }}
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-md-12 ">
                                         <table class="table table-bordered">
                                             <thead>

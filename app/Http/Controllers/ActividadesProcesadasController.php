@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Municipio;
+use App\Models\Provincia;
 use App\Models\ReporteActividadNoProcesada;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +28,8 @@ class ActividadesProcesadasController extends Controller
      */
     public function create($id)
     {
-        return view('actividadesProcesadas.create', compact('id'));
+        $provincias = Provincia::all();
+        return view('actividadesProcesadas.create', compact('id', 'provincias'));
     }
 
     /**
@@ -45,6 +48,14 @@ class ActividadesProcesadasController extends Controller
                 $dataM = new ReporteActividadNoProcesada();
                 $dataM->user_id = Auth::user()->id;
                 $dataM->personal_id = $id;
+                $dataM->fecha = $key->fecha;
+                $dataM->hora = $key->hora;
+                $dataM->empresa = $key->empresa;
+                $dataM->provincia = $key->provincia;
+                $dataM->municipio = $key->municipio;
+                $dataM->sector = $key->sector;
+                $dataM->quien_reporta = $key->quien_reporta;
+                $dataM->tipo_involucrado = $key->tipoInv;
                 $dataM->tipo_reporte = $key->tipo;
                 $dataM->detalles = $key->detalle;
                 $dataM->save();
@@ -84,7 +95,8 @@ class ActividadesProcesadasController extends Controller
         $count = ReporteActividadNoProcesada::where('id', $reporte_id)->count();
         if ($count>0) {
             $data = ReporteActividadNoProcesada::where('id', $reporte_id)->where('personal_id', $id)->first();
-            return view('actividadesProcesadas.edit', compact('data', 'id'));
+            $provincias = Provincia::all();
+            return view('actividadesProcesadas.edit', compact('data', 'id', 'provincias'));
         } else {
             return redirect('/personal/'.$id.'/actividades-no-procesadas')->with('error', 'Problemas para Mostrar el Registro.');
         }
@@ -102,6 +114,17 @@ class ActividadesProcesadasController extends Controller
         $count = ReporteActividadNoProcesada::where('id', $id)->count();
         if ($count>0) {
             $registro = ReporteActividadNoProcesada::where('id', $id)->first();
+            $registro->fecha = $request->fecha;
+            $registro->hora = $request->hora;
+            $registro->empresa = $request->empresa;
+            $registro->provincia = $request->provincia;
+            $registro->municipio = $request->municipio;
+            $registro->sector = $request->sector;
+            $registro->quien_reporta = $request->quien_reporta;
+            $registro->tipo_involucrado = $request->tipoInv;
+            $registro->tipo_reporte = $request->tipo;
+            $registro->detalles = $request->detalle;
+            $registro->tipo_involucrado = $request->tipoInv;
             $registro->tipo_reporte = $request->tipo;
             $registro->detalles = $request->detalle;
             $registro->save();
@@ -112,4 +135,10 @@ class ActividadesProcesadasController extends Controller
         }
     }
 
+    public function getNameMunicipio($id)
+    {
+        $provincias = Provincia::where('nombre', $id)->first();
+        $municipios = Municipio::where('provincia_id', $provincias->id)->get();
+        return response()->json($municipios);
+    }
 }

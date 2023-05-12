@@ -100,7 +100,7 @@ class MaestriaController extends Controller
         if ($count>0) {
             $data = Maestria::where('personal_id', $id)->where('id', $maestrias_id)->delete();
             return redirect('/personal/'.$id.'/ver-perfil-de-personal')
-                        ->with('success', 'Registro Eliminado Exitosamente');
+                        ->with('success', 'Registro de Maestría Eliminado Exitosamente');
         } else {
             return redirect('/personal/'.$id.'/ver-perfil-de-personal')
                         ->with('error', 'Problemas para Mostrar el Registro.');

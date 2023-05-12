@@ -40,7 +40,7 @@ class AlergiaMedicamentosController extends Controller
                 $dataM->save();
             }
 
-            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de Guardado Exitósamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de Alergia a Medicamentos Guardado Exitósamente');
         }else{
             return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('error', 'No hay datos que guardar.');
         }
@@ -74,7 +74,7 @@ class AlergiaMedicamentosController extends Controller
             $medicamento->nombre = $request->nombre;
             $medicamento->save();
 
-            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de Actualizado Exitósamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de Alergia a Medicamentos Actualizado Exitósamente');
 
         } else {
             return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('danger', 'Problemas para Mostrar el Registro.');
@@ -92,7 +92,7 @@ class AlergiaMedicamentosController extends Controller
         $count = AlergiaMedicamentos::where('id', $medicamento_id)->count();
         if ($count>0) {
             $data = AlergiaMedicamentos::where('personal_id', $id)->where('id', $medicamento_id)->delete();
-            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro Eliminado Exitosamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de Alergia a Medicamentos Eliminado Exitosamente');
         } else {
             return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('error', 'Problemas para Mostrar el Registro.');
         }

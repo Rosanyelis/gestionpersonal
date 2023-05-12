@@ -142,6 +142,23 @@
 
             @include('layouts.alerts')
 
+            $('.datatable-init tbody').on('click', '.delete-record', function() {
+                let dataid = $(this).data('id');
+                let formDelete = $('#formDelete-' + dataid);
+                console.log(formDelete);
+                Swal.fire({
+                    title: '¿Está Seguro de Eliminar el Registro?',
+                    text: "Si tiene datos dependientes, no podrá eliminarlo!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Si, estoy seguro!'
+                }).then((result) => {
+                    if (result.value) {
+                        $(formDelete).submit();
+                    }
+                });
+            });
+
             $('.table tbody').on('click', '.delete-record', function() {
                 let dataid = $(this).data('id');
                 let formDelete = $('#formDelete-' + dataid);

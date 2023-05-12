@@ -42,6 +42,7 @@ Route::get('/clear', function () {
     Artisan::call('cache:clear');
     Artisan::call('config:cache');
     Artisan::call('view:clear');
+    Artisan::call('key:generate');
 return "Cleared!";
 });
 
@@ -62,6 +63,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/personal/{id}/actualizar-personal', [PersonalController::class, 'update'])->name('personal.update');
     Route::get('/personal/{id}/ver-perfil-de-personal', [PersonalController::class, 'show'])->name('personal.show');
     Route::get('/personal/{id}/actividades-educativa', [PersonalController::class, 'actividadeducativa'])->name('personal.actividadeducativa');
+    Route::get('/personal/{id}/guardar-actividades-educativa', [PersonalController::class, 'storecapacidadeducativa'])->name('personal.storecapacidadeducativa');
     Route::get('/personal/{id}/actividades-laboral', [PersonalController::class, 'actividadlaboral'])->name('personal.actividadlaboral');
     Route::get('/personal/{id}/investigacion-laboral', [PersonalController::class, 'investigacionlaboral'])->name('personal.investigacionlaboral');
     Route::post('/personal/{id}/guardar-certificaciones-y-depuraciones', [PersonalController::class, 'storecertificaciones'])->name('personal.storecertificaciones');
@@ -189,7 +191,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/personal/{id}/actividades-no-procesadas/{reporte_id}/ver-reporte', [ActividadesProcesadasController::class, 'show'])->name('reporte.show');
     Route::get('/personal/{id}/actividades-no-procesadas/{reporte_id}/editar-reporte', [ActividadesProcesadasController::class, 'edit'])->name('reporte.edit');
     Route::put('/personal/{id}/actividades-no-procesadas/{reporte_id}/actualizar-reporte', [ActividadesProcesadasController::class, 'update'])->name('reporte.update');
-
+    Route::get('/personal/{id}/get-nombre-municipios', [ActividadesProcesadasController::class, 'getNameMunicipio'])->name('reporte.getNameMunicipio');
     # Integridad Laboral Personal
     Route::get('/personal/{id}/integridad-laboral/nueva-prueba', [IntegridadLaboralController::class, 'create'])->name('prueba.create');
     Route::post('/personal/{id}/integridad-laboral/guardar-prueba', [IntegridadLaboralController::class, 'store'])->name('prueba.store');

@@ -29,10 +29,46 @@
                 <div class="nk-block nk-block-lg">
                     <div class="card card-bordered">
                         <div class="card-inner">
-                            <form id="form" action="{{ url('/personal/'.$data->id.'/actualizar-personal') }}" method="POST">
+                            <form id="form" action="{{ url('/personal/'.$data->id.'/actualizar-personal') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="row gy-3">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase" for="fw-vr-first-name">Foto Frontal</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-file">
+                                                    <input name="foto_frontal" type="file" class="custom-file-input" id="customFile">
+                                                    <label class="custom-file-label" for="customFile">Subir Foto Frontal</label>
+                                                    @if ($errors->has('foto_frontal'))
+                                                        <span class="invalid text-danger">
+                                                            {{ $errors->first('foto_frontal') }}
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{{ asset('' . $data->foto_frontal . '') }}" class="card-img-top" style="width: 300px;"
+                                            alt="{{ $data->cedula }}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase" for="fw-vr-first-name">Foto Lateral</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-file">
+                                                    <input name="foto_lateral" type="file" class="custom-file-input" id="customFile">
+                                                    <label class="custom-file-label" for="customFile">Subir Foto Lateral</label>
+                                                    @if ($errors->has('foto_lateral'))
+                                                        <span class="invalid text-danger">
+                                                            {{ $errors->first('foto_lateral') }}
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{{ asset('' . $data->foto_lateral . '') }}" class="card-img-top" style="width: 300px;"
+                                            alt="{{ $data->cedula }}">
+                                    </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-label text-uppercase" for="fw-vr-first-name">Cédula</label>

@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('personal_id')->nullable()->constrained('personals')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('candidato_id')->nullable()->constrained('candidato_externos')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('fecha')->nullable();
+            $table->string('empresa')->nullable();
+            $table->string('sucursal')->nullable();
+            $table->string('autorizado')->nullable();
             $table->enum('certificado_procuraduria', ['Si', 'No']);
             $table->enum('certificado_institucion', ['Si', 'No']);
             $table->enum('actividad_antisocial', ['Si', 'No']);

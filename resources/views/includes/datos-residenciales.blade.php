@@ -36,6 +36,12 @@
         </div>
         <div class="profile-ud-item">
             <div class="profile-ud wider">
+                <span class="profile-ud-label text-uppercase">Sector</span>
+                <span class="profile-ud-value">{{ $data->residencia->sector }}</span>
+            </div>
+        </div>
+        <div class="profile-ud-item">
+            <div class="profile-ud wider">
                 <span class="profile-ud-label text-uppercase">Barrio</span>
                 <span class="profile-ud-value">{{ $data->residencia->barrio }}</span>
             </div>
@@ -64,10 +70,10 @@
                 <span class="profile-ud-value">{{ $data->residencia->coordenada }}</span>
             </div>
         </div>
-        <div class="profile-ud-item">
+        <div class="profile-ud-item col-md-12 ">
             <div class="profile-ud wider">
                 <span class="profile-ud-label text-uppercase">Referencia de Llegada</span>
-                <span class="profile-ud-value">{{ $data->residencia->referencia_llegada }}</span>
+                <span class="profile-ud-value text-left">{{ $data->residencia->referencia_llegada }}</span>
             </div>
         </div>
     </div>

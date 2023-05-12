@@ -34,6 +34,26 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr class="text-uppercase">
+                                                <th scope="col">Fecha</th>
+                                                <th scope="col">Empresa</th>
+                                                <th scope="col">Sucursal</th>
+                                                <th scope="col">Autorizado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-uppercase">
+                                            <tr>
+                                                <td>{{ $data->fecha }}</td>
+                                                <td>{{ $data->empresa }}</td>
+                                                <td>{{ $data->sucursal }}</td>
+                                                <td>{{ $data->autorizado }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-12 ">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="text-uppercase">
                                                 <th scope="col">#</th>
                                                 <th scope="col">Tipo de Prueba</th>
                                                 <th scope="col" colspan="2">Respuesta</th>

@@ -1,6 +1,11 @@
 <div class="nk-block">
     <div class="nk-block-head nk-block-head-sm nk-block-between badge badge-dark p-1">
         <h5 class="title text-white text-uppercase">Diplomados</h5>
+        <a href="{{ url('/personal/' . $data->id . '/diplomados/nuevo-diplomado') }}"
+            class="btn btn-sm btn-primary">
+            <em class="icon ni ni-plus-sm"></em>
+            <span>Nuevo</span>
+        </a>
     </div><!-- .nk-block-head -->
 
     <table class="table mt-3">
@@ -28,14 +33,24 @@
                                         data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <ul class="link-list-opt no-bdr">
-                                            <li><a href="javascript:void(0)"><em
-                                                        class="icon ni ni-edit"></em><span>Editar</span></a>
+                                            <li>
+                                                <a
+                                                    href="{{ url('/personal/' . $data->id . '/diplomados/' . $item->id . '/editar-diplomado') }}">
+                                                    <em class="icon ni ni-edit"></em>
+                                                    <span>Editar</span>
+                                                </a>
                                             </li>
                                             <li>
                                                 <button class="btn delete-record" data-id="{{ $item->id }}">
                                                     <em class="icon ni ni-trash"></em>
-                                                    <span>Eliminar</span>
+                                                    <span>Eliminar
+                                                        Diplomado</span>
                                                 </button>
+                                                <form id="formDelete-{{ $item->id }}"
+                                                    action="{{ url('/personal/' . $data->id . '/diplomados/' . $item->id . '/eliminar-diplomado') }}"method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
                                             </li>
                                         </ul>
                                     </div>

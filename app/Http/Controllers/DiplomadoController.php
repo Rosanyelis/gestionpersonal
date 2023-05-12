@@ -40,9 +40,9 @@ class DiplomadoController extends Controller
                 $dataM->save();
             }
 
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('success', 'Registro de Guardado Exitósamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de Diplomados Guardado Exitósamente');
         }else{
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('error', 'No hay datos que guardar.');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('error', 'No hay datos que guardar.');
         }
     }
 
@@ -77,10 +77,10 @@ class DiplomadoController extends Controller
             $diplomados->ano = $request->ano;
             $diplomados->save();
 
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('success', 'Registro de Actualizado Exitósamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de Diplomados Actualizado Exitósamente');
 
         } else {
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('danger', 'Problemas para Mostrar el Registro.');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('danger', 'Problemas para Mostrar el Registro.');
         }
     }
 
@@ -95,9 +95,9 @@ class DiplomadoController extends Controller
         $count = Diplomado::where('id', $diplomado_id)->count();
         if ($count>0) {
             $data = Diplomado::where('personal_id', $id)->where('id', $diplomado_id)->delete();
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('success', 'Registro Eliminado Exitosamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de Diplomados Eliminado Exitosamente');
         } else {
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('error', 'Problemas para Mostrar el Registro.');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('error', 'Problemas para Mostrar el Registro.');
         }
     }
 }

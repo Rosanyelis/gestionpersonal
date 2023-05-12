@@ -32,6 +32,10 @@ class IntegridadLaboralExternoController extends Controller
         if ($count>0) {
 
             $request->validate([
+                'fecha' => ['required', 'date'], // 'date_format:Y-m-d
+                'empresa' => ['required'],
+                'sucursal' => ['required'],
+                'autorizado' => ['required'],
                 'certificado_procuraduria' => ['required'],
                 'certificado_institucion' => ['required'],
                 'actividad_antisocial' => ['required'],
@@ -50,6 +54,10 @@ class IntegridadLaboralExternoController extends Controller
                 'resultado' => ['required'],
             ],
             [
+                'fecha.required' => 'El campo Fecha es obligatorio',
+                'empresa.required' => 'El campo Empresa es obligatorio',
+                'sucursal.required' => 'El campo Sucursal es obligatorio',
+                'autorizado.required' => 'El campo Autorizado es obligatorio',
                 'certificado_procuraduria.required' => 'La respuesta de Certificado de Procuraduría es obligatoria',
                 'certificado_institucion.required' => 'La respuesta de Certificado de Institución es obligatoria',
                 'actividad_antisocial.required' => 'La respuesta de Actividad Antisocial es obligatoria',
@@ -70,6 +78,10 @@ class IntegridadLaboralExternoController extends Controller
 
             $reg = new IntegridadLaboral();
             $reg->candidato_id = $id;
+            $reg->fecha = $request->fecha;
+            $reg->empresa = $request->empresa;
+            $reg->sucursal = $request->sucursal;
+            $reg->autorizado = $request->autorizado;
             $reg->certificado_procuraduria = $request->certificado_procuraduria;
             $reg->certificado_institucion = $request->certificado_institucion;
             $reg->actividad_antisocial = $request->actividad_antisocial;
@@ -133,6 +145,10 @@ class IntegridadLaboralExternoController extends Controller
         $count = CandidatoExterno::where('id', $id)->count();
         if ($count>0) {
             $reg = IntegridadLaboral::where('candidato_id', $id)->where('id', $evaluacion_id)->first();
+            $reg->fecha = $request->fecha;
+            $reg->empresa = $request->empresa;
+            $reg->sucursal = $request->sucursal;
+            $reg->autorizado = $request->autorizado;
             $reg->certificado_procuraduria = $request->certificado_procuraduria;
             $reg->certificado_institucion = $request->certificado_institucion;
             $reg->actividad_antisocial = $request->actividad_antisocial;

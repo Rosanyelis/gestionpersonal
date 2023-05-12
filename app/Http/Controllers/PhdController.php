@@ -40,9 +40,9 @@ class PhdController extends Controller
                 $dataM->save();
             }
 
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('success', 'Registro de Guardado Exitósamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de PHD Guardado Exitósamente');
         }else{
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('error', 'No hay datos que guardar.');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('error', 'No hay datos que guardar.');
         }
     }
 
@@ -76,10 +76,10 @@ class PhdController extends Controller
             $phd->ano = $request->ano;
             $phd->save();
 
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('success', 'Registro de Actualizado Exitósamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de PHD Actualizado Exitósamente');
 
         } else {
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('danger', 'Problemas para Mostrar el Registro.');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('danger', 'Problemas para Mostrar el Registro.');
         }
     }
 
@@ -94,9 +94,9 @@ class PhdController extends Controller
         $count = Phd::where('id', $phd_id)->count();
         if ($count>0) {
             $data = Phd::where('personal_id', $id)->where('id', $phd_id)->delete();
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('success', 'Registro Eliminado Exitosamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de PHD Eliminado Exitosamente');
         } else {
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('error', 'Problemas para Mostrar el Registro.');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('error', 'Problemas para Mostrar el Registro.');
         }
     }
 }

@@ -34,6 +34,20 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr class="text-uppercase">
+                                                <th scope="col">Fecha</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-uppercase">
+                                            <tr>
+                                                <td>{{ $data->fecha }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-12 ">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="text-uppercase">
                                                 <th scope="col">#</th>
                                                 <th scope="col">Tipo de Prueba</th>
                                                 <th scope="col" colspan="2">Respuesta</th>

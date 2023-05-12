@@ -108,6 +108,10 @@
             $('#guardar').click(function() {
                 $('#datosContacto').val(JSON.stringify(datosContactos));
                 $('#form').submit();
+                $('#guardar').attr('disabled', true);
+                $('#guardar').html(
+                    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span> Por favor, espere... </span>'
+                    );
             });
 
         })(NioApp, jQuery);

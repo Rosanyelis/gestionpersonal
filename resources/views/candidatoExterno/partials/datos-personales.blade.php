@@ -31,17 +31,5 @@
                 <span class="profile-ud-value">{{ \Carbon\Carbon::createFromDate($data->fecha_nacimiento)->age }}</span>
             </div>
         </div>
-        <div class="profile-ud-item">
-            <div class="profile-ud wider">
-                <span class="profile-ud-label text-uppercase">Empresa</span>
-                <span class="profile-ud-value">{{ $data->empresa }}</span>
-            </div>
-        </div>
-        <div class="profile-ud-item">
-            <div class="profile-ud wider">
-                <span class="profile-ud-label text-uppercase">Sucursal</span>
-                <span class="profile-ud-value">{{ $data->sucursal }}</span>
-            </div>
-        </div>
     </div><!-- .profile-ud-list -->
 </div>

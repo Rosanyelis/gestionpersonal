@@ -2,6 +2,38 @@
     <div class="row gy-3">
         <div class="col-md-6">
             <div class="form-group">
+                <label class="form-label text-uppercase" for="fw-vr-first-name">Foto Frontal</label>
+                <div class="form-control-wrap">
+                    <div class="custom-file">
+                        <input name="foto_frontal" type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Subir Foto Frontal</label>
+                        @if ($errors->has('foto_frontal'))
+                            <span class="invalid text-danger">
+                                {{ $errors->first('foto_frontal') }}
+                            </span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label text-uppercase" for="fw-vr-first-name">Foto Lateral</label>
+                <div class="form-control-wrap">
+                    <div class="custom-file">
+                        <input name="foto_lateral" type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Subir Foto Lateral</label>
+                        @if ($errors->has('foto_lateral'))
+                            <span class="invalid text-danger">
+                                {{ $errors->first('foto_lateral') }}
+                            </span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
                 <label class="form-label text-uppercase" for="fw-vr-first-name">Cédula</label>
                 <div class="form-control-wrap">
                     <input type="text" class="form-control " id="fw-vr-first-name" name="cedula"

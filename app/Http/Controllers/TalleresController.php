@@ -40,9 +40,9 @@ class TalleresController extends Controller
                 $dataM->save();
             }
 
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('success', 'Registro de Guardado Exitósamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de Talleres Guardado Exitósamente');
         }else{
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('error', 'No hay datos que guardar.');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('error', 'No hay datos que guardar.');
         }
     }
 
@@ -77,10 +77,10 @@ class TalleresController extends Controller
             $taller->ano = $request->ano;
             $taller->save();
 
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('success', 'Registro de Actualizado Exitósamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de Talleres Actualizado Exitósamente');
 
         } else {
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('danger', 'Problemas para Mostrar el Registro.');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('danger', 'Problemas para Mostrar el Registro.');
         }
     }
 
@@ -95,9 +95,9 @@ class TalleresController extends Controller
         $count = Talleres::where('id', $taller_id)->count();
         if ($count>0) {
             $data = Talleres::where('personal_id', $id)->where('id', $taller_id)->delete();
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('success', 'Registro Eliminado Exitosamente');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('success', 'Registro de Talleres Eliminado Exitosamente');
         } else {
-            return redirect('/personal/'.$id.'/actividades-educativa')->with('error', 'Problemas para Mostrar el Registro.');
+            return redirect('/personal/'.$id.'/ver-perfil-de-personal')->with('error', 'Problemas para Mostrar el Registro.');
         }
     }
 }

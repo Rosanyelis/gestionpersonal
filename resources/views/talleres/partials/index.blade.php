@@ -42,7 +42,7 @@
                                             <button class="btn delete-record" data-id="{{ $item->id }}">
                                                 <em class="icon ni ni-trash"></em>
                                                 <span>Eliminar
-                                                    Carrera</span>
+                                                    Taller</span>
                                             </button>
                                             <form id="formDelete-{{ $item->id }}"
                                                 action="{{ url('/personal/' . $data->id . '/talleres/' . $item->id . '/eliminar-taller') }}"method="POST">

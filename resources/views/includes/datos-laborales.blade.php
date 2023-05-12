@@ -170,18 +170,24 @@
     <table class="table mt-3">
         <thead class="text-uppercase">
             <tr>
+                <th>#</th>
                 <th><span>Empresa</span></th>
-                <th><span>Años de Entrada</span></th>
-                <th><span>Cantidad de Años</span></th>
-                <th><span>Cantidad de Meses</span></th>
+                <th><span>Labor</span></th>
+                <th><span>Fecha Ent.</span></th>
+                <th><span>Fecha Sal.</span></th>
+                <th><span>Cant. Años</span></th>
+                <th><span>Cant. Meses</span></th>
             </tr>
         </thead><!-- .nk-tb-item -->
         <tbody>
             @if ($data->historial_laboral)
             @foreach ($data->historial_laboral as $item)
             <tr>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->empresa }}</td>
+                <td>{{ $item->labor }}</td>
                 <td>{{ $item->ano_entrada }}</td>
+                <td>{{ $item->ano_salida }}</td>
                 <td>{{ $item->cantidad_ano }}</td>
                 <td>{{ $item->cantidad_meses }}</td>
             </tr><!-- .nk-tb-item -->

@@ -67,5 +67,49 @@
                 <span class="profile-ud-value">{{ $data->tipo_sangre }}</span>
             </div>
         </div>
+        <div class="profile-ud-item">
+            <div class="profile-ud wider">
+                <span class="profile-ud-label text-uppercase">Foto Frontal</span>
+                <span class="profile-ud-value"><button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modalDefault">Ver Foto Frontal</button></span>
+                <!-- Modal Content Code -->
+                <div class="modal fade" tabindex="-1" id="modalDefault">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                <em class="icon ni ni-cross"></em>
+                            </a>
+                            <div class="modal-header">
+                                <h5 class="modal-title">Foto Frontal</h5>
+                            </div>
+                            <div class="modal-body">
+                                <img src="{{ asset('' . $data->foto_frontal . '') }}" class="card-img-top" style="width: 300px;" alt="{{ $data->cedula }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-ud-item">
+            <div class="profile-ud wider">
+                <span class="profile-ud-label text-uppercase">Foto Lateral</span>
+                <span class="profile-ud-value"><button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modalDefault2">Ver Foto Lateral</button></span>
+                <!-- Modal Content Code -->
+                <div class="modal fade" tabindex="-1" id="modalDefault2">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                <em class="icon ni ni-cross"></em>
+                            </a>
+                            <div class="modal-header">
+                                <h5 class="modal-title">Foto Lateral</h5>
+                            </div>
+                            <div class="modal-body">
+                                <img src="{{ asset('' . $data->foto_lateral . '') }}" class="card-img-top" style="width: 300px;" alt="{{ $data->cedula }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div><!-- .profile-ud-list -->
 </div>

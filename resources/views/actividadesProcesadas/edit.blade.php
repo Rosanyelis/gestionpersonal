@@ -35,6 +35,30 @@
                             <div class="row g-gs">
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        <label class="form-label text-uppercase" for="fw-vr-first-name">Quien Reporta</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control " id="quien_reporta" name="quien_reporta" value="{{ $data->quien_reporta }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label text-uppercase" for="fw-vr-first-name">Fecha</label>
+                                        <div class="form-control-wrap">
+                                            <input type="date" class="form-control " id="fecha" name="fecha" value="{{ $data->fecha }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label text-uppercase" for="fw-vr-first-name">Hora</label>
+                                        <div class="form-control-wrap">
+                                            <input type="time" class="form-control " id="hora" name="hora" value="{{ $data->hora }}">>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
                                         <label class="form-label text-uppercase" for="fw-vr-first-name">tipo de reporte</label>
                                         <div class="form-control-select">
                                             <select class="form-control" name="tipo" id="tipo">
@@ -51,6 +75,18 @@
                                                 <option value="Conductor Reportado" @if ($data->tipo_reporte == 'Conductor Reportado') selected @endif>Conductor Reportado</option>
                                                 <option value="Desvío de ruta" @if ($data->tipo_reporte == 'Desvío de ruta') selected @endif>Desvío de ruta</option>
                                                 <option value="Víctima de Robo en Labores" @if ($data->tipo_reporte == 'Víctima de Robo en Labores') selected @endif>Víctima de Robo en Labores</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label text-uppercase" for="fw-vr-first-name">Tipo de Involucrado</label>
+                                        <div class="form-control-select">
+                                            <select class="form-control" name="tipoInv" id="tipoInv">
+                                                <option value="default_option">Seleccione...</option>
+                                                <option value="Victima" @if ($data->tipo_involucrado == 'Victima') selected @endif> Victima</option>
+                                                <option value="Victimario " @if ($data->tipo_involucrado == 'Victimario') selected @endif>Victimario</option>
                                             </select>
                                         </div>
                                     </div>

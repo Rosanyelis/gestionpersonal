@@ -49,27 +49,36 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label class="form-label text-uppercase" for="default-01">Fecha de Creación:</label>
+                                                    <label class="form-label text-uppercase" for="default-01">Quien Reporta:</label>
                                                     <div class="form-control-wrap">
-                                                        {!! \Carbon\Carbon::parse($data->created_at)->format('d-m-Y h:i:s A') !!}
+                                                        {{ $data->quien_reporta }}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label class="form-label text-uppercase" for="default-01">Empresa:</label>
+                                                    <label class="form-label text-uppercase" for="default-01">Fecha:</label>
                                                     <div class="form-control-wrap">
-                                                        {{ $data->user->empresa }}
+                                                        {!! \Carbon\Carbon::parse($data->fecha)->format('d-m-Y') !!} {!! \Carbon\Carbon::parse($data->hora)->format('h:m A') !!}
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-md-4">
                                                 <div class="form-group">
+                                                    <label class="form-label text-uppercase" for="default-01">Empresa:</label>
+                                                    <div class="form-control-wrap">
+                                                        {{ $data->empresa }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
                                                     <label class="form-label text-uppercase" for="default-01">Provincia:</label>
                                                     <div class="form-control-wrap">
-                                                        {{ $data->user->provincia }}
+                                                        {{ $data->provincia }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -77,21 +86,20 @@
                                                 <div class="form-group">
                                                     <label class="form-label text-uppercase" for="default-01">Municipio:</label>
                                                     <div class="form-control-wrap">
-                                                        {{ $data->user->municipio }}
+                                                        {{ $data->municipio }}
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="row mt-2">
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="form-label text-uppercase" for="default-01">Sector:</label>
                                                     <div class="form-control-wrap">
-                                                        {{ $data->user->sector }}
+                                                        {{ $data->sector }}
                                                     </div>
                                                 </div>
                                             </div>
-                                            
-                                        </div>
-                                        <div class="row mt-2">
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="form-label text-uppercase" for="default-01">Tipo de Reporte:</label>
@@ -100,7 +108,17 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="form-label text-uppercase" for="default-01">Involucrado:</label>
+                                                    <div class="form-control-wrap">
+                                                        {{ $data->tipo_involucrado }}
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+
+
                                         <div class="row mt-2">
                                             <div class="col-md-12 mt-2">
                                                 <div class="form-group">

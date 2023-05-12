@@ -31,14 +31,14 @@
                 <div class="nk-block nk-block-lg">
                     <div class="card card-bordered">
                         <div class="card-inner">
-                            <form action="{{ url('/personal/' . $id . '/enfermedades/' . $data->id . '/actualizar-enfermedad') }}"
+                            <form id="form" action="{{ url('/personal/' . $id . '/enfermedades/' . $data->id . '/actualizar-enfermedad') }}"
                                 class="form-validate" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="row g-gs">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="form-label" for="fw-vr-last-name">Enfermedad</label>
+                                            <label class="form-label text-uppercase" for="fw-vr-last-name">Enfermedad</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" class="form-control" id="fw-vr-last-name"
                                                     name="nombre" value="{{ $data->nombre }}">
@@ -53,7 +53,7 @@
 
                                     <div class="col-md-12 ">
                                         <div class="form-group float-right">
-                                            <button type="submit" class="btn btn-lg btn-primary">Guardar</button>
+                                            <button type="button" id="guardar" class="btn btn-lg btn-primary">Guardar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -66,3 +66,20 @@
     </div>
 @endsection
 
+@section('scripts')
+    <script>
+        (function(NioApp, $) {
+            'use strict';
+
+
+            $('#guardar').click(function() {
+                $('#form').submit();
+                $('#guardar').attr('disabled', true);
+                $('#guardar').html(
+                    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span> Por favor, espere... </span>'
+                    );
+            });
+
+        })(NioApp, jQuery);
+    </script>
+@endsection

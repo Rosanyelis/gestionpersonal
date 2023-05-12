@@ -12,18 +12,16 @@
             <tr class="text-uppercase">
                 <th><span>Nombre y Apellido</span></th>
                 <th><span>Cédula</span></th>
-                <th><span>Empresa </span></th>
-                <th><span>Sucursal </span></th>
-                <th><span>Autorizado</span></th>
+                <th><span>Fecha de Nacimiento </span></th>
+                <th><span>Edad </span></th>
             </tr>
         </thead><!-- .nk-tb-item -->
         <tbody>
             <tr>
                 <td>{{ $data->nombres }} {{ $data->apellidos }}</td>
                 <td>{{ $data->cedula }}</td>
-                <td>{{ $data->empresa }}</td>
-                <td>{{ $data->sucursal }}</td>
-                <td>{{ $data->autorizado }}</td>
+                <td>{{ $data->fecha_nacimiento }}</td>
+                <td>{{ \Carbon\Carbon::createFromDate($data->fecha_nacimiento)->age }}</td>
             </tr>
         </tbody>
     </table>
@@ -32,7 +30,9 @@
             <tr class="text-uppercase">
                 <th width="50px"><span>#</span></th>
                 <th><span>FECHA</span></th>
-                <th><span>Nro. PRUEBA </span></th>
+                <th><span>Empresa </span></th>
+                <th><span>Sucursal </span></th>
+                <th><span>Autorizado </span></th>
                 <th><span>Resultado </span></th>
                 <th><span>Detalles </span></th>
                 <th width="50px"></th>
@@ -42,8 +42,10 @@
             @foreach ($data->integridad_laboral as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{!! \Carbon\Carbon::parse($item->created_at)->format('d-m-Y h:i:s A') !!}</td>
-                    <td>Prueba Nro. {{ $item->id }}</td>
+                    <td>{{ $item->fecha }}</td>
+                    <td>{{ $item->empresa }}</td>
+                    <td>{{ $item->sucursal }}</td>
+                    <td>{{ $item->autorizado }}</td>
                     <td>{{ $item->resultado }}</td>
                     <td>{{ $item->detalle }}</td>
                     <td>

@@ -13,6 +13,8 @@
                 <th width="50px"><span>#</span></th>
                 <th><span>FECHA</span></th>
                 <th><span>Nro. PRUEBA </span></th>
+                <th><span>RESULTADO </span></th>
+                <th><span>DETALLES </span></th>
                 <th width="50px"></th>
             </tr>
         </thead><!-- .nk-tb-item -->
@@ -20,8 +22,10 @@
             @foreach ($data->integridad_laboral as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{!! \Carbon\Carbon::parse($item->created_at)->format('d-m-Y h:i:s A') !!}</td>
+                    <td>{{ $item->fecha }}</td>
                     <td>Prueba Nro. {{ $item->id }}</td>
+                    <td>{{ $item->resultado }}</td>
+                    <td>{{ $item->detalle }}</td>
                     <td>
                         <ul class="nk-tb-actions gx-1 my-n1">
                             <li class="mr-n1">
