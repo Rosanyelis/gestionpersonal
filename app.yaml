@@ -11,9 +11,9 @@ resources:
 env_variables:
     # Put production environment variables here.
     APP_NAME: "CITECSA"
-    APP_ENV: local
+    APP_ENV: production
     APP_KEY: base64:B3MDNErldeJlrQ4Y4q3zfuwIu7eJRUPX4F91vZ0WJG4=
-    APP_DEBUG: true
+    APP_DEBUG: false
     APP_URL: http://localhost
 
     LOG_CHANNEL: stack
