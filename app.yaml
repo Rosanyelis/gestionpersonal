@@ -25,6 +25,7 @@ env_variables:
     APP_KEY: base64:B3MDNErldeJlrQ4Y4q3zfuwIu7eJRUPX4F91vZ0WJG4=
     APP_DEBUG: true
     APP_URL: http://localhost
+    APP_STORAGE: /tmp
 
     LOG_CHANNEL: stack
     LOG_DEPRECATIONS_CHANNEL: null
