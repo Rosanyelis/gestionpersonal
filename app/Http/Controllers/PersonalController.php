@@ -486,6 +486,9 @@ class PersonalController extends Controller
             $registro = Personal::where('id', $id)->first();
             if ($request->hasFile('foto_frontal')) {
                 $uploadPath = public_path('/storage/FotosCandidatos/');
+                if (!file_exists($uploadPath)) {
+                    mkdir(public_path('/storage/FotosCandidatos'), 0777);
+                }
                 $file = $request->file('foto_frontal');
                 $extension = $file->getClientOriginalExtension();
                 $uuid = Str::uuid(4);
@@ -496,6 +499,9 @@ class PersonalController extends Controller
             }
             if ($request->hasFile('foto_lateral')) {
                 $uploadPath = public_path('/storage/FotosCandidatos/');
+                if (!file_exists($uploadPath)) {
+                    mkdir(public_path('/storage/FotosCandidatos'), 0777);
+                }
                 $file = $request->file('foto_lateral');
                 $extension = $file->getClientOriginalExtension();
                 $uuid = Str::uuid(4);

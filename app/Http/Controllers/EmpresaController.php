@@ -207,6 +207,9 @@ class EmpresaController extends Controller
 
             if ($request->hasFile('logo')) {
                 $uploadPath = public_path('/storage/LogosEmpresa/');
+                if (!file_exists($uploadPath)) {
+                    mkdir(public_path('/storage/LogosEmpresa'), 0777);
+                }
                 $file = $request->file('logo');
                 $extension = $file->getClientOriginalExtension();
                 $uuid = Str::uuid(4);
