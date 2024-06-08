@@ -52,7 +52,7 @@
                                         <div class="form-group">
                                             <label class="form-label text-uppercase" for="fw-vr-lugar">Empresa</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-lugar" name="empresa"
+                                                <input type="text" class="form-control text-capitalize" id="fw-vr-lugar" name="empresa"
                                                     value="{{ old('empresa') }}" placeholder="Ejm: El Caribe C.A">
                                                 @if ($errors->has('empresa'))
                                                     <span class="invalid text-danger">
@@ -66,7 +66,7 @@
                                         <div class="form-group">
                                             <label class="form-label text-uppercase" for="fw-vr-lugar">Sucursal</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-lugar" name="sucursal"
+                                                <input type="text" class="form-control text-capitalize" id="fw-vr-lugar" name="sucursal"
                                                     value="{{ old('sucursal') }}" placeholder="Ejm: El Caribe 2 C.A">
                                                 @if ($errors->has('sucursal'))
                                                     <span class="invalid text-danger">
@@ -81,7 +81,7 @@
                                         <div class="form-group">
                                             <label class="form-label text-uppercase" for="fw-vr-lugar">Autorizado</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-lugar"
+                                                <input type="text" class="form-control text-capitalize" id="fw-vr-lugar"
                                                     name="autorizado" value="{{ old('autorizado') }}"
                                                     placeholder="Ejm: Carlos Pérez">
                                                 @if ($errors->has('autorizado'))
@@ -92,32 +92,49 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase" for="fw-vr-lugar">Correo de Personal Autorizado</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control text-capitalize" id="fw-vr-lugar"
+                                                    name="correo_autorizado" value="{{ old('correo_autorizado') }}"
+                                                    placeholder="Ejm: carlos@example.com">
+                                                @if ($errors->has('correo_autorizado'))
+                                                    <span class="invalid text-danger">
+                                                        {{ $errors->first('correo_autorizado') }}
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-md-12 ">
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr class="text-uppercase">
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Tipo de Prueba</th>
-                                                    <th scope="col" colspan="2">Respuesta</th>
+                                                    <th scope="col" width="2%">#</th>
+                                                    <th scope="col" width="30%">Tipo de Prueba</th>
+                                                    <th scope="col" colspan="2" width="10%">Respuesta</th>
+                                                    <th scope="col" width="10%">Código</th>
+                                                    <th scope="col">Detalle</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="text-uppercase">
                                                 <tr>
-                                                    <th colspan="4" class="text-center">Certificado de integridad laboral y depuraciones</th>
+                                                    <th colspan="6" >Certificado de integridad laboral y depuraciones</th>
                                                 </tr>
+                                                <!-- Certificado de la Procuraduría -->
                                                 <tr>
                                                     <th scope="row">1</th>
                                                     <td>Certificado de la Procuraduría <br>
-                                                    @if ($errors->has('certificado_procuraduria'))
-                                                        <span class="invalid text-danger">
-                                                            {{ $errors->first('certificado_procuraduria') }}
-                                                        </span>
-                                                    @endif
+                                                        @if ($errors->has('certificado_procuraduria'))
+                                                            <span class="invalid text-danger">
+                                                                {{ $errors->first('certificado_procuraduria') }}
+                                                            </span>
+                                                        @endif
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
-                                                                @if (old('certificado_procuraduria') == 'Si') checked @endif
                                                                 name="certificado_procuraduria" id="certificadoSi"
                                                                 value="Si">
                                                             <label class="custom-control-label" for="certificadoSi">Si</label>
@@ -125,14 +142,26 @@
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
-                                                            @if (old('certificado_procuraduria') == 'No') checked @endif
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="certificado_procuraduria" id="certificadoNo"
                                                             value="No">
                                                             <label class="custom-control-label" for="certificadoNo">No</label>
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="1"
+                                                                name="code_pro" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info1" name="detalle_pro" class="form-control form-control-sm infoAlerta" id="detalle_pro">
+                                                    </td>
                                                 </tr>
+                                                <!-- Fin Certificado de la Procuraduría -->
+                                                <!-- Certificado de la institución -->
                                                 <tr>
                                                     <th scope="row">2</th>
                                                     <td>Certificado Institución del Orden <br>
@@ -144,7 +173,6 @@
                                                     <td>
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
-                                                                @if (old('certificado_institucion') == 'Si') checked @endif
                                                                 name="certificado_institucion" id="certificadoinstSi"
                                                                 value="Si">
                                                             <label class="custom-control-label" for="certificadoinstSi">Si</label>
@@ -152,16 +180,28 @@
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
-                                                            @if (old('certificado_institucion') == 'No') checked @endif
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="certificado_institucion" id="certificadoinstNo"
                                                             value="No">
                                                             <label class="custom-control-label" for="certificadoinstNo">No</label>
                                                         </div>
                                                     </td>
+
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="2"
+                                                                name="code_ins" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info2" name="detalle_ins" class="form-control form-control-sm infoAlerta" id="detalle_ins">
+                                                    </td>
                                                 </tr>
+                                                <!-- Fin Certificado de la institución -->
                                                 <tr>
-                                                    <th colspan="4" class="text-center">Investigación y depuración de actividades contrarias a las leyes</th>
+                                                    <th colspan="6" >Investigación y depuración de actividades contrarias a las leyes</th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">3</th>
@@ -176,19 +216,28 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="actividad_antisocial" id="actividad_antisocialSi"
-                                                            @if (old('actividad_antisocial')== 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="actividad_antisocialSi">Si</label>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="actividad_antisocial" id="actividad_antisocialNo"
-                                                            @if (old('actividad_antisocial')== 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="actividad_antisocialNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="3"
+                                                                name="code_ant" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info3" name="detalle_ant" class="form-control form-control-sm infoAlerta" id="detalle_ant">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -204,23 +253,32 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="reporte_actividad_noprocesada" id="reporte_actividad_noprocesadaSi"
-                                                            @if (old('reporte_actividad_noprocesada')== 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="reporte_actividad_noprocesadaSi">Si</label>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="reporte_actividad_noprocesada" id="reporte_actividad_noprocesadaNo"
-                                                            @if (old('reporte_actividad_noprocesada')== 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="reporte_actividad_noprocesadaNo">No</label>
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="4"
+                                                                name="code_nopro" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info4" name="detalle_nopro" class="form-control form-control-sm infoAlerta" id="detalle_nopro">
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <th colspan="4" class="text-center">Analística y psicometría</th>
+                                                    <th colspan="6" >Analística y psicometría</th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">5</th>
@@ -233,21 +291,30 @@
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="prueba_poligrafica" id="prueba_poligraficaSi"
-                                                            @if (old('prueba_poligrafica')== 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="prueba_poligraficaSi">Si</label>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="prueba_poligrafica" id="prueba_poligraficaNo"
-                                                            @if (old('prueba_poligrafica')== 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="prueba_poligraficaNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="5"
+                                                                name="code_pol" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info5" name="detalle_pol" class="form-control form-control-sm infoAlerta" id="detalle_pol">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -263,19 +330,28 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="prueba_psicometrica" id="prueba_psicometricaSi"
-                                                            @if (old('prueba_psicometrica')== 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="prueba_psicometricaSi">Si</label>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="prueba_psicometrica" id="prueba_psicometricaNo"
-                                                            @if (old('prueba_psicometrica')== 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="prueba_psicometricaNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="6"
+                                                                name="code_psi" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info6" name="detalle_psi" class="form-control form-control-sm infoAlerta" id="detalle_psi">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -291,19 +367,28 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="enfermedades_contagiosas" id="enfermedades_contagiosasSi"
-                                                            @if (old('enfermedades_contagiosas')== 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="enfermedades_contagiosasSi">Si</label>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="enfermedades_contagiosas" id="enfermedades_contagiosasNo"
-                                                            @if (old('enfermedades_contagiosas')== 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="enfermedades_contagiosasNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="7"
+                                                                name="code_cont" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info7" name="detalle_cont" class="form-control form-control-sm infoAlerta" id="detalle_cont">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -319,19 +404,28 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="consumo_alcohol" id="consumo_alcoholSi"
-                                                            @if (old('consumo_alcohol')== 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="consumo_alcoholSi">Si</label>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="consumo_alcohol" id="consumo_alcoholNo"
-                                                            @if (old('consumo_alcohol')== 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="consumo_alcoholNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="8"
+                                                                name="code_alc" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info8" name="detalle_alc" class="form-control form-control-sm infoAlerta" id="detalle_alc">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -347,23 +441,32 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="sustancia_prohibida" id="sustancia_prohibidaSi"
-                                                            @if (old('sustancia_prohibida')== 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="sustancia_prohibidaSi">Si</label>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="sustancia_prohibida" id="sustancia_prohibidaNo"
-                                                            @if (old('sustancia_prohibida')== 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="sustancia_prohibidaNo">No</label>
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="9"
+                                                                name="code_proh" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info9" name="detalle_proh" class="form-control form-control-sm infoAlerta" id="detalle_proh">
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <th colspan="4" class="text-center">Levantamiento de campo</th>
+                                                    <th colspan="4" >Levantamiento de campo</th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">10</th>
@@ -378,19 +481,28 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="visita_domiciliaria" id="visita_domiciliariaSi"
-                                                            @if (old('visita_domiciliaria')== 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="visita_domiciliariaSi">Si</label>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="visita_domiciliaria" id="visita_domiciliariaNo"
-                                                            @if (old('visita_domiciliaria')== 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="visita_domiciliariaNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="10"
+                                                                name="code_dom" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info10" name="detalle_dom" class="form-control form-control-sm infoAlerta" id="detalle_dom">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -406,19 +518,28 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="levantamiento_coordinado" id="levantamiento_coordinadoSi"
-                                                            @if (old('levantamiento_coordinado')== 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="levantamiento_coordinadoSi">Si</label>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="levantamiento_coordinado" id="levantamiento_coordinadoNo"
-                                                            @if (old('levantamiento_coordinado')== 'No') checked @endif
-                                                            value="No">
+                                                            value="No" >
                                                             <label class="custom-control-label" for="levantamiento_coordinadoNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="11"
+                                                                name="code_coo" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info11" name="detalle_coo" class="form-control form-control-sm infoAlerta" id="detalle_coo">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -434,19 +555,28 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="investigacion_entorno" id="investigacion_entornoSi"
-                                                            @if (old('investigacion_entorno')== 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="investigacion_entornoSi">Si</label>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="investigacion_entorno" id="investigacion_entornoNo"
-                                                            @if (old('investigacion_entorno')== 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="investigacion_entornoNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="12"
+                                                                name="code_ent" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info12" name="detalle_ent" class="form-control form-control-sm infoAlerta" id="detalle_ent">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -462,19 +592,28 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="levantamiento_dactilar" id="levantamiento_dactilarSi"
-                                                            @if (old('levantamiento_dactilar')== 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="levantamiento_dactilarSi">Si</label>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="levantamiento_dactilar" id="levantamiento_dactilarNo"
-                                                            @if (old('levantamiento_dactilar')== 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="levantamiento_dactilarNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="13"
+                                                                name="code_dac" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info13" name="detalle_dac" class="form-control form-control-sm infoAlerta" id="detalle_dac">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -490,19 +629,28 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="levantamiento_fotografia" id="levantamiento_fotografiaSi"
-                                                            @if (old('levantamiento_fotografia')== 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="levantamiento_fotografiaSi">Si</label>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="levantamiento_fotografia" id="levantamiento_fotografiaNo"
-                                                            @if (old('levantamiento_fotografia')== 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="levantamiento_fotografiaNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="14"
+                                                                name="code_fot" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info14" name="detalle_fot" class="form-control form-control-sm infoAlerta" id="detalle_fot">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -518,48 +666,43 @@
                                                         <div class="custom-control custom-radio">
                                                             <input type="radio" class="custom-control-input"
                                                             name="integridad_familiar" id="integridad_familiarSi"
-                                                            @if (old('integridad_familiar')== 'Si') checked @endif
                                                             value="Si">
                                                             <label class="custom-control-label" for="integridad_familiarSi">Si</label>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" class="custom-control-input"
+                                                            <input type="radio" class="custom-control-input" checked
                                                             name="integridad_familiar" id="integridad_familiarNo"
-                                                            @if (old('integridad_familiar')== 'No') checked @endif
                                                             value="No">
                                                             <label class="custom-control-label" for="integridad_familiarNo">No</label>
                                                         </div>
                                                     </td>
-                                                </tr>
-                                                <tr>
-                                                    <th colspan="4" class="text-center">Resultado</th>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="4">
+                                                    <td>
                                                         <div class="form-control-wrap">
-                                                            <input type="text" name="resultado" class="form-control " value="{{ old('resultadoi12') }}" placeholder="Ejemplo: La prueba fué exitósa">
+                                                            <select class="form-control form-select alertasAjax" data-id="15"
+                                                                name="code_fam" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                            </select>
                                                         </div>
-                                                        @if ($errors->has('resultado'))
-                                                            <span class="invalid text-danger">
-                                                                {{ $errors->first('resultado') }}
-                                                            </span>
-                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info15" name="detalle_fam" class="form-control form-control-sm infoAlerta" id="detalle_fam">
                                                     </td>
                                                 </tr>
+
                                                 <tr>
-                                                    <th colspan="4" class="text-center">Detalles</th>
+                                                    <th colspan="6" >Detalles</th>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="4">
+                                                    <td colspan="6">
                                                         <div class="form-control-wrap">
-                                                            <textarea name="detalle" class="form-control form-control-sm" id="detalle"
-                                                             placeholder="Ejemplo: Lorem ipsum dolor sit amet, consectetur adipiscing eli">{{ old('detalle') }}</textarea>
+                                                            <textarea name="detalle_final" class="form-control form-control-sm" id="detalle_final"
+                                                             placeholder="Ejemplo: Lorem ipsum dolor sit amet, consectetur adipiscing eli">{{ old('detalle_final') }}</textarea>
                                                         </div>
-                                                        @if ($errors->has('detalle'))
+                                                        @if ($errors->has('detalle_final'))
                                                             <span class="invalid text-danger">
-                                                                {{ $errors->first('detalle') }}
+                                                                {{ $errors->first('detalle_final') }}
                                                             </span>
                                                         @endif
                                                     </td>
@@ -592,6 +735,38 @@
 
             @include('layouts.alerts')
 
+            fetch('{{ route("alertasAjax") }}')
+                .then(response => response.json())
+                .then(data => {
+                    $(".alertasAjax").empty();
+                    $(".alertasAjax").append("<option label='empty' value=''></option>");
+                   $.each(data, function(index, alerta){
+                        var elementoAlerta = "<option value='" + alerta.codigo + "' if (alerta.codigo == '100P') { selected }>" + alerta.codigo + "</option>";
+                        $(".alertasAjax").append(elementoAlerta);
+                        if (alerta.codigo == "100P") {
+                            $(".infoAlerta").val(alerta.descripcion);
+                        }
+                    });
+                })
+                .catch(error => console.error(error));
+
+            $(".alertasAjax").on("change", function() {
+                let code = $(this).val();
+                const ID = $(this).data("id");
+                let url = "{{ route('alertasAjaxCode', "+code+") }}";
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('alertasAjaxCode', "+code+") }}",
+                    data: {
+                        'code': code,
+                    },
+                    success: function(data) {
+                        let Txt = "#info" + ID + "";
+                        $(Txt).val(data.descripcion);
+                    }
+                });
+
+            });
 
             $('#guardar').click(function() {
                 $('#form').submit();

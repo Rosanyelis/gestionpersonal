@@ -38,6 +38,7 @@
                                                 <th scope="col">Empresa</th>
                                                 <th scope="col">Sucursal</th>
                                                 <th scope="col">Autorizado</th>
+                                                <th scope="col">Correo de Autorizado</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-uppercase">
@@ -46,6 +47,7 @@
                                                 <td>{{ $data->empresa }}</td>
                                                 <td>{{ $data->sucursal }}</td>
                                                 <td>{{ $data->autorizado }}</td>
+                                                <td>{{ $data->correo_autorizado }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -54,255 +56,139 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr class="text-uppercase">
-                                                <th scope="col">#</th>
-                                                <th scope="col">Tipo de Prueba</th>
-                                                <th scope="col" colspan="2">Respuesta</th>
-                                            </tr>
-                                            <tr>
-                                                <th colspan="2" class="text-center"></th>
-                                                <th>SI</th>
-                                                <th>NO</th>
+                                                <th scope="col" width="2%">#</th>
+                                                <th scope="col" width="30%">Tipo de Prueba</th>
+                                                <th scope="col"  width="10%">Respuesta</th>
+                                                <th scope="col" width="10%">Código</th>
+                                                <th scope="col">Detalle</th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-uppercase">
                                             <tr>
-                                                <th colspan="4" class="text-center">Certificado de integridad laboral y
+                                                <th colspan="5">Certificado de integridad laboral y
                                                     depuraciones</th>
                                             </tr>
                                             <tr>
                                                 <th scope="row">1</th>
                                                 <td>Certificado de la Procuraduría <br></td>
-                                                <td>
-                                                    @if ($data->certificado_procuraduria == 'Si')
-                                                    <label class="form-label text-uppercase">Si</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->certificado_procuraduria == 'No')
-                                                    <label class="form-label text-uppercase">No</label>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center"><label class="form-label text-uppercase ">{{ $data->certificado_procuraduria }}</label></td>
+                                                <td>{{ $data->code_pro }}</td>
+                                                <td>{{ $data->detalle_pro }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">2</th>
                                                 <td>Certificado Institución del Orden </td>
-                                                <td>
-                                                    @if ($data->certificado_institucion == 'Si')
-                                                    <label class="form-label text-uppercase">Si</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->certificado_institucion == 'No')
-                                                    <label class="form-label text-uppercase">No</label>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center"><label class="form-label text-uppercase">{{ $data->certificado_institucion }}</label></td>
+                                                <td>{{ $data->code_ins }}</td>
+                                                <td>{{ $data->detalle_ins }}</td>
                                             </tr>
                                             <tr>
-                                                <th colspan="4" class="text-center">Investigación y depuración de
+                                                <th colspan="5">Investigación y depuración de
                                                     actividades contrarias a las leyes</th>
                                             </tr>
                                             <tr>
                                                 <th scope="row">3</th>
                                                 <td>Investigación profunda de vínculos con actividad antisocial</td>
-                                                <td>
-                                                    @if ($data->actividad_antisocial == 'Si')
-                                                    <label class="form-label text-uppercase">Si</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->actividad_antisocial == 'No')
-                                                    <label class="form-label text-uppercase">No</label>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center"><label class="form-label text-uppercase">{{ $data->actividad_antisocial }}</label></td>
+                                                <td>{{ $data->code_ant }}</td>
+                                                <td>{{ $data->detalle_ant }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">4</th>
                                                 <td>Reporte de actividades no procesada</td>
-                                                <td>
-                                                    @if ($data->reporte_actividad_noprocesada == 'Si')
-                                                    <label class="form-label text-uppercase">Si</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->reporte_actividad_noprocesada == 'No')
-                                                    <label class="form-label text-uppercase">No</label>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center"><label class="form-label text-uppercase">{{ $data->reporte_actividad_noprocesada }}</label></td>
+                                                <td>{{ $data->code_nopro }}</td>
+                                                <td>{{ $data->detalle_nopro }}</td>
                                             </tr>
                                             <tr>
-                                                <th colspan="4" class="text-center">Analística y psicometría</th>
+                                                <th colspan="5">Analística y psicometría</th>
                                             </tr>
                                             <tr>
                                                 <th scope="row">5</th>
                                                 <td>Prueba Poligráfica</td>
-                                                <td>
-                                                    @if ($data->prueba_poligrafica == 'Si')
-                                                    <label class="form-label text-uppercase">Si</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->prueba_poligrafica == 'No')
-                                                    <label class="form-label text-uppercase">No</label>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center"><label class="form-label text-uppercase">{{ $data->prueba_poligrafica }}</label></td>
+                                                <td>{{ $data->code_pol }}</td>
+                                                <td>{{ $data->detalle_pol }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">6</th>
                                                 <td>Prueba Psicométrica</td>
-                                                <td>
-                                                    @if ($data->prueba_psicometrica == 'Si')
-                                                    <label class="form-label text-uppercase">Si</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->prueba_psicometrica == 'No')
-                                                    <label class="form-label text-uppercase">No</label>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center"><label class="form-label text-uppercase">{{ $data->prueba_psicometrica }}</label></td>
+                                                <td>{{ $data->code_psi }}</td>
+                                                <td>{{ $data->detalle_psi }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">7</th>
                                                 <td>Prueba Enfermedades contagiosas</td>
-                                                <td>
-                                                    @if ($data->enfermedades_contagiosas == 'Si')
-                                                    <label class="form-label text-uppercase">Si</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->enfermedades_contagiosas == 'No')
-                                                    <label class="form-label text-uppercase">No</label>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center"><label class="form-label text-uppercase">{{ $data->enfermedades_contagiosas }}</label></td>
+                                                <td>{{ $data->code_cont }}</td>
+                                                <td>{{ $data->detalle_cont }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">8</th>
                                                 <td>Prueba abuso consumo alcohol</td>
-                                                <td>
-                                                    @if ($data->consumo_alcohol == 'Si')
-                                                    <label class="form-label text-uppercase">Si</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->consumo_alcohol == 'No')
-                                                    <label class="form-label text-uppercase">No</label>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center"><label class="form-label text-uppercase">{{ $data->consumo_alcohol }}</label></td>
+                                                <td>{{ $data->code_alc }}</td>
+                                                <td>{{ $data->detalle_alc }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">9</th>
                                                 <td>Consumo de sustancia prohibida</td>
-                                                <td>
-                                                    @if ($data->sustancia_prohibida == 'Si')
-                                                    <label class="form-label text-uppercase">Si</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->sustancia_prohibida == 'No')
-                                                    <label class="form-label text-uppercase">No</label>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center"><label class="form-label text-uppercase">{{ $data->sustancia_prohibida }}</label></td>
+                                                <td>{{ $data->code_proh }}</td>
+                                                <td>{{ $data->detalle_proh }}</td>
                                             </tr>
                                             <tr>
-                                                <th colspan="4" class="text-center">Levantamiento de campo</th>
+                                                <th colspan="5">Levantamiento de campo</th>
                                             </tr>
                                             <tr>
                                                 <th scope="row">10</th>
                                                 <td>Visita Domiciliaria</td>
-                                                <td>
-                                                    @if ($data->visita_domiciliaria == 'Si')
-                                                    <label class="form-label text-uppercase">Si</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->visita_domiciliaria == 'No')
-                                                    <label class="form-label text-uppercase">No</label>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center"><label class="form-label text-uppercase">{{ $data->visita_domiciliaria }}</label></td>
+                                                <td>{{ $data->code_dom }}</td>
+                                                <td>{{ $data->detalle_dom }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">11</th>
                                                 <td>Levantamiento coordenado</td>
-                                                <td>
-                                                    @if ($data->levantamiento_coordinado == 'Si')
-                                                    <label class="form-label text-uppercase">Si</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->levantamiento_coordinado == 'No')
-                                                    <label class="form-label text-uppercase">No</label>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center"><label class="form-label text-uppercase">{{ $data->levantamiento_coordinado }}</label></td>
+                                                <td>{{ $data->code_coo }}</td>
+                                                <td>{{ $data->detalle_coo }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">12</th>
                                                 <td>Investigación de entorno</td>
-                                                <td>
-                                                    @if ($data->investigacion_entorno == 'Si')
-                                                    <label class="form-label text-uppercase">Si</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->investigacion_entorno == 'No')
-                                                    <label class="form-label text-uppercase">No</label>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center"><label class="form-label text-uppercase">{{ $data->investigacion_entorno }}</label></td>
+                                                <td>{{ $data->code_ent }}</td>
+                                                <td>{{ $data->detalle_ent }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">13</th>
                                                 <td>Levantamiento de Dactilares</td>
-                                                <td>
-                                                    @if ($data->levantamiento_dactilar == 'Si')
-                                                    <label class="form-label text-uppercase">Si</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->levantamiento_dactilar == 'No')
-                                                    <label class="form-label text-uppercase">No</label>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center"><label class="form-label text-uppercase">{{ $data->levantamiento_dactilar }}</label></td>
+                                                <td>{{ $data->code_dac }}</td>
+                                                <td>{{ $data->detalle_dac }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">14</th>
                                                 <td>Levantamientos de características fotográfica</td>
-                                                <td>
-                                                    @if ($data->levantamiento_fotografia == 'Si')
-                                                    <label class="form-label text-uppercase">Si</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->levantamiento_fotografia == 'No')
-                                                    <label class="form-label text-uppercase">No</label>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center"><label class="form-label text-uppercase">{{ $data->levantamiento_fotografia }}</label></td>
+                                                <td>{{ $data->code_fot }}</td>
+                                                <td>{{ $data->detalle_fot }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">15</th>
                                                 <td>Levantamiento de integridad familiar</td>
-                                                <td>
-                                                    @if ($data->integridad_familiar == 'Si')
-                                                    <label class="form-label text-uppercase">Si</label>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->integridad_familiar == 'No')
-                                                    <label class="form-label text-uppercase">No</label>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center"><label class="form-label text-uppercase">{{ $data->integridad_familiar }}</label></td>
+                                                <td>{{ $data->code_fam }}</td>
+                                                <td>{{ $data->detalle_fam }}</td>
                                             </tr>
                                             <tr>
-                                                <th colspan="4" class="text-center">Resultado</th>
+                                                <th colspan="5">Resultado</th>
                                             </tr>
                                             <tr>
-                                                <td colspan="4">
-                                                    <p class="text-lowercase">{{ $data->resultado }}</p>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th colspan="4" class="text-center">Detalles</th>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="4">
-                                                    <p class="text-lowercase">{{ $data->detalle }}</p>
+                                                <td colspan="5">
+                                                    <p class="text-lowercase">{{ $data->detalle_final }}</p>
                                                 </td>
                                             </tr>
                                         </tbody>

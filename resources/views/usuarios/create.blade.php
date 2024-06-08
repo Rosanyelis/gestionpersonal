@@ -205,8 +205,8 @@
                                                     name="rol" data-placeholder="Seleccione una opción">
                                                     <option label="empty" value=""></option>
                                                     @foreach ($roles as $item)
-                                                        <option value="{{ $item->name }}"
-                                                            @if ($item->name == old('rol')) selected @endif>
+                                                        <option value="{{ $item->id }}"
+                                                            @if ($item->id == old('rol')) selected @endif>
                                                             {{ $item->name }}</option>
                                                     @endforeach
                                                 </select>

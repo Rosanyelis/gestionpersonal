@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TipoAlerta;
+use Illuminate\Http\Request;
 use App\Models\CandidatoExterno;
 use App\Models\IntegridadLaboral;
-use Illuminate\Http\Request;
 
 class IntegridadLaboralExternoController extends Controller
 {
@@ -130,7 +131,8 @@ class IntegridadLaboralExternoController extends Controller
     public function edit($id, $evaluacion_id)
     {
         $data = IntegridadLaboral::find($evaluacion_id);
-        return view('prueba-externa.edit', compact('data', 'id'));
+        $alertas = TipoAlerta::all();
+        return view('prueba-externa.edit', compact('data', 'id', 'alertas'));
     }
 
     /**
@@ -142,37 +144,9 @@ class IntegridadLaboralExternoController extends Controller
      */
     public function update(Request $request, $id, $evaluacion_id)
     {
-        $count = CandidatoExterno::where('id', $id)->count();
-        if ($count>0) {
-            $reg = IntegridadLaboral::where('candidato_id', $id)->where('id', $evaluacion_id)->first();
-            $reg->fecha = $request->fecha;
-            $reg->empresa = $request->empresa;
-            $reg->sucursal = $request->sucursal;
-            $reg->autorizado = $request->autorizado;
-            $reg->certificado_procuraduria = $request->certificado_procuraduria;
-            $reg->certificado_institucion = $request->certificado_institucion;
-            $reg->actividad_antisocial = $request->actividad_antisocial;
-            $reg->reporte_actividad_noprocesada = $request->reporte_actividad_noprocesada;
-            $reg->prueba_poligrafica = $request->prueba_poligrafica;
-            $reg->prueba_psicometrica = $request->prueba_psicometrica;
-            $reg->enfermedades_contagiosas = $request->enfermedades_contagiosas;
-            $reg->consumo_alcohol = $request->consumo_alcohol;
-            $reg->sustancia_prohibida = $request->sustancia_prohibida;
-            $reg->visita_domiciliaria = $request->visita_domiciliaria;
-            $reg->levantamiento_coordinado = $request->levantamiento_coordinado;
-            $reg->investigacion_entorno = $request->investigacion_entorno;
-            $reg->levantamiento_dactilar = $request->levantamiento_dactilar;
-            $reg->levantamiento_fotografia = $request->levantamiento_fotografia;
-            $reg->integridad_familiar = $request->integridad_familiar;
-            $reg->resultado = $request->resultado;
-            $reg->detalle = $request->detalle;
-            $reg->save();
 
-            return redirect('/candidatos-externos/'.$id.'/ver-perfil-de-candidato-externo')->with('success', 'Registro de Actualizado Exitósamente');
-
-        } else {
-            return redirect('/candidatos-externos/'.$id.'/ver-perfil-de-candidato-externo')->with('danger', 'Problemas para Mostrar el Registro.');
-        }
+        $reg = IntegridadLaboral::find($evaluacion_id)->update($request->all());
+        return redirect('/candidatos-externos/'.$id.'/ver-perfil-de-candidato-externo')->with('success', 'Registro de Actualizado Exitósamente');
     }
 
     /**

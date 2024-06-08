@@ -14,17 +14,7 @@ class CandidatoExterno extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'id',
-        'cedula',
-        'nombres',
-        'apellidos',
-        'fecha_nacimiento',
-        'empresa',
-        'sucursal',
-        'autorizado',
-        'detalle',
-    ];
+    protected $guarded = [];
 
 /**
      * Obtiene los datos de residencia.

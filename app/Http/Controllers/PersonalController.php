@@ -2,32 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AlergiaMedicamentos;
-use App\Models\AnaliticaPsicometria;
-use App\Models\CarrerasUniversitarias;
-use App\Models\CertificadoIntegridadLaboral;
-use App\Models\ContactosEmergencia;
-use App\Models\CursosTecnicos;
-use App\Models\DatosLaboral;
-use App\Models\Diplomado;
-use App\Models\Enfermedades;
-use App\Models\HistorialLaboral;
-use App\Models\IntegridadLaboral;
-use App\Models\InvestigacionDepuracionLeyes;
-use App\Models\LevantamientoCampo;
-use App\Models\Maestria;
-use App\Models\Municipio;
-use App\Models\Participacion;
-use App\Models\Personal;
 use App\Models\Phd;
-use App\Models\Provincia;
-use App\Models\ReferenciasPersonalesFamiliares;
-use App\Models\Residencia;
+use App\Models\Maestria;
+use App\Models\Personal;
 use App\Models\Talleres;
 use Barryvdh\DomPDF\PDF;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Diplomado;
+use App\Models\Municipio;
+use App\Models\Provincia;
+use App\Models\Residencia;
+use App\Models\TipoAlerta;
 use Illuminate\Support\Str;
+use App\Models\DatosLaboral;
+use App\Models\Enfermedades;
+use Illuminate\Http\Request;
+use App\Models\Participacion;
+use App\Models\CursosTecnicos;
+use App\Models\HistorialLaboral;
+use App\Models\IntegridadLaboral;
+use App\Models\LevantamientoCampo;
+use App\Models\AlergiaMedicamentos;
+use App\Models\ContactosEmergencia;
+use App\Models\AnaliticaPsicometria;
+use Illuminate\Support\Facades\Auth;
+use App\Models\CarrerasUniversitarias;
+use App\Models\CertificadoIntegridadLaboral;
+use App\Models\InvestigacionDepuracionLeyes;
+use App\Models\ReferenciasPersonalesFamiliares;
 
 class PersonalController extends Controller
 {

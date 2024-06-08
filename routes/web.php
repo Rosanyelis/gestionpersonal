@@ -83,6 +83,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/candidatos-externos/{id}/investigacion-laboral', [CandidatoExternoController::class, 'investigacionlaboral'])->name('candidato-externo.investigacionlaboral');
     Route::post('/candidatos-externos/{id}/guardar-certificaciones-y-depuraciones', [CandidatoExternoController::class, 'storecertificaciones'])->name('candidato-externo.storecertificaciones');
 
+    # alertas
+    Route::get('/alertas', [CandidatoExternoController::class, 'alertasAjax'])->name('alertasAjax');
+    Route::get('/alertas/{code}/buscar', [CandidatoExternoController::class, 'alertasAjaxCode'])->name('alertasAjaxCode');
+
      # Integridad Laboral Candidato Externo
     Route::get('/candidatos-externos/{id}/integridad-laboral/nueva-evaluacion', [IntegridadLaboralExternoController::class, 'create'])->name('evaluacion-externa.create');
     Route::post('/candidatos-externos/{id}/integridad-laboral/guardar-evaluacion', [IntegridadLaboralExternoController::class, 'store'])->name('evaluacion-externa.store');

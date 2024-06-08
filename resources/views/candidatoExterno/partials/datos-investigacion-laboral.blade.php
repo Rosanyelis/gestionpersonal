@@ -14,6 +14,7 @@
                 <th><span>Cédula</span></th>
                 <th><span>Fecha de Nacimiento </span></th>
                 <th><span>Edad </span></th>
+
             </tr>
         </thead><!-- .nk-tb-item -->
         <tbody>
@@ -33,8 +34,7 @@
                 <th><span>Empresa </span></th>
                 <th><span>Sucursal </span></th>
                 <th><span>Autorizado </span></th>
-                <th><span>Resultado </span></th>
-                <th><span>Detalles </span></th>
+                <th><span>Correo de Autorizado </span></th>
                 <th width="50px"></th>
             </tr>
         </thead><!-- .nk-tb-item -->
@@ -46,8 +46,7 @@
                     <td>{{ $item->empresa }}</td>
                     <td>{{ $item->sucursal }}</td>
                     <td>{{ $item->autorizado }}</td>
-                    <td>{{ $item->resultado }}</td>
-                    <td>{{ $item->detalle }}</td>
+                    <td>{{ $item->correo_autorizado }}</td>
                     <td>
                         <ul class="nk-tb-actions gx-1 my-n1">
                             <li class="mr-n1">

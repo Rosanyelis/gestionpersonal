@@ -4,10 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use Illuminate\Database\Seeder;
+use Database\Seeders\UsuarioSeeder;
 use Database\Seeders\MunicipioSeeder;
 use Database\Seeders\ProvinciaSeeder;
-use Database\Seeders\UsuarioSeeder;
-use Illuminate\Database\Seeder;
+use Database\Seeders\TipoAlertaSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
             ProvinciaSeeder::class,
             MunicipioSeeder::class,
             UsuarioSeeder::class,
+            TipoAlertaSeeder::class,
         ]);
 
     }

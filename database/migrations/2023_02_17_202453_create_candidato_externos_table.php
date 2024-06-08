@@ -16,9 +16,14 @@ return new class extends Migration
         Schema::create('candidato_externos', function (Blueprint $table) {
             $table->id();
             $table->string('cedula');
-            $table->string('nombres')->nullable();
-            $table->string('apellidos')->nullable();
+            $table->string('nombres');
+            $table->string('apellidos');
             $table->date('fecha_nacimiento')->nullable();
+            $table->string('cedula_anterior')->nullable();
+            $table->string('pasaporte')->nullable();
+            $table->string('lugar_nacimiento');
+            $table->string('telefono')->nullable();
+            $table->text('foto')->nullable();
             $table->timestamps();
         });
     }

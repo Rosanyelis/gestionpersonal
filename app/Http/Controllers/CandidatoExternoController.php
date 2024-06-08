@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AnaliticaPsicometria;
-use App\Models\CandidatoExterno;
-use App\Models\CertificadoIntegridadLaboral;
-use App\Models\IntegridadLaboral;
-use App\Models\InvestigacionDepuracionLeyes;
-use App\Models\LevantamientoCampo;
+use App\Models\TipoAlerta;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\CandidatoExterno;
+use App\Models\IntegridadLaboral;
+use App\Models\LevantamientoCampo;
+use App\Models\AnaliticaPsicometria;
+use App\Models\CertificadoIntegridadLaboral;
+use App\Models\InvestigacionDepuracionLeyes;
+use App\Http\Requests\StoreIntegridadLaboral;
 
 class CandidatoExternoController extends Controller
 {
@@ -62,13 +65,28 @@ class CandidatoExternoController extends Controller
         if($count > 0){
             return redirect('candidatos-externos')->with('error', 'Ya existe un registro con la misma Cédula y Empresa');
         }
+        $foto = null;
+        if ($request->hasFile('foto')) {
+            $uploadPath = public_path('/storage/CandidatosExternos/');
+            $file = $request->file('foto');
+            $extension = $file->getClientOriginalExtension();
+            $uuid = Str::uuid(4);
+            $fileName = $uuid . '.' . $extension;
+            $file->move($uploadPath, $fileName);
+            $url = '/storage/CandidatosExternos/'.$fileName;
+            $foto = $url;
+        }
 
         $candidatoExterno = new CandidatoExterno();
         $candidatoExterno->cedula = $request->cedula;
         $candidatoExterno->nombres = $request->nombres;
         $candidatoExterno->apellidos = $request->apellidos;
         $candidatoExterno->fecha_nacimiento = $request->fecha_nacimiento;
-
+        $candidatoExterno->lugar_nacimiento = $request->lugar_nacimiento;
+        $candidatoExterno->cedula_anterior = $request->cedula_anterior;
+        $candidatoExterno->pasaporte = $request->pasaporte;
+        $candidatoExterno->telefono = $request->telefono;
+        $candidatoExterno->foto = $foto;
         $candidatoExterno->save();
 
         return redirect('candidatos-externos')->with('success', 'Registro Guardado Exitósamente');
@@ -125,11 +143,28 @@ class CandidatoExternoController extends Controller
 
             ]);
 
+            $foto = null;
+            if ($request->hasFile('foto')) {
+                $uploadPath = public_path('/storage/CandidatosExternos/');
+                $file = $request->file('foto');
+                $extension = $file->getClientOriginalExtension();
+                $uuid = Str::uuid(4);
+                $fileName = $uuid . '.' . $extension;
+                $file->move($uploadPath, $fileName);
+                $url = '/storage/CandidatosExternos/'.$fileName;
+                $foto = $url;
+            }
+
             $candidatoExterno = CandidatoExterno::find($id);
             $candidatoExterno->cedula = $request->cedula;
             $candidatoExterno->nombres = $request->nombres;
             $candidatoExterno->apellidos = $request->apellidos;
             $candidatoExterno->fecha_nacimiento = $request->fecha_nacimiento;
+            $candidatoExterno->lugar_nacimiento = $request->lugar_nacimiento;
+            $candidatoExterno->cedula_anterior = $request->cedula_anterior;
+            $candidatoExterno->pasaporte = $request->pasaporte;
+            $candidatoExterno->telefono = $request->telefono;
+            $candidatoExterno->foto = $foto;
             $candidatoExterno->save();
 
             return redirect('candidatos-externos')->with('success', 'Registro Actualizado Exitósamente');
@@ -147,92 +182,32 @@ class CandidatoExternoController extends Controller
     {
         return view('candidatoExterno.certificaciones', compact('id'));
     }
+
+    public function alertasAjax()
+    {
+        $data = TipoAlerta::all();
+        return response()->json($data);
+    }
+
+    public function alertasAjaxCode(Request $request)
+    {
+        $data = TipoAlerta::where('codigo', $request->code)->first();
+        return response()->json($data);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storecertificaciones(Request $request, $id)
+    public function storecertificaciones(StoreIntegridadLaboral $request, $id)
     {
-        $count = CandidatoExterno::where('id', $id)->count();
-        if ($count>0) {
+        $data = $request->all();
+        $data['candidato_id'] = $id;
+        IntegridadLaboral::create($data);
 
-            $request->validate([
-                'fecha' => ['required'],
-                'empresa' => ['required'],
-                'sucursal' => ['required'],
-                'autorizado' => ['required'],
-                'certificado_procuraduria' => ['required'],
-                'certificado_institucion' => ['required'],
-                'actividad_antisocial' => ['required'],
-                'reporte_actividad_noprocesada' => ['required'],
-                'prueba_poligrafica' => ['required'],
-                'prueba_psicometrica' => ['required'],
-                'enfermedades_contagiosas' => ['required'],
-                'consumo_alcohol' => ['required'],
-                'sustancia_prohibida' => ['required'],
-                'visita_domiciliaria' => ['required'],
-                'levantamiento_coordinado' => ['required'],
-                'investigacion_entorno' => ['required'],
-                'levantamiento_dactilar' => ['required'],
-                'levantamiento_fotografia' => ['required'],
-                'integridad_familiar' => ['required'],
-                'resultado' => ['required'],
-            ],
-            [
-                'fecha.required' => 'El campo Fecha es obligatorio',
-                'empresa.required' => 'El campo Empresa es obligatorio',
-                'sucursal.required' => 'El campo Sucursal es obligatorio',
-                'autorizado.required' => 'El campo Autorizado es obligatorio',
-                'certificado_procuraduria.required' => 'La respuesta de Certificado de Procuraduría es obligatoria',
-                'certificado_institucion.required' => 'La respuesta de Certificado de Institución es obligatoria',
-                'actividad_antisocial.required' => 'La respuesta de Actividad Antisocial es obligatoria',
-                'reporte_actividad_noprocesada.required' => 'La respuesta de Reporte de Actividad No Procesada es obligatoria',
-                'prueba_poligrafica.required' => 'La respuesta de Prueba Poligráfica es obligatoria',
-                'prueba_psicometrica.required' => 'La respuesta de Prueba Psicométrica es obligatoria',
-                'enfermedades_contagiosas.required' => 'La respuesta de Enfermedades Contagiosas es obligatoria',
-                'consumo_alcohol.required' => 'La respuesta de Consumo de Alcohol es obligatoria',
-                'sustancia_prohibida.required' => 'La respuesta de Sustancia Prohibida es obligatoria',
-                'visita_domiciliaria.required' => 'La respuesta de Visita Domiciliaria es obligatoria',
-                'levantamiento_coordinado.required' => 'La respuesta de Levantamiento Coordinado es obligatoria',
-                'investigacion_entorno.required' => 'La respuesta de Investigación de Entorno es obligatoria',
-                'levantamiento_dactilar.required' => 'La respuesta de Levantamiento Dactilar es obligatoria',
-                'levantamiento_fotografia.required' => 'La respuesta de Levantamiento Fotográfico es obligatoria',
-                'integridad_familiar.required' => 'La respuesta de Integridad Familiar es obligatoria',
-                'resultado.required' => 'La respuesta de Resultado es obligatoria',
-            ]);
+        return redirect('/candidatos-externos')->with('success', 'Registro de Información Confidencial Guardado Exitósamente');
 
-            $reg = new IntegridadLaboral();
-            $reg->candidato_id = $id;
-            $reg->fecha = $request->fecha;
-            $reg->empresa = $request->empresa;
-            $reg->sucursal = $request->sucursal;
-            $reg->autorizado = $request->autorizado;
-            $reg->certificado_procuraduria = $request->certificado_procuraduria;
-            $reg->certificado_institucion = $request->certificado_institucion;
-            $reg->actividad_antisocial = $request->actividad_antisocial;
-            $reg->reporte_actividad_noprocesada = $request->reporte_actividad_noprocesada;
-            $reg->prueba_poligrafica = $request->prueba_poligrafica;
-            $reg->prueba_psicometrica = $request->prueba_psicometrica;
-            $reg->enfermedades_contagiosas = $request->enfermedades_contagiosas;
-            $reg->consumo_alcohol = $request->consumo_alcohol;
-            $reg->sustancia_prohibida = $request->sustancia_prohibida;
-            $reg->visita_domiciliaria = $request->visita_domiciliaria;
-            $reg->levantamiento_coordinado = $request->levantamiento_coordinado;
-            $reg->investigacion_entorno = $request->investigacion_entorno;
-            $reg->levantamiento_dactilar = $request->levantamiento_dactilar;
-            $reg->levantamiento_fotografia = $request->levantamiento_fotografia;
-            $reg->integridad_familiar = $request->integridad_familiar;
-            $reg->resultado = $request->resultado;
-            $reg->detalle = $request->detalle;
-            $reg->save();
-
-
-            return redirect('/candidatos-externos')->with('success', 'Registro de Información Confidencial Guardado Exitósamente');
-
-        } else {
-            return redirect('/candidatos-externos')->with('danger', 'Problemas para Mostrar el Registro.');
-        }
     }
 }

@@ -31,7 +31,7 @@
                         <div class="card-inner">
                             <form id="form"
                                 action="{{ url('/candidatos-externos/' . $data->id . '/actualizar-candidato-externo') }}"
-                                method="POST">
+                                method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="row gy-3">
@@ -53,7 +53,7 @@
                                         <div class="form-group">
                                             <label class="form-label text-uppercase" for="fw-vr-first-name">Nombres</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control " id="fw-vr-first-name"
+                                                <input type="text" class="form-control text-capitalize" id="fw-vr-first-name"
                                                     name="nombres" value="{{ $data->nombres }}"
                                                     placeholder="Ejm: Jena Andrea">
                                                 @if ($errors->has('nombres'))
@@ -68,7 +68,7 @@
                                         <div class="form-group">
                                             <label class="form-label text-uppercase" for="fw-vr-last-name">Apellidos</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-last-name"
+                                                <input type="text" class="form-control text-capitalize" id="fw-vr-last-name"
                                                     name="apellidos" value="{{ $data->apellidos }}"
                                                     placeholder="Ejm: Doe Colin">
                                                 @if ($errors->has('apellidos'))
@@ -92,6 +92,81 @@
                                                     </span>
                                                 @endif
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase" for="fw-vr-first-name">Cédula Anterior</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control " id="fw-cedula-old"
+                                                    name="cedula_anterior" value="{{ $data->cedula_anterior }}" placeholder="Ejm: 123456789">
+                                                @if ($errors->has('cedula_anterior'))
+                                                    <span class="invalid text-danger">
+                                                        {{ $errors->first('cedula_anterior') }}
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase" for="fw-vr-first-name">Pasaporte</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control " id="fw-pasaporte"
+                                                    name="pasaporte" value="{{ $data->pasaporte }}" placeholder="Ejm: 123456789">
+                                                @if ($errors->has('pasaporte'))
+                                                    <span class="invalid text-danger">
+                                                        {{ $errors->first('pasaporte') }}
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase" for="fw-vr-first-name">Lugar Nacimiento</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control text-capitalize" id="fw-lugar-nacimiento"
+                                                    name="lugar_nacimiento" value="{{ $data->lugar_nacimiento }}" placeholder="Ejm: 123456789">
+                                                @if ($errors->has('lugar_nacimiento'))
+                                                    <span class="invalid text-danger">
+                                                        {{ $errors->first('lugar_nacimiento') }}
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase" for="fw-vr-first-name">Teléfono</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control " id="fw-telefono"
+                                                    name="telefono" value="{{ $data->telefono }}" placeholder="Ejm: 123456789">
+                                                @if ($errors->has('telefono'))
+                                                    <span class="invalid text-danger">
+                                                        {{ $errors->first('telefono') }}
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase" for="fw-vr-first-name">Foto</label>
+                                            <div class="form-control-wrap">
+                                                <div class="custom-file">
+                                                    <input name="foto" type="file" class="custom-file-input" id="customFile">
+                                                    <label class="custom-file-label" for="customFile">Subir Foto</label>
+                                                    @if ($errors->has('foto'))
+                                                        <span class="invalid text-danger">
+                                                            {{ $errors->first('foto') }}
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="user-avatar sq xl mt-2">
+                                            <img src="{{ asset(''.$data->foto.'') }}" alt="{{ $data->nombres }} {{ $data->apellidos }}">
                                         </div>
                                     </div>
                                 </div>

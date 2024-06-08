@@ -39,7 +39,7 @@
                                         <div class="form-group">
                                             <label class="form-label text-uppercase" for="fw-vr-lugar">Fecha</label>
                                             <div class="form-control-wrap">
-                                                <input type="date" class="form-control" id="fw-vr-lugar" name="fecha"
+                                                <input type="date" class="form-control text-capitalize" id="fw-vr-lugar" name="fecha"
                                                     value="{{ $data->fecha }}">
                                                 @if ($errors->has('fecha'))
                                                     <span class="invalid text-danger">
@@ -53,7 +53,7 @@
                                         <div class="form-group">
                                             <label class="form-label text-uppercase" for="fw-vr-lugar">Empresa</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-lugar" name="empresa"
+                                                <input type="text" class="form-control text-capitalize" id="fw-vr-lugar" name="empresa"
                                                     value="{{ $data->empresa }}" placeholder="Ejm: El Caribe C.A">
                                                 @if ($errors->has('empresa'))
                                                     <span class="invalid text-danger">
@@ -67,7 +67,7 @@
                                         <div class="form-group">
                                             <label class="form-label text-uppercase" for="fw-vr-lugar">Sucursal</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-lugar" name="sucursal"
+                                                <input type="text" class="form-control text-capitalize" id="fw-vr-lugar" name="sucursal"
                                                     value="{{ $data->sucursal }}" placeholder="Ejm: El Caribe 2 C.A">
                                                 @if ($errors->has('sucursal'))
                                                     <span class="invalid text-danger">
@@ -82,7 +82,7 @@
                                         <div class="form-group">
                                             <label class="form-label text-uppercase" for="fw-vr-lugar">Autorizado</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" class="form-control" id="fw-vr-lugar"
+                                                <input type="text" class="form-control text-capitalize" id="fw-vr-lugar"
                                                     name="autorizado" value="{{ $data->autorizado }}"
                                                     placeholder="Ejm: Carlos Pérez">
                                                 @if ($errors->has('autorizado'))
@@ -93,18 +93,35 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="form-label text-uppercase" for="fw-vr-lugar">Correo de Autorizado</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" class="form-control text-capitalize" id="fw-vr-lugar"
+                                                    name="correo_autorizado" value="{{ $data->correo_autorizado }}"
+                                                    placeholder="Ejm: Carlos Pérez">
+                                                @if ($errors->has('correo_autorizado'))
+                                                    <span class="invalid text-danger">
+                                                        {{ $errors->first('correo_autorizado') }}
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-md-12 ">
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr class="text-uppercase">
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Tipo de Prueba</th>
-                                                    <th scope="col" colspan="2">Respuesta</th>
+                                                    <th scope="col" width="2%">#</th>
+                                                    <th scope="col" width="30%">Tipo de Prueba</th>
+                                                    <th scope="col" colspan="2" width="10%">Respuesta</th>
+                                                    <th scope="col" width="10%">Código</th>
+                                                    <th scope="col">Detalle</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="text-uppercase">
                                                 <tr>
-                                                    <th colspan="4" class="text-center">Certificado de integridad laboral y depuraciones</th>
+                                                    <th colspan="6" >Certificado de integridad laboral y depuraciones</th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">1</th>
@@ -133,6 +150,23 @@
                                                             <label class="custom-control-label" for="certificadoNo">No</label>
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="1"
+                                                                name="code_pro" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                                @foreach ($alertas as $alerta)
+                                                                    <option value="{{ $alerta->codigo }}"
+                                                                        @if ($alerta->codigo == $data->code_pro) selected @endif>
+                                                                        {{ $alerta->codigo }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info1" name="detalle_pro" class="form-control form-control-sm infoAlerta" id="detalle_pro"
+                                                            value="{{ $data->detalle_pro }}">
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">2</th>
@@ -160,9 +194,26 @@
                                                             <label class="custom-control-label" for="certificadoinstNo">No</label>
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="2"
+                                                                name="code_ins" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                                @foreach ($alertas as $alerta)
+                                                                    <option value="{{ $alerta->codigo }}"
+                                                                        @if ($alerta->codigo == $data->code_ins) selected @endif>
+                                                                        {{ $alerta->codigo }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info2" name="detalle_ins" class="form-control form-control-sm infoAlerta" id="detalle_ins"
+                                                        value="{{ $data->detalle_ins }}">
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <th colspan="4" class="text-center">Investigación y depuración de actividades contrarias a las leyes</th>
+                                                    <th colspan="6" >Investigación y depuración de actividades contrarias a las leyes</th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">3</th>
@@ -190,6 +241,23 @@
                                                             value="No">
                                                             <label class="custom-control-label" for="actividad_antisocialNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="3"
+                                                                name="code_ant" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                                @foreach ($alertas as $alerta)
+                                                                    <option value="{{ $alerta->codigo }}"
+                                                                        @if ($alerta->codigo == $data->code_ant) selected @endif>
+                                                                        {{ $alerta->codigo }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info3" name="detalle_ant" class="form-control form-control-sm infoAlerta" id="detalle_ant"
+                                                        value="{{ $data->detalle_ant }}">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -219,9 +287,26 @@
                                                             <label class="custom-control-label" for="reporte_actividad_noprocesadaNo">No</label>
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="4"
+                                                                name="code_nopro" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                                @foreach ($alertas as $alerta)
+                                                                    <option value="{{ $alerta->codigo }}"
+                                                                        @if ($alerta->codigo == $data->code_nopro) selected @endif>
+                                                                        {{ $alerta->codigo }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info4" name="detalle_nopro" class="form-control form-control-sm infoAlerta" id="detalle_nopro"
+                                                        value="{{ $data->detalle_nopro }}">
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <th colspan="4" class="text-center">Analística y psicometría</th>
+                                                    <th colspan="4" >Analística y psicometría</th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">5</th>
@@ -249,6 +334,23 @@
                                                             value="No">
                                                             <label class="custom-control-label" for="prueba_poligraficaNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="5"
+                                                                name="code_pol" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                                @foreach ($alertas as $alerta)
+                                                                    <option value="{{ $alerta->codigo }}"
+                                                                        @if ($alerta->codigo == $data->code_pol) selected @endif>
+                                                                        {{ $alerta->codigo }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info5" name="detalle_pol" class="form-control form-control-sm infoAlerta" id="detalle_pol"
+                                                        value="{{ $data->detalle_pol }}">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -278,6 +380,23 @@
                                                             <label class="custom-control-label" for="prueba_psicometricaNo">No</label>
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="6"
+                                                                name="code_psi" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                                @foreach ($alertas as $alerta)
+                                                                    <option value="{{ $alerta->codigo }}"
+                                                                        @if ($alerta->codigo == $data->code_psi) selected @endif>
+                                                                        {{ $alerta->codigo }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info6" name="detalle_psi" class="form-control form-control-sm infoAlerta" id="detalle_psi"
+                                                        value="{{ $data->detalle_psi }}">
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">7</th>
@@ -305,6 +424,23 @@
                                                             value="No">
                                                             <label class="custom-control-label" for="enfermedades_contagiosasNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="7"
+                                                                name="code_cont" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                                @foreach ($alertas as $alerta)
+                                                                    <option value="{{ $alerta->codigo }}"
+                                                                        @if ($alerta->codigo == $data->code_cont) selected @endif>
+                                                                        {{ $alerta->codigo }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info7" name="detalle_cont" class="form-control form-control-sm infoAlerta" id="detalle_cont"
+                                                        value="{{ $data->detalle_cont }}">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -334,6 +470,23 @@
                                                             <label class="custom-control-label" for="consumo_alcoholNo">No</label>
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="8"
+                                                                name="code_alc" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                                @foreach ($alertas as $alerta)
+                                                                    <option value="{{ $alerta->codigo }}"
+                                                                        @if ($alerta->codigo == $data->code_alc) selected @endif>
+                                                                        {{ $alerta->codigo }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info8" name="detalle_alc" class="form-control form-control-sm infoAlerta" id="detalle_alc"
+                                                        value="{{ $data->detalle_alc }}">
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">9</th>
@@ -362,9 +515,26 @@
                                                             <label class="custom-control-label" for="sustancia_prohibidaNo">No</label>
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="9"
+                                                                name="code_proh" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                                @foreach ($alertas as $alerta)
+                                                                    <option value="{{ $alerta->codigo }}"
+                                                                        @if ($alerta->codigo == $data->code_proh) selected @endif>
+                                                                        {{ $alerta->codigo }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info9" name="detalle_proh" class="form-control form-control-sm infoAlerta" id="detalle_proh"
+                                                        value="{{ $data->detalle_proh }}">
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <th colspan="4" class="text-center">Levantamiento de campo</th>
+                                                    <th colspan="6" >Levantamiento de campo</th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">10</th>
@@ -392,6 +562,23 @@
                                                             value="No">
                                                             <label class="custom-control-label" for="visita_domiciliariaNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="10"
+                                                                name="code_dom" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                                @foreach ($alertas as $alerta)
+                                                                    <option value="{{ $alerta->codigo }}"
+                                                                        @if ($alerta->codigo == $data->code_dom) selected @endif>
+                                                                        {{ $alerta->codigo }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info10" name="detalle_dom" class="form-control form-control-sm infoAlerta" id="detalle_dom"
+                                                        value="{{ $data->detalle_dom }}">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -421,6 +608,23 @@
                                                             <label class="custom-control-label" for="levantamiento_coordinadoNo">No</label>
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="11"
+                                                                name="code_coo" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                                @foreach ($alertas as $alerta)
+                                                                    <option value="{{ $alerta->codigo }}"
+                                                                        @if ($alerta->codigo == $data->code_coo) selected @endif>
+                                                                        {{ $alerta->codigo }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info11" name="detalle_coo" class="form-control form-control-sm infoAlerta" id="detalle_coo"
+                                                        value="{{ $data->detalle_coo }}">
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">12</th>
@@ -448,6 +652,23 @@
                                                             value="No">
                                                             <label class="custom-control-label" for="investigacion_entornoNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="12"
+                                                                name="code_ent" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                                @foreach ($alertas as $alerta)
+                                                                    <option value="{{ $alerta->codigo }}"
+                                                                        @if ($alerta->codigo == $data->code_ent) selected @endif>
+                                                                        {{ $alerta->codigo }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info12" name="detalle_ent" class="form-control form-control-sm infoAlerta" id="detalle_ent"
+                                                        value="{{ $data->detalle_ent }}">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -477,6 +698,23 @@
                                                             <label class="custom-control-label" for="levantamiento_dactilarNo">No</label>
                                                         </div>
                                                     </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="13"
+                                                                name="code_dac" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                                @foreach ($alertas as $alerta)
+                                                                    <option value="{{ $alerta->codigo }}"
+                                                                        @if ($alerta->codigo == $data->code_dac) selected @endif>
+                                                                        {{ $alerta->codigo }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info13" name="detalle_dac" class="form-control form-control-sm infoAlerta" id="detalle_dac"
+                                                        value="{{ $data->detalle_dac }}">
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">14</th>
@@ -504,6 +742,23 @@
                                                             value="No">
                                                             <label class="custom-control-label" for="levantamiento_fotografiaNo">No</label>
                                                         </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-control-wrap">
+                                                            <select class="form-control form-select alertasAjax" data-id="14"
+                                                                name="code_fot" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                                @foreach ($alertas as $alerta)
+                                                                    <option value="{{ $alerta->codigo }}"
+                                                                        @if ($alerta->codigo == $data->code_fot) selected @endif>
+                                                                        {{ $alerta->codigo }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info14" name="detalle_fot" class="form-control form-control-sm infoAlerta" id="detalle_fot"
+                                                        value="{{ $data->detalle_fot }}">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -533,34 +788,36 @@
                                                             <label class="custom-control-label" for="integridad_familiarNo">No</label>
                                                         </div>
                                                     </td>
-                                                </tr>
-                                                <tr>
-                                                    <th colspan="4" class="text-center">Resultado</th>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="4">
+                                                    <td>
                                                         <div class="form-control-wrap">
-                                                            <input type="text" name="resultado" class="form-control " value="{{ $data->resultado }}" placeholder="Ejemplo: La prueba fué exitósa">
+                                                            <select class="form-control form-select alertasAjax" data-id="15"
+                                                                name="code_fam" data-placeholder="Seleccione una opción">
+                                                                <option label="empty" value=""></option>
+                                                                @foreach ($alertas as $alerta)
+                                                                    <option value="{{ $alerta->codigo }}"
+                                                                        @if ($alerta->codigo == $data->code_fam) selected @endif>
+                                                                        {{ $alerta->codigo }}</option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
-                                                        @if ($errors->has('resultado'))
-                                                            <span class="invalid text-danger">
-                                                                {{ $errors->first('resultado') }}
-                                                            </span>
-                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="info15" name="detalle_fam" class="form-control form-control-sm infoAlerta" id="detalle_fam"
+                                                        value="{{ $data->detalle_fam }}">
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th colspan="4" class="text-center">Detalles</th>
+                                                    <th colspan="6" >Detalles</th>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="4">
+                                                    <td colspan="6">
                                                         <div class="form-control-wrap">
-                                                            <textarea name="detalle" class="form-control form-control-sm" id="detalle"
-                                                             placeholder="Ejemplo: Lorem ipsum dolor sit amet, consectetur adipiscing eli">{{ $data->detalle }}</textarea>
+                                                            <textarea name="detalle_final" class="form-control form-control-sm" id="detalle"
+                                                             placeholder="Ejemplo: Lorem ipsum dolor sit amet, consectetur adipiscing eli">{{ $data->detalle_final }}</textarea>
                                                         </div>
-                                                        @if ($errors->has('detalle'))
+                                                        @if ($errors->has('detalle_final'))
                                                             <span class="invalid text-danger">
-                                                                {{ $errors->first('detalle') }}
+                                                                {{ $errors->first('detalle_final') }}
                                                             </span>
                                                         @endif
                                                     </td>
@@ -593,6 +850,23 @@
 
             @include('layouts.alerts')
 
+            $(".alertasAjax").on("change", function() {
+                let code = $(this).val();
+                const ID = $(this).data("id");
+                let url = "{{ route('alertasAjaxCode', "+code+") }}";
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('alertasAjaxCode', "+code+") }}",
+                    data: {
+                        'code': code,
+                    },
+                    success: function(data) {
+                        let Txt = "#info" + ID + "";
+                        $(Txt).val(data.descripcion);
+                    }
+                });
+
+            });
 
             $('#guardar').click(function() {
                 $('#form').submit();
